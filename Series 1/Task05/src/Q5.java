@@ -1,44 +1,52 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 class Complex {
-    int real;
-    int img;
+    double real;
+    double img;
 
-    public Complex(int real, int img) {
+    public Complex(double real, double img) {
         this.real = real;
         this.img = img;
     }
 
     public static Complex add(Complex n1, Complex n2) {
-        int real = n1.real + n2.real;
-        int img = n1.img + n2.img;
+        double real = n1.real + n2.real;
+        double img = n1.img + n2.img;
         return new Complex(real, img);
     }
 
     public static Complex difference(Complex n1, Complex n2) {
-        int real = n1.real - n2.real;
-        int img = n1.img - n2.img;
+        double real = n1.real - n2.real;
+        double img = n1.img - n2.img;
         return new Complex(real, img);
     }
 
     public static Complex times(Complex n1, Complex n2) {
-        int real = n1.real * n2.real - n1.img * n2.img;
-        int img = n1.real * n2.img + n1.img * n2.real;
+        double real = n1.real * n2.real - n1.img * n2.img;
+        double img = n1.real * n2.img + n1.img * n2.real;
+        return new Complex(real, img);
+    }
+
+    public static Complex division(Complex n1, Complex n2) {
+        double real = (n1.real * n2.real + n1.img * n2.img) / (Math.pow(n2.real, 2) + Math.pow(n2.img, 2));
+        double img = (n1.img * n2.real - n1.real * n2.img) / (Math.pow(n2.real, 2) + Math.pow(n2.img, 2));
         return new Complex(real, img);
     }
 
     public static void print(Complex b) {
         String img = "";
         if (b.img != 1) {
-            img = String.valueOf(b.img);
+            img = String.valueOf(new DecimalFormat().format(b.img));
         }
         if (b.img < 0){
-            System.out.println(b.real + img + "i");
+            System.out.format("%s%si\n",new DecimalFormat().format(b.real),img);
         }
         else {
-            System.out.println(b.real + "+" + img + "i");
+            System.out.format("%s+%si\n",new DecimalFormat().format(b.real),img);
+
         }
     }
 }
@@ -48,19 +56,19 @@ public class Q5 {
         Scanner scanner = new Scanner(System.in);
         String n1Line = scanner.nextLine();
         String n2Line = scanner.nextLine();
-        Integer[] n1Parts = new Integer[2];
-        Integer[] n2Parts = new Integer[2];
+        Double[] n1Parts = new Double[2];
+        Double[] n2Parts = new Double[2];
 
-        n1Parts[0] = Integer.valueOf(n1Line.split(" ")[0]);
-        n1Parts[1] = Integer.valueOf(n1Line.split(" ")[1]);
-        n2Parts[0] = Integer.valueOf(n2Line.split(" ")[0]);
-        n2Parts[1] = Integer.valueOf(n2Line.split(" ")[1]);
+        n1Parts[0] = Double.valueOf(n1Line.split(" ")[0]);
+        n1Parts[1] = Double.valueOf(n1Line.split(" ")[1]);
+        n2Parts[0] = Double.valueOf(n2Line.split(" ")[0]);
+        n2Parts[1] = Double.valueOf(n2Line.split(" ")[1]);
 
         Complex n1 = new Complex(n1Parts[0], n1Parts[1]);
         Complex n2 = new Complex(n2Parts[0], n2Parts[1]);
 
         List<String> operators = new ArrayList<>();
-        String operator = "";
+        String operator;
 
         while (true) {
             operator = scanner.nextLine();
@@ -73,6 +81,7 @@ public class Q5 {
                 case "+" -> Complex.add(n1, n2);
                 case "-" -> Complex.difference(n1, n2);
                 case "*" -> Complex.times(n1, n2);
+                case "/" -> Complex.division(n1, n2);
                 default -> null;
             };
             assert result != null;
