@@ -86,6 +86,7 @@ public class Q5 {
             };
             assert result != null;
             Complex.print(result);
+            scanner.nextLine();
         }
     }
 }
