@@ -34,13 +34,15 @@ public class Main {
     }
 
     public static int replace(String str1, String str2) {
-        char letter = 0;
+        char letter1 = 0;
+        char letter2 = 0;
 
         int count = 0;
         for (int i = 0; i < str1.length(); i++) {
             if (str1.charAt(i) != str2.charAt(i)) {
-                if (!(letter == str1.charAt(i))) {
-                    letter = str1.charAt(i);
+                if (!(letter1 == str1.charAt(i) && letter2 == str2.charAt(i))) {
+                    letter1 = str1.charAt(i);
+                    letter2 = str2.charAt(i);
                     count++;
                 }
             }
