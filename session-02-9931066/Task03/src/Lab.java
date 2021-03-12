@@ -39,7 +39,7 @@ public class Lab {
         for (Student student: students) {
             student.print();
         }
-        System.out.println("Average: " + getAvg());
+        System.out.println("Average: " + getAvg() + "\n");
     }
 
     /**
