@@ -60,7 +60,7 @@ public class Lab {
 
     /**
      * get lab average
-     * @return arg int
+     * @return avg int
      */
     public int getAvg() {
         return avg;

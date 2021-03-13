@@ -1,14 +1,25 @@
+/**
+ * A class definition for faculty
+ */
 public class Faculty {
     private Lab[] labs;
     private int capacity;
     private int currentSize;
     private int avg;
 
+    /**
+     * initialize instance
+     * @param cap int
+     */
     public Faculty(int cap){
         capacity = cap;
         labs = new Lab[cap];
     }
 
+    /**
+     * add new lab to faculty
+     * @param lab Student
+     */
     public void addLabs(Lab lab) {
         if (currentSize < capacity) {
             labs[currentSize] = lab;
@@ -18,6 +29,9 @@ public class Faculty {
         }
     }
 
+    /**
+     * Print all labs and the lab average
+     */
     public void printAll(){
         for (int i = 0; i < currentSize; i++) {
             labs[i].calculateAvg();
@@ -26,12 +40,18 @@ public class Faculty {
         }
     }
 
+    /**
+     * Print just single specific lab
+     */
     public void printSingle(int expectedLab){
         labs[expectedLab].calculateAvg();
         System.out.println("Lab " + (expectedLab) + ":");
         labs[expectedLab - 1].print();
     }
 
+    /**
+     * Calculate the faculty average grade
+     */
     public void calculateAvg() {
         int sum = 0;
         int tempSize = 0;
@@ -43,6 +63,10 @@ public class Faculty {
         avg = sum / tempSize;
     }
 
+    /**
+     * get faculty average
+     * @return avg int
+     */
     public int getAvg(){
         return avg;
     }
