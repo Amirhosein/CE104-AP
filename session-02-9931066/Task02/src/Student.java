@@ -1,4 +1,7 @@
-public class Student{
+/**
+ * A class definition for student
+ */
+public class Student {
     private String firstName;
 
     private String lastName;
@@ -7,48 +10,88 @@ public class Student{
 
     private int grade;
 
-
-    public Student( String fName, String lName, String sID){
+    /**
+     * Create a new student with a given name and ID number. *
+     *
+     * @param fName first name of students
+     * @param lName last name of students
+     * @param sID   ID of students
+     */
+    public Student(String fName, String lName, String sID) {
         firstName = fName;
         lastName = lName;
         ID = sID;
         grade = 0;
     }
 
-
-    public String getFirstName(){
+    /**
+     * get student's first name
+     *
+     * @return firstName string
+     */
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String fName){
+    /**
+     * @param fName set first name of student
+     */
+    public void setFirstName(String fName) {
         firstName = fName;
     }
 
-    public String getLastName(){
+    /**
+     * get student's last name
+     *
+     * @return lastName string
+     */
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lName){
+    /**
+     * @param lName set last name of student
+     */
+    public void setLastName(String lName) {
         lastName = lName;
     }
 
-    public String getID(){
+    /**
+     * get student's ID
+     *
+     * @return ID string
+     */
+    public String getID() {
         return ID;
     }
 
-    public void setID(String sID){
+    /**
+     * @param sID set ID of student
+     */
+    public void setID(String sID) {
         ID = sID;
     }
 
-    public int getGrade(){
+    /**
+     * get student's grade
+     *
+     * @return grade int
+     */
+    public int getGrade() {
         return grade;
     }
 
-    public void setGrade(int Grade){
+    /**
+     * @param Grade set grade of student
+     */
+    public void setGrade(int Grade) {
         grade = Grade;
     }
 
-    public void print(){
+    /**
+     * print all information of a student.
+     */
+    public void print() {
         System.out.println("Name: " + firstName + " " + lastName + "\n" + "Student ID: " + ID + "\n" + "Grade: " + grade + "\n\n");
     }
 }

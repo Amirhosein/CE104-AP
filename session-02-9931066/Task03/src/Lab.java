@@ -10,8 +10,9 @@ public class Lab {
 
     /**
      * initialize instance
+     *
      * @param cap int
-     * @param d String
+     * @param d   String
      */
     public Lab(int cap, String d) {
         capacity = cap;
@@ -21,6 +22,7 @@ public class Lab {
 
     /**
      * enroll new student to lab
+     *
      * @param std Student
      */
     public void enrollStudent(Student std) {
@@ -36,7 +38,7 @@ public class Lab {
      * Print all students and the lab average
      */
     public void print() {
-        for (Student student: students) {
+        for (Student student : students) {
             student.print();
         }
         System.out.println("Average: " + getAvg() + "\n");
@@ -44,6 +46,7 @@ public class Lab {
 
     /**
      * get all students
+     *
      * @return students Student[]
      */
     public Student[] getStudents() {
@@ -52,6 +55,7 @@ public class Lab {
 
     /**
      * set students list
+     *
      * @param students Student[]
      */
     public void setStudents(Student[] students) {
@@ -60,6 +64,7 @@ public class Lab {
 
     /**
      * get lab average
+     *
      * @return avg int
      */
     public int getAvg() {
@@ -79,6 +84,7 @@ public class Lab {
 
     /**
      * get lab day
+     *
      * @return day String
      */
     public String getDay() {
@@ -87,6 +93,7 @@ public class Lab {
 
     /**
      * set lab day
+     *
      * @param day String
      */
     public void setDay(String day) {
@@ -95,6 +102,7 @@ public class Lab {
 
     /**
      * get capacity
+     *
      * @return capacity int
      */
     public int getCapacity() {
@@ -103,6 +111,7 @@ public class Lab {
 
     /**
      * set lab capacity
+     *
      * @param capacity int
      */
     public void setCapacity(int capacity) {
