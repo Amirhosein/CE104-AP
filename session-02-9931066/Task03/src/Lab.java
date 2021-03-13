@@ -1,5 +1,7 @@
 /**
  * A class definition for lab
+ *
+ * @author Amirhossein
  */
 public class Lab {
     private Student[] students;
@@ -57,6 +59,7 @@ public class Lab {
      * set students list
      *
      * @param students Student[]
+     * @author Amirhossein
      */
     public void setStudents(Student[] students) {
         this.students = students;

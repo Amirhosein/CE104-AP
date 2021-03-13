@@ -1,5 +1,7 @@
 /**
  * A class definition for student
+ *
+ * @author Amirhossein
  */
 public class Student {
     private String firstName;

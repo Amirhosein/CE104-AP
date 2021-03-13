@@ -1,5 +1,7 @@
 /**
  * A class definition for lab
+ *
+ * @author Amirhossein
  */
 public class Lab {
     private Student[] students;

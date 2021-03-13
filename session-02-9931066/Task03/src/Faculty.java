@@ -1,5 +1,7 @@
 /**
  * A class definition for faculty
+ *
+ * @author Amirhossein
  */
 public class Faculty {
     private Lab[] labs;
