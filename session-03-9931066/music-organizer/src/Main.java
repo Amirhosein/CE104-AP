@@ -248,6 +248,9 @@ public class Main {
                     country.search(name);
                 }
             }
+            pop.listFile(0);
+
         }
+
     }
 }

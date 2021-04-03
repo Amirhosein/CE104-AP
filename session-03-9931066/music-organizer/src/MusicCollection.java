@@ -52,8 +52,7 @@ public class MusicCollection
     {
         if (validIndex(index)) {
             Track track = this.tracks.get(index);
-            System.out.println(track.filename);
-            System.out.print(track.singer);
+            System.out.print(track.filename+" - " + track.singer);
             System.out.println(" (" + track.releaseYear + ")");
         }
         else {
@@ -112,6 +111,10 @@ public class MusicCollection
         this.player.stop();
     }
 
+    /**
+     * adding track to favorite list.
+     * @param index The index of a type list to be added to fav list.
+     */
     public void addTrackToFavorite(int index) {
         index -= 1;
         if (validIndex(index)) {
@@ -135,6 +138,10 @@ public class MusicCollection
         }
     }
 
+    /**
+     * removing track to favorite list.
+     * @param index The index of a type list to be added to fav list.
+     */
     public void removeTrackFromFavorite(int index) {
         index -= 1;
         if (validIndex(index)) {
@@ -161,6 +168,9 @@ public class MusicCollection
         }
     }
 
+    /**
+     * Listing all fav tracks.
+     */
     public void allFavoriteTracks()
     {
         for (Track track : this.favoriteTracks) {
@@ -173,6 +183,10 @@ public class MusicCollection
         System.out.println("-------------");
     }
 
+    /**
+     * Searching by singer or filename in a type.
+     * @param query The "to be find" string.
+     */
     public void search(String query) {
         for (Track track : this.tracks) {
             if (track.filename.contains(query) || track.singer.contains(query)) {
