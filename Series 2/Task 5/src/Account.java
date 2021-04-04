@@ -39,14 +39,7 @@ public class Account {
     }
 
     public void printAccountData() {
-        System.out.println("-----------------");
-        System.out.println("UUID: " + serial);
-        System.out.println("First name: " + firstName);
-        System.out.println("Last name: " + lastName);
-        System.out.println("ID: " + id);
-        System.out.println("Type: " + type);
-        System.out.println("Balance: " + balance);
-        System.out.println("-----------------");
+        System.out.print(serial + ", " + id + ", " + firstName + ", " + lastName + ", " + type + "\n");
     }
 
     public long getBalance() {

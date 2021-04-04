@@ -6,12 +6,15 @@ public class BankingSystem {
     private ArrayList<Account> accounts = new ArrayList<>();
 
 
+    public BankingSystem() {
+    }
+
     public boolean register(User user) {
         Iterator<User> it = this.users.iterator();
 
         while (it.hasNext()) {
             User thisUser = it.next();
-            if (thisUser == user)
+            if (thisUser.getId().equals(user.getId()))
                 return false;
         }
 
@@ -23,16 +26,16 @@ public class BankingSystem {
         users.add(user);
     }
 
-    public boolean login(String id, String password) {
+    public User login(String id, String password) {
         Iterator<User> it = this.users.iterator();
 
         while (it.hasNext()) {
             User thisUser = it.next();
             if (thisUser.getId().equals(id) && thisUser.getPassword().equals(password)) {
-                return true;
+                return thisUser;
             }
         }
-        return false;
+        return null;
     }
 
     public boolean removeUser(User user) {

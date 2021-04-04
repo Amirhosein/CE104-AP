@@ -110,10 +110,12 @@ public class User {
 
     public void printAllAvailableAccounts() {
         Iterator<Account> it = this.accountList.iterator();
-
+        int index = 1;
         while (it.hasNext()) {
             Account thisAcc = it.next();
+            System.out.print("Account " + index + ": ");
             thisAcc.printAccountData();
+            index++;
         }
     }
 
