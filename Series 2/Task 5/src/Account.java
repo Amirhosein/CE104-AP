@@ -18,8 +18,12 @@ public class Account {
         this.balance = balance;
     }
 
-    public void updateBalance(int amount) {
+    public boolean updateBalance(int amount) {
+        if (balance + amount <= 0) {
+            return false;
+        }
         balance += amount;
+        return true;
     }
 
     public void addTransaction(Transaction transaction) {
@@ -43,5 +47,29 @@ public class Account {
         System.out.println("Type: " + type);
         System.out.println("Balance: " + balance);
         System.out.println("-----------------");
+    }
+
+    public long getBalance() {
+        return balance;
+    }
+
+    public UUID getSerial() {
+        return serial;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getType() {
+        return type;
     }
 }
