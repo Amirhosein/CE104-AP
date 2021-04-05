@@ -38,25 +38,26 @@ public class BankingSystem {
         return null;
     }
 
-    public boolean removeUser(User user) {
+    public void removeUser(User user) {
         Iterator<User> it = this.users.iterator();
 
         while (it.hasNext()) {
             User thisUser = it.next();
             if (thisUser == user) {
                 it.remove();
-                return true;
             }
         }
-        return false;
     }
 
     public void displayUsers() {
         Iterator<User> it = this.users.iterator();
+        int index = 1;
 
         while (it.hasNext()) {
             User thisUser = it.next();
+            System.out.print("User " + index + ":");
             thisUser.printUserData();
+            index++;
         }
     }
 
@@ -74,15 +75,48 @@ public class BankingSystem {
                 break;
             }
         }
+        Iterator<User> userIterator = this.users.iterator();
+
+        while (userIterator.hasNext()) {
+            User thisUser = userIterator.next();
+            if (thisUser.getId().equals(account.getId())) {
+                Iterator<Account> target = thisUser.getAccountList().iterator();
+                while (target.hasNext()) {
+                    Account thisAcc = target.next();
+                    if (thisAcc == account) {
+                        target.remove();
+                        break;
+                    }
+                }
+                break;
+            }
+        }
     }
 
     public void displayAccounts() {
         Iterator<Account> it = this.accounts.iterator();
+        int index = 1;
 
         while (it.hasNext()) {
             Account thisAcc = it.next();
+            System.out.print("Account " + index + ": ");
             thisAcc.printAccountData();
+            index++;
         }
+    }
+
+    public User findUser(String id) {
+        Iterator<User> it = this.users.iterator();
+
+        while (it.hasNext()) {
+            User thisUser = it.next();
+            if (id.equals(thisUser.getId())) {
+                return thisUser;
+            }
+        }
+
+        return null;
+
     }
 
     public Account findAccount(String serial) {
@@ -94,7 +128,6 @@ public class BankingSystem {
                 return thisAcc;
             }
         }
-
         return null;
     }
 

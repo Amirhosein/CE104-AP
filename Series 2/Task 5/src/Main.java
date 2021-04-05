@@ -3,7 +3,6 @@ import java.util.*;
 public class Main {
 
     public static void mainMenu() {
-        System.out.println("**NOTE: to go to previous Menu type \"back\" **\n");
         System.out.println("1.Sign up");
         System.out.println("2.Log in");
         System.out.println("3.System Admin");
@@ -11,14 +10,12 @@ public class Main {
     }
 
     public static void loginMenu() {
-        System.out.println("**NOTE: to go to previous Menu type \"back\" **\n");
         System.out.println("1.Existing accounts");
         System.out.println("2.Add new account");
         System.out.println("3.Log out");
     }
 
     public static void accountMenu() {
-        System.out.println("**NOTE: to go to previous Menu type \"back\" **\n");
         System.out.println("1.Withdrawal");
         System.out.println("2.Deposit");
         System.out.println("3.Transfer");
@@ -27,15 +24,16 @@ public class Main {
     }
 
     public static void systemAdminMenu() {
-        System.out.println("**NOTE: to go to previous Menu type \"back\" **\n");
         System.out.println("1.Display users");
         System.out.println("2.Display accounts");
         System.out.println("3.Remove user");
+        System.out.println("4.Remove account");
+        System.out.println("5.Logout");
     }
 
     public static void main(String[] args) {
         BankingSystem bankingSystem = new BankingSystem();
-        User sysadmin = new User("admin", "admin","sysadmin", "1234");
+        User sysadmin = new User("admin", "admin", "sysadmin", "1234");
 
         Scanner input = new Scanner(System.in);
         String inputString;
@@ -111,19 +109,18 @@ public class Main {
                                     input.nextLine();
                                     Account destAccount = bankingSystem.findAccount(inputString);
                                     if (destAccount == null) {
-                                        System.out.println("Destination account doesn’t exist or there is not enough money\n" +
+                                        System.out.println("Destination account doesn't exist or there is not enough money\n" +
                                                 "in your account.");
                                         continue;
                                     }
-                                    if(user.transfer(account, destAccount, intInput)){
+                                    if (user.transfer(account, destAccount, intInput)) {
                                         System.out.println("Completed.");
-                                    }
-                                    else
-                                        System.out.println("Destination account doesn’t exist or there is not enough money\n" +
+                                    } else
+                                        System.out.println("Destination account doesn't exist or there is not enough money\n" +
                                                 "in your account.");
-                                } else if (inputString.equals("4")){
+                                } else if (inputString.equals("4")) {
                                     System.out.println("Available balance: " + account.getBalance());
-                                } else if (inputString.equals("5")){
+                                } else if (inputString.equals("5")) {
                                     System.out.println("Logged out of account.");
                                     break;
                                 }
@@ -142,10 +139,55 @@ public class Main {
                         break;
                     }
                 }
-            } else if ("3".equals(inputString)){
+            } else if ("3".equals(inputString)) {
+                String user;
+                String pass;
 
-            }
-            else if ("4".equals(inputString)) {
+                System.out.print("User: ");
+                user = input.nextLine();
+                System.out.print("Password: ");
+                pass = input.nextLine();
+                if (user.equals(sysadmin.getId()) && pass.equals(sysadmin.getPassword())) {
+                    System.out.println("Logged in as sysadmin.");
+                } else {
+                    System.out.println("Username or password is incorrect.");
+                    continue;
+                }
+                while (true) {
+                    int intInput;
+                    systemAdminMenu();
+                    intInput = input.nextInt();
+                    if (intInput == 1) {
+                        bankingSystem.displayUsers();
+                    } else if (intInput == 2) {
+                        bankingSystem.displayAccounts();
+                    } else if (intInput == 3) {
+                        System.out.print("ID: ");
+                        input.nextLine();
+                        inputString = input.nextLine();
+                        User target = bankingSystem.findUser(inputString);
+                        if (target == null) {
+                            System.out.println("User doesn't exist.");
+                            continue;
+                        }
+                        bankingSystem.removeUser(target);
+                        System.out.println("User removed.");
+                    } else if (intInput == 4) {
+                        System.out.println("Serial: ");
+                        input.nextLine();
+                        inputString = input.nextLine();
+                        Account target = bankingSystem.findAccount(inputString);
+                        if (target == null) {
+                            System.out.println("Account doesn't exist.");
+                            continue;
+                        }
+                        bankingSystem.removeAccount(target);
+                        System.out.println("Account removed.");
+                    } else if (intInput == 5) {
+                        break;
+                    }
+                }
+            } else if ("4".equals(inputString)) {
                 break;
             }
         }

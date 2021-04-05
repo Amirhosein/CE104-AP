@@ -50,19 +50,6 @@ public class User {
     }
 
     public boolean transfer(Account srcAccount, Account destAccount, int amount) {
-        Iterator<Account> it = this.accountList.iterator();
-
-        while (it.hasNext()) {
-            Account thisAcc = it.next();
-            if (thisAcc == srcAccount) {
-                break;
-            }
-        }
-
-        // making sure that the account is existing.
-        if (!it.hasNext())
-            return false;
-
         Transaction transaction1 = new Transaction(amount);
         Transaction transaction2 = new Transaction(-1 * amount);
 
@@ -96,21 +83,18 @@ public class User {
     }
 
     public void printUserData() {
-        System.out.println("\n-----------------");
-        System.out.println("First name: " + this.firstName);
-        System.out.println("Last name: " + this.lastName);
-        System.out.println("ID: " + this.id);
+        System.out.println(this.firstName + ", " + this.lastName + ", " + this.id);
     }
 
-    public Account accIndex(int index){
+    public Account accIndex(int index) {
         Iterator<Account> it = this.accountList.iterator();
         index -= 1;
         int i;
         Account thisAcc = it.next();
-        for ( i = 0; i < index && it.hasNext(); i++)
+        for (i = 0; i < index && it.hasNext(); i++)
             thisAcc = it.next();
 
-        if (!it.hasNext() && i!= index)
+        if (!it.hasNext() && i != index)
             return null;
 
         return thisAcc;

@@ -23,7 +23,6 @@ public class Account {
             return false;
         }
         balance += amount;
-        System.out.println(balance);
         return true;
     }
 
@@ -40,15 +39,15 @@ public class Account {
     }
 
     public void printAccountData() {
-        System.out.print(serial + ", " + id + ", " + firstName + ", " + lastName + ", " + type + "\n");
+        System.out.print(serial + ", " + id + ", " + firstName + ", " + lastName + ", " + type + ", " + balance + "\n");
     }
 
     public long getBalance() {
         return balance;
     }
 
-    public UUID getSerial() {
-        return serial;
+    public String getSerial() {
+        return serial.toString();
     }
 
     public String getId() {
