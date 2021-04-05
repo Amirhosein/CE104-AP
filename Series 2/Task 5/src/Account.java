@@ -19,10 +19,11 @@ public class Account {
     }
 
     public boolean updateBalance(int amount) {
-        if (balance + amount <= 0) {
+        if (balance + amount < 0) {
             return false;
         }
         balance += amount;
+        System.out.println(balance);
         return true;
     }
 

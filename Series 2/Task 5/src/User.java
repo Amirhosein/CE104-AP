@@ -31,43 +31,16 @@ public class User {
         }
     }
 
-    public boolean deposit(Account account, int amount) {
-        Iterator<Account> it = this.accountList.iterator();
-
-        while (it.hasNext()) {
-            Account thisAcc = it.next();
-            if (thisAcc == account) {
-                break;
-            }
-        }
-
-        // making sure that the account is existing.
-        if (!it.hasNext())
-            return false;
-
+    public void deposit(Account account, int amount) {
         Transaction transaction = new Transaction(amount);
         account.addTransaction(transaction);
         account.updateBalance(amount);
-        return true;
     }
 
     public boolean withdrawal(Account account, int amount) {
-        Iterator<Account> it = this.accountList.iterator();
-
-        while (it.hasNext()) {
-            Account thisAcc = it.next();
-            if (thisAcc == account) {
-                break;
-            }
-        }
-
-        // making sure that the account is existing.
-        if (!it.hasNext())
-            return false;
-
         Transaction transaction = new Transaction(-1 * amount);
 
-        if (account.updateBalance(-1 * amount)) {
+        if (!account.updateBalance(-1 * amount)) {
             return false;
         }
 
@@ -108,15 +81,18 @@ public class User {
         System.out.println(account.getBalance());
     }
 
-    public void printAllAvailableAccounts() {
+    public boolean printAllAvailableAccounts() {
         Iterator<Account> it = this.accountList.iterator();
         int index = 1;
+        if (!it.hasNext())
+            return false;
         while (it.hasNext()) {
             Account thisAcc = it.next();
             System.out.print("Account " + index + ": ");
             thisAcc.printAccountData();
             index++;
         }
+        return true;
     }
 
     public void printUserData() {
@@ -124,6 +100,20 @@ public class User {
         System.out.println("First name: " + this.firstName);
         System.out.println("Last name: " + this.lastName);
         System.out.println("ID: " + this.id);
+    }
+
+    public Account accIndex(int index){
+        Iterator<Account> it = this.accountList.iterator();
+        index -= 1;
+        int i;
+        Account thisAcc = it.next();
+        for ( i = 0; i < index && it.hasNext(); i++)
+            thisAcc = it.next();
+
+        if (!it.hasNext() && i!= index)
+            return null;
+
+        return thisAcc;
     }
 
     public String getFirstName() {
