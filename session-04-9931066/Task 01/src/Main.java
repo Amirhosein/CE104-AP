@@ -3,7 +3,15 @@ import ir.huri.jcal.JalaliCalendar;
 import java.util.ArrayList;
 
 
+/**
+ * The type Main.
+ */
 public class Main {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         VotingSystem votingSystem = new VotingSystem();
         ArrayList<String> choices = new ArrayList<>();
@@ -24,5 +32,10 @@ public class Main {
         votingSystem.getResult(0);
         System.out.println("\n/////////////////////////////");
         votingSystem.vote(1, person, choices);
+        System.out.println("\n/////////////////////////////");
+        votingSystem.vote(1, person);
+        votingSystem.getResult(1);
+        System.out.println("\n/////////////////////////////");
+        votingSystem.vote(0,person);
     }
 }

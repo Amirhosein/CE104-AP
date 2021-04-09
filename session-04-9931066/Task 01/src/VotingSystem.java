@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * The type Voting system.
@@ -69,6 +70,24 @@ public class VotingSystem {
             return;
         }
         voting.vote(person, choices);
+    }
+
+    /**
+     * Vote.
+     *
+     * @param index  the index
+     * @param person the person
+     */
+    public void vote(int index, Person person ) {
+        Random r = new Random();
+        Voting voting = votingList.get(index);
+        if (voting.getType() == 1) {
+            System.out.println("Random vote is just for \"Single Choose\" votings.");
+            return;
+        }
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add(voting.getPolls().get(r.nextInt(voting.getPolls().size())));
+        voting.vote(person, strings);
     }
 
     /**
