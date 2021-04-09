@@ -76,7 +76,12 @@ public class Voting {
      * Print votes.
      */
     public void printVotes(){
-        System.out.println(polls);
+        for (String poll : polls.keySet()){
+            System.out.println(poll + "| Count: " + polls.get(poll).size() + " | List:");
+            for (Vote vote : polls.get(poll))
+                System.out.println(vote.getPerson() + " | " + vote.getDate());
+
+        }
     }
 
     /**
@@ -86,19 +91,13 @@ public class Voting {
      */
     public ArrayList<String> getPolls() {
         ArrayList<String> allPolls = new ArrayList<>();
-        for ( String key : polls.keySet()){
+        for (String key : polls.keySet()) {
             allPolls.add(key);
         }
         return allPolls;
     }
 
-    /**
-     * Print result.
-     */
-    public void printResult(){
-        for ( String key: polls.keySet()){
-            System.out.println(key);
-            System.out.println(polls.get(key).size());
-        }
+    public int getType() {
+        return type;
     }
 }

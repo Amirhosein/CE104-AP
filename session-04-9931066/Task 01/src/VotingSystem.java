@@ -31,7 +31,12 @@ public class VotingSystem {
      * Gets voting list.
      */
     public void getVotingList() {
-        System.out.println(votingList);
+        int index = 0;
+        for (Voting voting : votingList){
+            System.out.print(index + ".");
+            System.out.println(voting.getQuestion());
+            index++;
+        }
     }
 
     /**
@@ -46,6 +51,7 @@ public class VotingSystem {
         int inc = 1;
         for (String poll : polls) {
             System.out.println(inc + "." + poll);
+            inc++;
         }
     }
 
@@ -58,6 +64,10 @@ public class VotingSystem {
      */
     public void vote(int index, Person person, ArrayList<String> choices) {
         Voting voting = votingList.get(index);
+        if (voting.getType() == 0 && choices.size() > 1){
+            System.out.println("You must only choose one poll.");
+            return;
+        }
         voting.vote(person, choices);
     }
 
