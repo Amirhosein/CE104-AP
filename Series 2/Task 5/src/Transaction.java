@@ -12,5 +12,4 @@ public final class Transaction {
         System.out.println("Amount = " + amount + " //// Date: " + date.toString());
     }
 
-
 }
