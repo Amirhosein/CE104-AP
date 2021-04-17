@@ -1,7 +1,15 @@
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * The type Main.
+ */
 public class Main {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Product product = new Product("2020-3-15", "2021-3-15", "Carrot", "Vegetables", 5, 20);
@@ -31,13 +39,25 @@ public class Main {
             if (string.contains("add")) {
                 String[] choose = string.split("add ");
                 int a = Integer.parseInt(choose[1]);
-                basket.addProduct(inventory.getProduct(a));
-                inventory.updateNumber(inventory.getProduct(a), -1);
+                if (inventory.updateNumber(inventory.getProduct(a), -1)) {
+                    basket.addProduct(inventory.getProduct(a));
+                }
             } else if (string.contains("cart")) {
                 System.out.println(basket.toString());
-            }
-            else if (string.contains("products")){
+            } else if (string.contains("products")) {
                 System.out.println(inventory.toString());
+            } else if (string.contains("remove")) {
+                String[] choose = string.split("remove ");
+                int a = Integer.parseInt(choose[1]) - 1;
+                if (inventory.contain(basket.getProduct(a))) {
+                    inventory.updateNumber(basket.getProduct(a), 1);
+                } else {
+                    inventory.addProduct(basket.getProduct(a), 1);
+                }
+                basket.removeProduct(a);
+            } else if (string.contains("checkout")) {
+                System.out.println("It was a pleasure doing business with you.");
+                break;
             }
         }
     }

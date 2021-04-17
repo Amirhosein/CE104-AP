@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * The type Product.
+ */
 public class Product {
     private Date manufacture = new Date();
     private Date expiration = new Date();
@@ -11,8 +14,21 @@ public class Product {
     private String category;
     private float weight;
     private float price;
+    /**
+     * The Format.
+     */
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
+    /**
+     * Instantiates a new Product.
+     *
+     * @param manufacture the manufacture
+     * @param expiration  the expiration
+     * @param name        the name
+     * @param category    the category
+     * @param weight      the weight
+     * @param price       the price
+     */
     public Product(String manufacture, String expiration, String name, String category, float weight, float price) {
         try {
             this.manufacture = format.parse(manufacture);
@@ -32,6 +48,11 @@ public class Product {
         this.price = price;
     }
 
+    /**
+     * Gets price.
+     *
+     * @return the price
+     */
     public float getPrice() {
         return price;
     }
