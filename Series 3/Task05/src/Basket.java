@@ -46,7 +46,7 @@ public class Basket {
         while (it.hasNext()) {
             Product thisProduct = it.next();
             result = result.concat(index + "){\n");
-            result = result.concat(thisProduct.toString() + "\n}");
+            result = result.concat(thisProduct.toString() + "\n}\n");
             index++;
 
         }

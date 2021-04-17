@@ -1,7 +1,6 @@
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -18,6 +17,7 @@ public class Product {
      * The Format.
      */
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    DateFormat format2 = new SimpleDateFormat("dd-MM-yyyy");
 
     /**
      * Instantiates a new Product.
@@ -31,13 +31,13 @@ public class Product {
      */
     public Product(String manufacture, String expiration, String name, String category, float weight, float price) {
         try {
-            this.manufacture = format.parse(manufacture);
+            this.manufacture = format2.parse(manufacture);
 
         } catch (ParseException e) {
             e.printStackTrace();
         }
         try {
-            this.expiration = format.parse(expiration);
+            this.expiration = format2.parse(expiration);
 
         } catch (ParseException e) {
             e.printStackTrace();
