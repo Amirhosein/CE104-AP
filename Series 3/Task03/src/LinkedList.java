@@ -43,6 +43,11 @@ public class LinkedList {
         return head;
     }
 
+    /**
+     * Size int.
+     *
+     * @return the int
+     */
     public int size() {
         int count = 0;
         Node last = head;
