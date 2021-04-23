@@ -1,8 +1,21 @@
+/**
+ * The type Triangle.
+ */
 public class Triangle extends Polygon {
-    public Triangle(Double... sides) {
+    /**
+     * Instantiates a new Triangle.
+     *
+     * @param sides the sides
+     */
+    public Triangle(double... sides) {
         super(sides);
     }
 
+    /**
+     * Is equilateral boolean.
+     *
+     * @return the boolean
+     */
     public boolean isEquilateral() {
         Double temp = getSides().get(0);
 

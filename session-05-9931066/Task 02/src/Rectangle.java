@@ -1,9 +1,17 @@
 import java.util.ArrayList;
 
+/**
+ * The type Rectangle.
+ */
 public class Rectangle extends Polygon {
 
 
-    public Rectangle(Double... sides) {
+    /**
+     * Instantiates a new Rectangle.
+     *
+     * @param sides the sides
+     */
+    public Rectangle(double... sides) {
         super(sides);
     }
 
@@ -43,6 +51,11 @@ public class Rectangle extends Polygon {
         return getSides().equals(rectangle.getSides());
     }
 
+    /**
+     * Is square boolean.
+     *
+     * @return the boolean
+     */
     public boolean isSquare() {
         Double temp = getSides().get(0);
 

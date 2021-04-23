@@ -1,10 +1,23 @@
+/**
+ * The type Circle.
+ */
 public class Circle extends Shape {
     private double radius;
 
+    /**
+     * Instantiates a new Circle.
+     *
+     * @param radius the radius
+     */
     public Circle(double radius) {
         this.radius = radius;
     }
 
+    /**
+     * Gets radius.
+     *
+     * @return the radius
+     */
     public double getRadius() {
         return radius;
     }
