@@ -7,6 +7,12 @@ public abstract class Polygon extends Shape {
         return sides;
     }
 
+    public Polygon(Double... sides) {
+        for (Double side : sides){
+            this.sides.add(side);
+        }
+    }
+
     public abstract double calculatePerimeter();
 
     public abstract double calculateArea();

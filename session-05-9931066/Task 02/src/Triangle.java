@@ -1,8 +1,6 @@
 public class Triangle extends Polygon {
-    public Triangle(double a, double b, double c) {
-        getSides().add(a);
-        getSides().add(b);
-        getSides().add(c);
+    public Triangle(Double... sides) {
+        super(sides);
     }
 
     public boolean isEquilateral() {
@@ -47,7 +45,7 @@ public class Triangle extends Polygon {
     @Override
     public String toString() {
         return "Triangle{" +
-                "sides=" + getSides() +
+                "sides: side1: " + getSides().get(0) + " side2: " + getSides().get(1) + " side3: " + getSides().get(2) +
                 ", Equilateral=" + isEquilateral() +
                 '}';
     }

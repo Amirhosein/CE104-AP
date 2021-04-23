@@ -3,11 +3,8 @@ import java.util.ArrayList;
 public class Rectangle extends Polygon {
 
 
-    public Rectangle(double a, double b, double c, double d) {
-        getSides().add(a);
-        getSides().add(b);
-        getSides().add(c);
-        getSides().add(d);
+    public Rectangle(Double... sides) {
+        super(sides);
     }
 
     @Override
