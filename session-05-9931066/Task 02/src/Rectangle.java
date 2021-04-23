@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Rectangle extends Polygon{
+public class Rectangle extends Polygon {
 
 
     public Rectangle(double a, double b, double c, double d) {
