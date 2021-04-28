@@ -8,6 +8,8 @@ public class Game {
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Card> Storage = new ArrayList<>();
     private int turn;
+    private int direction;
+    private Card lastCard;
 
     private int choose;
 
@@ -124,12 +126,14 @@ public class Game {
 
         for(Player player : players){
             for (int i = 0; i < 7; i++) {
-                player.addCard(Storage.get(random.nextInt(52)));
+                int temp = random.nextInt(Storage.size());
+                player.addCard(Storage.get(temp));
+                Storage.remove(temp);
             }
         }
 
         turn = random.nextInt(players.size());
-
+        lastCard = Storage.get(random.nextInt(Storage.size()));
     }
 
 
@@ -151,5 +155,66 @@ public class Game {
 
     }
 
+    public Card getLastCard() {
+        return lastCard;
+    }
+
+    public void printCard(Card card){
+
+        if (card.getColor() == 1){
+            System.out.print(ConsoleColors.RED_BOLD);
+            System.out.println("                          -------------------                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |   " + card.getValue() + "             |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          -------------------                          ");
+            System.out.print(ConsoleColors.RESET);
+        } else if (card.getColor() == 2){
+            System.out.print(ConsoleColors.BLUE_BOLD);
+            System.out.println("                          -------------------                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |   " + card.getValue() + "             |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          -------------------                          ");
+            System.out.print(ConsoleColors.RESET);
+        } else if (card.getColor() == 3){
+            System.out.print(ConsoleColors.WHITE_BOLD);
+            System.out.println("                          -------------------                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |   " + card.getValue() + "             |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          -------------------                          ");
+            System.out.print(ConsoleColors.RESET);
+        } else if (card.getColor() == 4){
+            System.out.print(ConsoleColors.GREEN_BOLD);
+            System.out.println("                          -------------------                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |   " + card.getValue() + "             |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          |                 |                          ");
+            System.out.println("                          -------------------                          ");
+            System.out.print(ConsoleColors.RESET);
+        }
+
+    }
 
 }

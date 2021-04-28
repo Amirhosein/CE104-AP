@@ -40,5 +40,6 @@ public class Main {
         }
 
         Game game = new Game(players);
+        game.printCard(game.getLastCard());
     }
 }
