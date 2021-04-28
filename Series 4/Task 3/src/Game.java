@@ -7,6 +7,7 @@ public class Game {
     private Scanner input = new Scanner(System.in);
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Card> Storage = new ArrayList<>();
+    private int turn;
 
     private int choose;
 
@@ -121,10 +122,17 @@ public class Game {
         Storage.add(card13B);
         Storage.add(card14B);
 
+        for(Player player : players){
+            for (int i = 0; i < 7; i++) {
+                player.addCard(Storage.get(random.nextInt(52)));
+            }
+        }
+
+        turn = random.nextInt(players.size());
 
     }
 
-    private int turn = random.nextInt(players.size());
+
 
     public void number2() {
         Card card = players.get(turn).getCards().get(random.nextInt(players.get(turn).getCards().size()));
@@ -143,6 +151,5 @@ public class Game {
 
     }
 
-    public void
 
 }
