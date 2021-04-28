@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -160,13 +161,21 @@ public class Game {
     }
 
     public void printCard(Card card){
-
+        String string;
+        if (card.getValue() == 11){
+            string = "A";
+        } else if (card.getValue() == 12)
+            string = "B";
+        else if (card.getValue() == 13)
+            string = "C";
+        else if (card.getValue() == 14)
+            string = "D";
+        else string = Integer.toString(card.getValue());
         if (card.getColor() == 1){
             System.out.print(ConsoleColors.RED_BOLD);
             System.out.println("                          -------------------                          ");
             System.out.println("                          |                 |                          ");
-            System.out.println("                          |   " + card.getValue() + "             |                          ");
-            System.out.println("                          |                 |                          ");
+            System.out.println("                          |   " + string + "             |                          ");
             System.out.println("                          |                 |                          ");
             System.out.println("                          |                 |                          ");
             System.out.println("                          |                 |                          ");
@@ -178,8 +187,7 @@ public class Game {
             System.out.print(ConsoleColors.BLUE_BOLD);
             System.out.println("                          -------------------                          ");
             System.out.println("                          |                 |                          ");
-            System.out.println("                          |   " + card.getValue() + "             |                          ");
-            System.out.println("                          |                 |                          ");
+            System.out.println("                          |   " + string + "             |                          ");
             System.out.println("                          |                 |                          ");
             System.out.println("                          |                 |                          ");
             System.out.println("                          |                 |                          ");
@@ -191,8 +199,7 @@ public class Game {
             System.out.print(ConsoleColors.WHITE_BOLD);
             System.out.println("                          -------------------                          ");
             System.out.println("                          |                 |                          ");
-            System.out.println("                          |   " + card.getValue() + "             |                          ");
-            System.out.println("                          |                 |                          ");
+            System.out.println("                          |   " + string + "             |                          ");
             System.out.println("                          |                 |                          ");
             System.out.println("                          |                 |                          ");
             System.out.println("                          |                 |                          ");
@@ -204,8 +211,7 @@ public class Game {
             System.out.print(ConsoleColors.GREEN_BOLD);
             System.out.println("                          -------------------                          ");
             System.out.println("                          |                 |                          ");
-            System.out.println("                          |   " + card.getValue() + "             |                          ");
-            System.out.println("                          |                 |                          ");
+            System.out.println("                          |   " + string + "             |                          ");
             System.out.println("                          |                 |                          ");
             System.out.println("                          |                 |                          ");
             System.out.println("                          |                 |                          ");
@@ -217,4 +223,64 @@ public class Game {
 
     }
 
+    public void printHand(){
+        Iterator<Card> iterator = players.get(0).getCards().iterator();
+        while (iterator.hasNext()){
+            Card card = iterator.next();
+            if (!iterator.hasNext()){
+                printCard(card);
+                break;
+            }
+            String string;
+            if (card.getValue() == 11){
+                string = "A";
+            } else if (card.getValue() == 12)
+                string = "B";
+            else if (card.getValue() == 13)
+                string = "C";
+            else if (card.getValue() == 14)
+                string = "D";
+            else string = Integer.toString(card.getValue());
+            if (card.getColor() == 1){
+                System.out.print(ConsoleColors.RED_BOLD);
+                System.out.println("                          -------------------                          ");
+                System.out.println("                          |                 |                          ");
+                System.out.println("                          |   " + string + "             |                          ");
+
+                System.out.print(ConsoleColors.RESET);
+            } else if (card.getColor() == 2){
+                System.out.print(ConsoleColors.BLUE_BOLD);
+                System.out.println("                          -------------------                          ");
+                System.out.println("                          |                 |                          ");
+                System.out.println("                          |   " + string + "             |                          ");
+
+                System.out.print(ConsoleColors.RESET);
+            } else if (card.getColor() == 3){
+                System.out.print(ConsoleColors.WHITE_BOLD);
+                System.out.println("                          -------------------                          ");
+                System.out.println("                          |                 |                          ");
+                System.out.println("                          |   " + string + "             |                          ");
+
+                System.out.print(ConsoleColors.RESET);
+            } else if (card.getColor() == 4){
+                System.out.print(ConsoleColors.GREEN_BOLD);
+                System.out.println("                          -------------------                          ");
+                System.out.println("                          |                 |                          ");
+                System.out.println("                          |   " + string + "             |                          ");
+
+                System.out.print(ConsoleColors.RESET);
+            }
+        }
+    }
+
+    public void printGame(){
+        printHand();
+        System.out.println("                     =============================\n" +
+                           "                                Last Card:          \n");
+        printCard(lastCard);
+        for (Player player : players){
+            System.out.print(player.getName() + ": "+ player.getCards().size() + "                   ");
+        }
+
+    }
 }
