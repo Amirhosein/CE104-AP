@@ -40,6 +40,6 @@ public class Main {
         }
 
         Game game = new Game(players);
-        game.printGame();
+        while (game.nextTurn());
     }
 }

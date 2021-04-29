@@ -9,7 +9,7 @@ public class Game {
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Card> Storage = new ArrayList<>();
     private int turn;
-    private int direction;
+    private int direction = 1;
     private Card lastCard;
 
     private int choose;
@@ -282,5 +282,29 @@ public class Game {
             System.out.print(player.getName() + ": "+ player.getCards().size() + "                   ");
         }
 
+    }
+
+    public boolean nextTurn(){
+        if (turn == players.size() + 1)
+            turn = 0;
+        else if (turn == -1)
+            turn = players.size();
+        else if (turn == 0) {
+            printGame();
+            System.out.println("\nPlease choose a card (type index of card from top (0) to down): ");
+            choose = input.nextInt();
+            lastCard = players.get(0).getCards().get(choose);
+            players.get(0).getCards().remove(choose);
+            turn += direction;
+        }
+        else {
+            turn += direction;
+        }
+
+        for (Player player : players)
+            if (player.getCards().size() == 0)
+                return false;
+
+        return true;
     }
 }
