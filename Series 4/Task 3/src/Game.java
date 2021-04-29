@@ -14,10 +14,6 @@ public class Game {
 
     private int choose;
 
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
-
     public Game(ArrayList<Player> players) {
         this.players = players;
         Card card2r = new Number2(2, 1);
@@ -25,12 +21,12 @@ public class Game {
         Card card4r = new Card(4, 1);
         Card card5r = new Card(5, 1);
         Card card6r = new Card(6, 1);
-        Card card7r = new Card(7, 1);
-        Card card8r = new Card(8, 1);
+        Card card7r = new Number7(7, 1);
+        Card card8r = new Number8(8, 1);
         Card card9r = new Card(9, 1);
-        Card card10r = new Card(10, 1);
-        Card card11r = new Card(11, 1);
-        Card card12r = new Card(12, 1);
+        Card card10r = new Number10(10, 1);
+        Card card11r = new Number11(11, 1);
+        Card card12r = new Number12(12, 1);
         Card card13r = new Card(13, 1);
         Card card14r = new Card(14, 1);
         Card card2b = new Number2(2, 2);
@@ -38,38 +34,38 @@ public class Game {
         Card card4b = new Card(4, 2);
         Card card5b = new Card(5, 2);
         Card card6b = new Card(6, 2);
-        Card card7b = new Card(7, 2);
-        Card card8b = new Card(8, 2);
+        Card card7b = new Number7(7, 2);
+        Card card8b = new Number8(8, 2);
         Card card9b = new Card(9, 2);
-        Card card10b = new Card(10, 2);
-        Card card11b = new Card(11, 2);
-        Card card12b = new Card(12, 2);
+        Card card10b = new Number10(10, 2);
+        Card card11b = new Number11(11, 2);
+        Card card12b = new Number12(12, 2);
         Card card13b = new Card(13, 2);
         Card card14b = new Card(14, 2);
-        Card card2B = new Card(2, 3);
+        Card card2B = new Number2(2, 3);
         Card card3B = new Card(3, 3);
         Card card4B = new Card(4, 3);
         Card card5B = new Card(5, 3);
         Card card6B = new Card(6, 3);
-        Card card7B = new Card(7, 3);
-        Card card8B = new Card(8, 3);
+        Card card7B = new Number7(7, 3);
+        Card card8B = new Number8(8, 3);
         Card card9B = new Card(9, 3);
-        Card card10B = new Card(10, 3);
-        Card card11B = new Card(11, 3);
-        Card card12B = new Card(12, 3);
+        Card card10B = new Number10(10, 3);
+        Card card11B = new Number11(11, 3);
+        Card card12B = new Number12(12, 3);
         Card card13B = new Card(13, 3);
         Card card14B = new Card(14, 3);
-        Card card2g = new Card(2, 4);
+        Card card2g = new Number2(2, 4);
         Card card3g = new Card(3, 4);
         Card card4g = new Card(4, 4);
         Card card5g = new Card(5, 4);
         Card card6g = new Card(6, 4);
-        Card card7g = new Card(7, 4);
-        Card card8g = new Card(8, 4);
+        Card card7g = new Number7(7, 4);
+        Card card8g = new Number8(8, 4);
         Card card9g = new Card(9, 4);
-        Card card10g = new Card(10, 4);
-        Card card11g = new Card(11, 4);
-        Card card12g = new Card(12, 4);
+        Card card10g = new Number10(10, 4);
+        Card card11g = new Number11(11, 4);
+        Card card12g = new Number12(12, 4);
         Card card13g = new Card(13, 4);
         Card card14g = new Card(14, 4);
         storage.add(card2g);
@@ -158,10 +154,6 @@ public class Game {
     public void number2b() {
         Card card = players.get(turn).getCards().get(random.nextInt(players.get(turn).getCards().size()));
         players.get(random.nextInt(players.size())).addCard(card);
-    }
-
-    public Card getLastCard() {
-        return lastCard;
     }
 
     public void printCard(Card card) {
@@ -356,13 +348,32 @@ public class Game {
     }
 
     public void detectAction(String string, int mode) {
-        if (mode == 1) {
-            if (string.equals("num2"))
-                number2();
-        } else {
-            if (string.equals("num2"))
-                number2b();
+        switch (string) {
+            case "num2":
+                if (mode == 0)
+                    number2();
+                else number2b();
+                break;
+            case "num7":
+                number7();
+                break;
+            case "num7b":
+                number7b();
+                break;
+            case "num8":
+                number8();
+                break;
+            case "number10":
+                number10();
+                break;
+            case "number11":
+                number11();
+                break;
+            case "number12":
+                number12();
+                break;
         }
+
     }
 
     public void number7() {
@@ -381,8 +392,7 @@ public class Game {
                     lastCard = card;
                     defaultno += 2;
                     break;
-                }
-                else {
+                } else {
                     turn += direction;
                     if (turn == players.size())
                         turn = 0;
@@ -418,8 +428,7 @@ public class Game {
                     lastCard = card;
                     defaultno += 2;
                     break;
-                }
-                else {
+                } else {
                     turn += direction;
                     if (turn == players.size())
                         turn = 0;
@@ -439,25 +448,25 @@ public class Game {
 
     }
 
-    public void number8(){
+    public void number8() {
         turn -= direction;
     }
 
-    public void number10(){
+    public void number10() {
         direction *= -1;
     }
 
-    public void number11(){
+    public void number11() {
         turn += direction;
     }
 
-    public void number12(){
+    public void number12() {
         System.out.print("Please enter the color: ");
         String string;
         string = input.nextLine();
-        if (string.equalsIgnoreCase("red")){
+        if (string.equalsIgnoreCase("red")) {
             lastCard.setColor(1);
-        } else if (string.equalsIgnoreCase("blue")){
+        } else if (string.equalsIgnoreCase("blue")) {
             lastCard.setColor(2);
         } else if (string.equalsIgnoreCase("black"))
             lastCard.setColor(3);

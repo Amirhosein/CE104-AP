@@ -1,4 +1,4 @@
-public class Number10 extends Card implements Action{
+public class Number10 extends Card implements Action {
     public Number10(int number, int color) {
         super(number, color);
     }
