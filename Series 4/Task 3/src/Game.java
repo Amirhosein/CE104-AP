@@ -7,7 +7,7 @@ public class Game {
     private Random random = new Random();
     private Scanner input = new Scanner(System.in);
     private ArrayList<Player> players = new ArrayList<>();
-    private ArrayList<Card> Storage = new ArrayList<>();
+    private ArrayList<Card> storage = new ArrayList<>();
     private int turn;
     private int direction = 1;
     private Card lastCard;
@@ -72,69 +72,69 @@ public class Game {
         Card card12g = new Card(12, 4);
         Card card13g = new Card(13, 4);
         Card card14g = new Card(14, 4);
-        Storage.add(card2g);
-        Storage.add(card3g);
-        Storage.add(card4g);
-        Storage.add(card5g);
-        Storage.add(card6g);
-        Storage.add(card7g);
-        Storage.add(card8g);
-        Storage.add(card9g);
-        Storage.add(card10g);
-        Storage.add(card11g);
-        Storage.add(card12g);
-        Storage.add(card13g);
-        Storage.add(card14g);
-        Storage.add(card2r);
-        Storage.add(card3r);
-        Storage.add(card4r);
-        Storage.add(card5r);
-        Storage.add(card6r);
-        Storage.add(card7r);
-        Storage.add(card8r);
-        Storage.add(card9r);
-        Storage.add(card10r);
-        Storage.add(card11r);
-        Storage.add(card12r);
-        Storage.add(card13r);
-        Storage.add(card14r);
-        Storage.add(card2b);
-        Storage.add(card3b);
-        Storage.add(card4b);
-        Storage.add(card5b);
-        Storage.add(card6b);
-        Storage.add(card7b);
-        Storage.add(card8b);
-        Storage.add(card9b);
-        Storage.add(card10b);
-        Storage.add(card11b);
-        Storage.add(card12b);
-        Storage.add(card13b);
-        Storage.add(card14b);
-        Storage.add(card2B);
-        Storage.add(card3B);
-        Storage.add(card4B);
-        Storage.add(card5B);
-        Storage.add(card6B);
-        Storage.add(card7B);
-        Storage.add(card8B);
-        Storage.add(card9B);
-        Storage.add(card10B);
-        Storage.add(card11B);
-        Storage.add(card12B);
-        Storage.add(card13B);
-        Storage.add(card14B);
+        storage.add(card2g);
+        storage.add(card3g);
+        storage.add(card4g);
+        storage.add(card5g);
+        storage.add(card6g);
+        storage.add(card7g);
+        storage.add(card8g);
+        storage.add(card9g);
+        storage.add(card10g);
+        storage.add(card11g);
+        storage.add(card12g);
+        storage.add(card13g);
+        storage.add(card14g);
+        storage.add(card2r);
+        storage.add(card3r);
+        storage.add(card4r);
+        storage.add(card5r);
+        storage.add(card6r);
+        storage.add(card7r);
+        storage.add(card8r);
+        storage.add(card9r);
+        storage.add(card10r);
+        storage.add(card11r);
+        storage.add(card12r);
+        storage.add(card13r);
+        storage.add(card14r);
+        storage.add(card2b);
+        storage.add(card3b);
+        storage.add(card4b);
+        storage.add(card5b);
+        storage.add(card6b);
+        storage.add(card7b);
+        storage.add(card8b);
+        storage.add(card9b);
+        storage.add(card10b);
+        storage.add(card11b);
+        storage.add(card12b);
+        storage.add(card13b);
+        storage.add(card14b);
+        storage.add(card2B);
+        storage.add(card3B);
+        storage.add(card4B);
+        storage.add(card5B);
+        storage.add(card6B);
+        storage.add(card7B);
+        storage.add(card8B);
+        storage.add(card9B);
+        storage.add(card10B);
+        storage.add(card11B);
+        storage.add(card12B);
+        storage.add(card13B);
+        storage.add(card14B);
 
         for (Player player : players) {
             for (int i = 0; i < 7; i++) {
-                int temp = random.nextInt(Storage.size());
-                player.addCard(Storage.get(temp));
-                Storage.remove(temp);
+                int temp = random.nextInt(storage.size());
+                player.addCard(storage.get(temp));
+                storage.remove(temp);
             }
         }
 
         turn = random.nextInt(players.size());
-        lastCard = Storage.get(random.nextInt(Storage.size()));
+        lastCard = storage.get(random.nextInt(storage.size()));
     }
 
 
@@ -284,7 +284,8 @@ public class Game {
     }
 
     public boolean nextTurn() {
-        if (turn == players.size() + 1)
+        System.out.println(turn);
+        if (turn == players.size())
             turn = 0;
         else if (turn == -1)
             turn = players.size();
@@ -292,18 +293,40 @@ public class Game {
             printGame();
             System.out.println("\nPlease choose a card (type index of card from top (0) to down): ");
             choose = input.nextInt();
-            if (players.get(0).getCards().get(choose).getValue() != lastCard.getValue() && players.get(0).getCards().get(choose).getColor() != lastCard.getColor())
+            if (choose == -1) {
+                players.get(0).getCards().add(storage.get(random.nextInt(storage.size())));
+                if (players.get(0).getCards().get(players.get(0).getCards().size() - 1).getValue() == lastCard.getValue() || players.get(0).getCards().get(players.get(0).getCards().size() - 1).getColor() == lastCard.getColor()) {
+                    lastCard = players.get(0).getCards().get(players.get(0).getCards().size() - 1);
+                    players.get(0).getCards().remove(players.get(0).getCards().size() - 1);
+                }
+                turn += direction;
                 return true;
+            }
+            if (players.get(0).getCards().get(choose).getValue() != lastCard.getValue() && players.get(0).getCards().get(choose).getColor() != lastCard.getColor()) {
+                return true;
+            }
+
             lastCard = players.get(0).getCards().get(choose);
             players.get(0).getCards().remove(choose);
             turn += direction;
         } else {
-            for (Card card : players.get(turn).getCards()){
-                if (card.getColor() == lastCard.getColor() || card.getValue() == lastCard.getValue()){
-                    lastCard = players.get(0).getCards().get(choose);
-                    players.get(0).getCards().remove(choose);
+            boolean state = false;
+            for (Card card : players.get(turn).getCards()) {
+                if (card.getColor() == lastCard.getColor() || card.getValue() == lastCard.getValue()) {
+                    lastCard = card;
+                    players.get(turn).getCards().remove(card);
+                    state = true;
                     break;
                 }
+            }
+            if (!state) {
+                players.get(turn).getCards().add(storage.get(random.nextInt(storage.size())));
+                if (players.get(turn).getCards().get(players.get(turn).getCards().size() -1).getValue() == lastCard.getValue() || players.get(turn).getCards().get(players.get(turn).getCards().size() - 1).getColor() == lastCard.getColor()) {
+                    lastCard = players.get(turn).getCards().get(players.get(turn).getCards().size() - 1);
+                    players.get(turn).getCards().remove(players.get(turn).getCards().size() - 1);
+                }
+                turn += direction;
+                return true;
             }
 
             turn += direction;
