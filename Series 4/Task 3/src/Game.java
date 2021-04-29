@@ -359,10 +359,45 @@ public class Game {
         if (mode == 1) {
             if (string.equals("num2"))
                 number2();
-        }
-        else {
+        } else {
             if (string.equals("num2"))
                 number2b();
         }
+    }
+
+    public void number7() {
+        int defaultno = 2;
+        boolean stat = true;
+        while (stat) {
+            turn += direction;
+            if (turn == players.size())
+                turn = 0;
+            else if (turn == -1)
+                turn = players.size();
+            for (Card card : players.get(turn).getCards()) {
+                if (card.getValue() == 7) {
+                    storage.add(card);
+                    players.get(turn).getCards().remove(card);
+                    lastCard = card;
+                    defaultno += 2;
+                    break;
+                }
+                else {
+                    turn += direction;
+                    if (turn == players.size())
+                        turn = 0;
+                    else if (turn == -1)
+                        turn = players.size();
+                    for (int i = 0; i < defaultno; i++) {
+                        Card temp = storage.get(random.nextInt(storage.size()));
+                        players.get(turn).addCard(temp);
+                        storage.remove(temp);
+                    }
+                }
+
+            }
+
+        }
+
     }
 }
