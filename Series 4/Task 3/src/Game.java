@@ -20,7 +20,7 @@ public class Game {
 
     public Game(ArrayList<Player> players) {
         this.players = players;
-        Card card2r = new Card(2, 1);
+        Card card2r = new Number2(2, 1);
         Card card3r = new Card(3, 1);
         Card card4r = new Card(4, 1);
         Card card5r = new Card(5, 1);
@@ -33,7 +33,7 @@ public class Game {
         Card card12r = new Card(12, 1);
         Card card13r = new Card(13, 1);
         Card card14r = new Card(14, 1);
-        Card card2b = new Card(2, 2);
+        Card card2b = new Number2(2, 2);
         Card card3b = new Card(3, 2);
         Card card4b = new Card(4, 2);
         Card card5b = new Card(5, 2);
@@ -155,6 +155,11 @@ public class Game {
 
     }
 
+    public void number2b() {
+        Card card = players.get(turn).getCards().get(random.nextInt(players.get(turn).getCards().size()));
+        players.get(random.nextInt(players.size())).addCard(card);
+    }
+
     public Card getLastCard() {
         return lastCard;
     }
@@ -274,8 +279,10 @@ public class Game {
 
     public void printGame() {
         printHand();
-        System.out.println("                     =============================\n" +
-                "                                Last Card:          \n");
+        System.out.println("""
+                                     =============================
+                                                Last Card:         \s
+                """);
         printCard(lastCard);
         for (Player player : players) {
             System.out.print(player.getName() + ": " + player.getCards().size() + "                   ");
@@ -284,7 +291,6 @@ public class Game {
     }
 
     public boolean nextTurn() {
-        System.out.println(turn);
         if (turn == players.size())
             turn = 0;
         else if (turn == -1)
@@ -297,7 +303,10 @@ public class Game {
                 players.get(0).getCards().add(storage.get(random.nextInt(storage.size())));
                 if (players.get(0).getCards().get(players.get(0).getCards().size() - 1).getValue() == lastCard.getValue() || players.get(0).getCards().get(players.get(0).getCards().size() - 1).getColor() == lastCard.getColor()) {
                     lastCard = players.get(0).getCards().get(players.get(0).getCards().size() - 1);
+                    if (players.get(0).getCards().get(players.get(0).getCards().size() - 1) instanceof Action)
+                        detectAction(((Action) players.get(0).getCards().get(players.get(0).getCards().size() - 1)).action(), 0);
                     players.get(0).getCards().remove(players.get(0).getCards().size() - 1);
+
                 }
                 turn += direction;
                 return true;
@@ -307,6 +316,8 @@ public class Game {
             }
 
             lastCard = players.get(0).getCards().get(choose);
+            if (players.get(0).getCards().get(choose) instanceof Action)
+                detectAction(((Action) players.get(0).getCards().get(choose)).action(), 0);
             players.get(0).getCards().remove(choose);
             turn += direction;
         } else {
@@ -314,6 +325,8 @@ public class Game {
             for (Card card : players.get(turn).getCards()) {
                 if (card.getColor() == lastCard.getColor() || card.getValue() == lastCard.getValue()) {
                     lastCard = card;
+                    if (card instanceof Action)
+                        detectAction(((Action) card).action(), 1);
                     players.get(turn).getCards().remove(card);
                     state = true;
                     break;
@@ -321,8 +334,10 @@ public class Game {
             }
             if (!state) {
                 players.get(turn).getCards().add(storage.get(random.nextInt(storage.size())));
-                if (players.get(turn).getCards().get(players.get(turn).getCards().size() -1).getValue() == lastCard.getValue() || players.get(turn).getCards().get(players.get(turn).getCards().size() - 1).getColor() == lastCard.getColor()) {
+                if (players.get(turn).getCards().get(players.get(turn).getCards().size() - 1).getValue() == lastCard.getValue() || players.get(turn).getCards().get(players.get(turn).getCards().size() - 1).getColor() == lastCard.getColor()) {
                     lastCard = players.get(turn).getCards().get(players.get(turn).getCards().size() - 1);
+                    if (lastCard instanceof Action)
+                        detectAction(((Action) lastCard).action(), 1);
                     players.get(turn).getCards().remove(players.get(turn).getCards().size() - 1);
                 }
                 turn += direction;
@@ -338,5 +353,16 @@ public class Game {
                 return false;
 
         return true;
+    }
+
+    public void detectAction(String string, int mode) {
+        if (mode == 1) {
+            if (string.equals("num2"))
+                number2();
+        }
+        else {
+            if (string.equals("num2"))
+                number2b();
+        }
     }
 }
