@@ -148,6 +148,7 @@ public class Game {
         choose = input.nextInt();
 
         players.get(choose - 1).addCard(card);
+        players.get(0).removeCard(card);
 
     }
 
@@ -389,10 +390,13 @@ public class Game {
                 turn = 0;
             else if (turn == -1 && direction == -1)
                 turn = players.size() - 1;
-            for (Card card : players.get(turn).getCards()) {
+
+            Iterator<Card> it = players.get(turn).getCards().iterator();
+            while (it.hasNext()) {
+                Card card = it.next();
                 if (card.getValue() == 7) {
                     storage.add(card);
-                    players.get(turn).getCards().remove(card);
+                    it.remove();
                     lastCard = card;
                     defaultno += 2;
                     break;
@@ -427,7 +431,9 @@ public class Game {
             else if (turn == -1 && direction == -1)
                 turn = players.size() - 1;
 
-            for (Card card : players.get(turn).getCards()) {
+            Iterator<Card> it = players.get(turn).getCards().iterator();
+            while (it.hasNext()) {
+                Card card = it.next();
                 if (card.getValue() == 7) {
                     storage.add(card);
                     players.get(turn).getCards().remove(card);
