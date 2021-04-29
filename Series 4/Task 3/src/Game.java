@@ -219,8 +219,8 @@ public class Game {
 
     }
 
-    public void printHand() {
-        Iterator<Card> iterator = players.get(0).getCards().iterator();
+    public void printHand(int index) {
+        Iterator<Card> iterator = players.get(index).getCards().iterator();
         while (iterator.hasNext()) {
             Card card = iterator.next();
             if (!iterator.hasNext()) {
@@ -270,7 +270,7 @@ public class Game {
     }
 
     public void printGame() {
-        printHand();
+        printHand(turn);
         System.out.println("""
                                      =============================
                                                 Last Card:         \s
@@ -279,14 +279,17 @@ public class Game {
         for (Player player : players) {
             System.out.print(player.getName() + ": " + player.getCards().size() + "                   ");
         }
+        System.out.println();
 
     }
 
     public boolean nextTurn() {
-        if (turn == players.size())
+        System.out.println(turn);
+        if (turn == players.size() && direction == 1)
             turn = 0;
-        else if (turn == -1)
-            turn = players.size();
+        else if (turn == -1 && direction == -1)
+            turn = players.size() - 1;
+
         else if (turn == 0) {
             printGame();
             System.out.println("\nPlease choose a card (type index of card from top (0) to down): ");
@@ -313,6 +316,7 @@ public class Game {
             players.get(0).getCards().remove(choose);
             turn += direction;
         } else {
+            printGame();
             boolean state = false;
             for (Card card : players.get(turn).getCards()) {
                 if (card.getColor() == lastCard.getColor() || card.getValue() == lastCard.getValue()) {
@@ -363,13 +367,13 @@ public class Game {
             case "num8":
                 number8();
                 break;
-            case "number10":
+            case "num10":
                 number10();
                 break;
-            case "number11":
+            case "num11":
                 number11();
                 break;
-            case "number12":
+            case "num12":
                 number12();
                 break;
         }
@@ -381,10 +385,10 @@ public class Game {
         boolean stat = true;
         while (stat) {
             turn += direction;
-            if (turn == players.size())
+            if (turn == players.size() && direction == 1)
                 turn = 0;
-            else if (turn == -1)
-                turn = players.size();
+            else if (turn == -1 && direction == -1)
+                turn = players.size() - 1;
             for (Card card : players.get(turn).getCards()) {
                 if (card.getValue() == 7) {
                     storage.add(card);
@@ -394,10 +398,11 @@ public class Game {
                     break;
                 } else {
                     turn += direction;
-                    if (turn == players.size())
+                    if (turn == players.size() && direction == 1)
                         turn = 0;
-                    else if (turn == -1)
-                        turn = players.size();
+                    else if (turn == -1 && direction == -1)
+                        turn = players.size() - 1;
+
                     for (int i = 0; i < defaultno; i++) {
                         Card temp = storage.get(random.nextInt(storage.size()));
                         players.get(turn).addCard(temp);
@@ -417,10 +422,11 @@ public class Game {
         boolean stat = true;
         while (stat) {
             turn += direction;
-            if (turn == players.size())
+            if (turn == players.size() && direction == 1)
                 turn = 0;
-            else if (turn == -1)
-                turn = players.size();
+            else if (turn == -1 && direction == -1)
+                turn = players.size() - 1;
+
             for (Card card : players.get(turn).getCards()) {
                 if (card.getValue() == 7) {
                     storage.add(card);
@@ -430,10 +436,11 @@ public class Game {
                     break;
                 } else {
                     turn += direction;
-                    if (turn == players.size())
+                    if (turn == players.size() && direction == 1)
                         turn = 0;
-                    else if (turn == -1)
-                        turn = players.size();
+                    else if (turn == -1 && direction == -1)
+                        turn = players.size() - 1;
+
                     for (int i = 0; i < defaultno; i++) {
                         Card temp = storage.get(random.nextInt(storage.size()));
                         players.get(turn).addCard(temp);
@@ -463,6 +470,7 @@ public class Game {
     public void number12() {
         System.out.print("Please enter the color: ");
         String string;
+        input.nextLine();
         string = input.nextLine();
         if (string.equalsIgnoreCase("red")) {
             lastCard.setColor(1);
