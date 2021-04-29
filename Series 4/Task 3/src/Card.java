@@ -1,6 +1,6 @@
 public class Card {
     private final int number;
-    private final int color;
+    private int color;
 
     public int getValue() {
         return number;
@@ -12,6 +12,10 @@ public class Card {
 
     public Card(int number, int color) {
         this.number = number;
+        this.color = color;
+    }
+
+    public void setColor(int color) {
         this.color = color;
     }
 }

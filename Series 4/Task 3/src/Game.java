@@ -4,10 +4,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-    private Random random = new Random();
-    private Scanner input = new Scanner(System.in);
-    private ArrayList<Player> players = new ArrayList<>();
-    private ArrayList<Card> storage = new ArrayList<>();
+    private final Random random = new Random();
+    private final Scanner input = new Scanner(System.in);
+    private final ArrayList<Player> players;
+    private final ArrayList<Card> storage = new ArrayList<>();
     private int turn;
     private int direction = 1;
     private Card lastCard;
@@ -393,11 +393,75 @@ public class Game {
                         players.get(turn).addCard(temp);
                         storage.remove(temp);
                     }
+                    stat = false;
                 }
 
             }
 
         }
 
+    }
+
+    public void number7b() {
+        int defaultno = 4;
+        boolean stat = true;
+        while (stat) {
+            turn += direction;
+            if (turn == players.size())
+                turn = 0;
+            else if (turn == -1)
+                turn = players.size();
+            for (Card card : players.get(turn).getCards()) {
+                if (card.getValue() == 7) {
+                    storage.add(card);
+                    players.get(turn).getCards().remove(card);
+                    lastCard = card;
+                    defaultno += 2;
+                    break;
+                }
+                else {
+                    turn += direction;
+                    if (turn == players.size())
+                        turn = 0;
+                    else if (turn == -1)
+                        turn = players.size();
+                    for (int i = 0; i < defaultno; i++) {
+                        Card temp = storage.get(random.nextInt(storage.size()));
+                        players.get(turn).addCard(temp);
+                        storage.remove(temp);
+                    }
+                    stat = false;
+                }
+
+            }
+
+        }
+
+    }
+
+    public void number8(){
+        turn -= direction;
+    }
+
+    public void number10(){
+        direction *= -1;
+    }
+
+    public void number11(){
+        turn += direction;
+    }
+
+    public void number12(){
+        System.out.print("Please enter the color: ");
+        String string;
+        string = input.nextLine();
+        if (string.equalsIgnoreCase("red")){
+            lastCard.setColor(1);
+        } else if (string.equalsIgnoreCase("blue")){
+            lastCard.setColor(2);
+        } else if (string.equalsIgnoreCase("black"))
+            lastCard.setColor(3);
+        else if (string.equalsIgnoreCase("green"))
+            lastCard.setColor(4);
     }
 }
