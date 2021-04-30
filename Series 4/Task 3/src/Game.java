@@ -131,8 +131,14 @@ public class Game {
 
         turn = random.nextInt(players.size());
         lastCard = storage.get(random.nextInt(storage.size()));
-    }
+        while (true) {
+            if (lastCard instanceof Action)
+                lastCard = storage.get(random.nextInt(storage.size()));
+            else break;
 
+
+        }
+    }
 
     public void number2() {
         Card card = players.get(turn).getCards().get(random.nextInt(players.get(turn).getCards().size()));
@@ -154,7 +160,12 @@ public class Game {
 
     public void number2b() {
         Card card = players.get(turn).getCards().get(random.nextInt(players.get(turn).getCards().size()));
-        players.get(random.nextInt(players.size())).addCard(card);
+        int temp = random.nextInt(players.size());
+        while (true)
+            if (temp == turn)
+                temp = random.nextInt(players.size());
+            else break;
+        players.get(temp).addCard(card);
     }
 
     public void printCard(Card card) {
@@ -280,8 +291,10 @@ public class Game {
         for (Player player : players) {
             System.out.print(player.getName() + ": " + player.getCards().size() + "                   ");
         }
+        if (direction == 1) {
+            System.out.println("Direction: Clockwise");
+        } else System.out.println("Direction: Anti-Clockwise");
         System.out.println();
-
     }
 
     public boolean nextTurn() {
@@ -314,7 +327,7 @@ public class Game {
             lastCard = players.get(0).getCards().get(choose);
             if (players.get(0).getCards().get(choose) instanceof Action)
                 detectAction(((Action) players.get(0).getCards().get(choose)).action(), 0);
-            players.get(0).getCards().remove(choose);
+            players.get(0).getCards().remove(lastCard);
             turn += direction;
         } else {
             printGame();
@@ -345,9 +358,11 @@ public class Game {
 
         }
 
+        printGame();
         for (Player player : players)
-            if (player.getCards().size() == 0)
+            if (player.getCards().size() == 0) {
                 return false;
+            }
 
         return true;
     }
@@ -375,10 +390,16 @@ public class Game {
                 number11();
                 break;
             case "num12":
-                number12();
+                if (mode == 0)
+                    number12();
+                else number12b();
                 break;
         }
 
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 
     public void number7() {
@@ -391,30 +412,30 @@ public class Game {
             else if (turn == -1 && direction == -1)
                 turn = players.size() - 1;
 
-            Iterator<Card> it = players.get(turn).getCards().iterator();
-            while (it.hasNext()) {
-                Card card = it.next();
+//            Iterator<Card> it = players.get(turn).getCards().iterator();
+//            Card card;
+//            while (it.hasNext()) {
+            for (int j = 0; j < players.get(turn).getCards().size(); j++) {
+                Card card = players.get(turn).getCards().get(j);
+//                card = it.next();
                 if (card.getValue() == 7) {
                     storage.add(card);
-                    it.remove();
+                    players.get(turn).getCards().remove(card);
                     lastCard = card;
                     defaultno += 2;
-                    break;
-                } else {
-                    turn += direction;
-                    if (turn == players.size() && direction == 1)
-                        turn = 0;
-                    else if (turn == -1 && direction == -1)
-                        turn = players.size() - 1;
-
-                    for (int i = 0; i < defaultno; i++) {
-                        Card temp = storage.get(random.nextInt(storage.size()));
-                        players.get(turn).addCard(temp);
-                        storage.remove(temp);
-                    }
                     stat = false;
+                    break;
                 }
 
+            }
+            if (stat) {
+                for (int i = 0; i < defaultno; i++) {
+                    System.out.println(storage.size());
+                    Card temp = storage.get(random.nextInt(storage.size()));
+                    players.get(turn).addCard(temp);
+                    storage.remove(temp);
+                }
+                break;
             }
 
         }
@@ -422,7 +443,7 @@ public class Game {
     }
 
     public void number7b() {
-        int defaultno = 4;
+        int defaultno = 2;
         boolean stat = true;
         while (stat) {
             turn += direction;
@@ -431,30 +452,30 @@ public class Game {
             else if (turn == -1 && direction == -1)
                 turn = players.size() - 1;
 
-            Iterator<Card> it = players.get(turn).getCards().iterator();
-            while (it.hasNext()) {
-                Card card = it.next();
+//            Iterator<Card> it = players.get(turn).getCards().iterator();
+//            Card card;
+//            while (it.hasNext()) {
+            for (int j = 0; j < players.get(turn).getCards().size(); j++) {
+                Card card = players.get(turn).getCards().get(j);
+//                card = it.next();
                 if (card.getValue() == 7) {
                     storage.add(card);
                     players.get(turn).getCards().remove(card);
                     lastCard = card;
                     defaultno += 2;
-                    break;
-                } else {
-                    turn += direction;
-                    if (turn == players.size() && direction == 1)
-                        turn = 0;
-                    else if (turn == -1 && direction == -1)
-                        turn = players.size() - 1;
-
-                    for (int i = 0; i < defaultno; i++) {
-                        Card temp = storage.get(random.nextInt(storage.size()));
-                        players.get(turn).addCard(temp);
-                        storage.remove(temp);
-                    }
                     stat = false;
+                    break;
                 }
 
+            }
+            if (stat) {
+                for (int i = 0; i < defaultno; i++) {
+                    System.out.println(storage.size());
+                    Card temp = storage.get(random.nextInt(storage.size()));
+                    players.get(turn).addCard(temp);
+                    storage.remove(temp);
+                }
+                break;
             }
 
         }
@@ -486,5 +507,9 @@ public class Game {
             lastCard.setColor(3);
         else if (string.equalsIgnoreCase("green"))
             lastCard.setColor(4);
+    }
+
+    public void number12b() {
+        lastCard.setColor(random.ints(1, 4).findFirst().getAsInt());
     }
 }
