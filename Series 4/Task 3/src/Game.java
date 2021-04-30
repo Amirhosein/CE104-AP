@@ -121,23 +121,29 @@ public class Game {
         storage.add(card13B);
         storage.add(card14B);
 
-        for (Player player : players) {
-            for (int i = 0; i < 7; i++) {
-                int temp = random.nextInt(storage.size());
-                player.addCard(storage.get(temp));
-                storage.remove(temp);
-            }
-        }
+//        for (Player player : players) {
+//            for (int i = 0; i < 7; i++) {
+//                int temp = random.nextInt(storage.size());
+//                player.addCard(storage.get(temp));
+//                storage.remove(temp);
+//            }
+//        }
 
         turn = random.nextInt(players.size());
-        lastCard = storage.get(random.nextInt(storage.size()));
-        while (true) {
-            if (lastCard instanceof Action)
-                lastCard = storage.get(random.nextInt(storage.size()));
-            else break;
-
-
-        }
+//        lastCard = storage.get(random.nextInt(storage.size()));
+//        while (true) {
+//            if (lastCard instanceof Action)
+//                lastCard = storage.get(random.nextInt(storage.size()));
+//            else break;
+//
+//
+//        }
+        lastCard = card3g;
+        players.get(0).getCards().add(card7g);
+        players.get(0).getCards().add(card3g);
+        players.get(1).getCards().add(card7g);
+        players.get(1).getCards().add(card3r);
+        players.get(2).getCards().add(card4B);
     }
 
     public void number2() {
@@ -406,6 +412,7 @@ public class Game {
         int defaultno = 2;
         boolean stat = true;
         while (stat) {
+            stat = true;
             turn += direction;
             if (turn == players.size() && direction == 1)
                 turn = 0;
