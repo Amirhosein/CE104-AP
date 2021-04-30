@@ -3,6 +3,9 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * The type Game.
+ */
 public class Game {
     private final Random random = new Random();
     private final Scanner input = new Scanner(System.in);
@@ -14,6 +17,11 @@ public class Game {
 
     private int choose;
 
+    /**
+     * Instantiates a new Game.
+     *
+     * @param players the players
+     */
     public Game(ArrayList<Player> players) {
         this.players = players;
         Card card2r = new Number2(2, 1);
@@ -121,31 +129,29 @@ public class Game {
         storage.add(card13B);
         storage.add(card14B);
 
-//        for (Player player : players) {
-//            for (int i = 0; i < 7; i++) {
-//                int temp = random.nextInt(storage.size());
-//                player.addCard(storage.get(temp));
-//                storage.remove(temp);
-//            }
-//        }
+        for (Player player : players) {
+            for (int i = 0; i < 7; i++) {
+                int temp = random.nextInt(storage.size());
+                player.addCard(storage.get(temp));
+                storage.remove(temp);
+            }
+        }
 
         turn = random.nextInt(players.size());
-//        lastCard = storage.get(random.nextInt(storage.size()));
-//        while (true) {
-//            if (lastCard instanceof Action)
-//                lastCard = storage.get(random.nextInt(storage.size()));
-//            else break;
-//
-//
-//        }
-        lastCard = card3g;
-        players.get(0).getCards().add(card7g);
-        players.get(0).getCards().add(card3g);
-        players.get(1).getCards().add(card7g);
-        players.get(1).getCards().add(card3r);
-        players.get(2).getCards().add(card4B);
+        lastCard = storage.get(random.nextInt(storage.size()));
+        while (true) {
+            if (lastCard instanceof Action)
+                lastCard = storage.get(random.nextInt(storage.size()));
+            else break;
+
+
+        }
+
     }
 
+    /**
+     * Number 2.
+     */
     public void number2() {
         Card card = players.get(turn).getCards().get(random.nextInt(players.get(turn).getCards().size()));
 
@@ -164,6 +170,9 @@ public class Game {
 
     }
 
+    /**
+     * Number 2 b.
+     */
     public void number2b() {
         Card card = players.get(turn).getCards().get(random.nextInt(players.get(turn).getCards().size()));
         int temp = random.nextInt(players.size());
@@ -174,6 +183,11 @@ public class Game {
         players.get(temp).addCard(card);
     }
 
+    /**
+     * Print card.
+     *
+     * @param card the card
+     */
     public void printCard(Card card) {
         String string;
         if (card.getValue() == 11) {
@@ -237,6 +251,11 @@ public class Game {
 
     }
 
+    /**
+     * Print hand.
+     *
+     * @param index the index
+     */
     public void printHand(int index) {
         Iterator<Card> iterator = players.get(index).getCards().iterator();
         while (iterator.hasNext()) {
@@ -287,6 +306,9 @@ public class Game {
         }
     }
 
+    /**
+     * Print game.
+     */
     public void printGame() {
         printHand(turn);
         System.out.println("""
@@ -303,8 +325,12 @@ public class Game {
         System.out.println();
     }
 
+    /**
+     * Next turn boolean.
+     *
+     * @return the boolean
+     */
     public boolean nextTurn() {
-        System.out.println(turn);
         if (turn == players.size() && direction == 1)
             turn = 0;
         else if (turn == -1 && direction == -1)
@@ -336,7 +362,7 @@ public class Game {
             players.get(0).getCards().remove(lastCard);
             turn += direction;
         } else {
-            printGame();
+//            printGame();
             boolean state = false;
             for (Card card : players.get(turn).getCards()) {
                 if (card.getColor() == lastCard.getColor() || card.getValue() == lastCard.getValue()) {
@@ -354,7 +380,8 @@ public class Game {
                     lastCard = players.get(turn).getCards().get(players.get(turn).getCards().size() - 1);
                     if (lastCard instanceof Action)
                         detectAction(((Action) lastCard).action(), 1);
-                    players.get(turn).getCards().remove(players.get(turn).getCards().size() - 1);
+                    System.out.println(players.get(turn).getCards().size() - 1);
+                    players.get(turn).getCards().remove(lastCard);
                 }
                 turn += direction;
                 return true;
@@ -363,8 +390,12 @@ public class Game {
             turn += direction;
 
         }
-
-        printGame();
+        if (turn == players.size() && direction == 1)
+            turn = 0;
+        else if (turn == -1 && direction == -1)
+            turn = players.size() - 1;
+//        if you want to see each turn, uncomment next line and 308.
+//        printGame();
         for (Player player : players)
             if (player.getCards().size() == 0) {
                 return false;
@@ -373,6 +404,12 @@ public class Game {
         return true;
     }
 
+    /**
+     * Detect action.
+     *
+     * @param string the string
+     * @param mode   the mode
+     */
     public void detectAction(String string, int mode) {
         switch (string) {
             case "num2":
@@ -404,15 +441,14 @@ public class Game {
 
     }
 
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
 
+    /**
+     * Number 7.
+     */
     public void number7() {
         int defaultno = 2;
         boolean stat = true;
         while (stat) {
-            stat = true;
             turn += direction;
             if (turn == players.size() && direction == 1)
                 turn = 0;
@@ -444,11 +480,14 @@ public class Game {
                 }
                 break;
             }
-
+            stat = true;
         }
 
     }
 
+    /**
+     * Number 7 b.
+     */
     public void number7b() {
         int defaultno = 2;
         boolean stat = true;
@@ -489,18 +528,30 @@ public class Game {
 
     }
 
+    /**
+     * Number 8.
+     */
     public void number8() {
         turn -= direction;
     }
 
+    /**
+     * Number 10.
+     */
     public void number10() {
         direction *= -1;
     }
 
+    /**
+     * Number 11.
+     */
     public void number11() {
         turn += direction;
     }
 
+    /**
+     * Number 12.
+     */
     public void number12() {
         System.out.print("Please enter the color: ");
         String string;
@@ -516,6 +567,9 @@ public class Game {
             lastCard.setColor(4);
     }
 
+    /**
+     * Number 12 b.
+     */
     public void number12b() {
         lastCard.setColor(random.ints(1, 4).findFirst().getAsInt());
     }
