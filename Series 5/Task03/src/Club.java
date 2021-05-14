@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type Club.
+ */
 public class Club {
     private String name;
     private final Channel CNFollowers = new Channel();
@@ -10,10 +13,21 @@ public class Club {
     private final ArrayList<Player> players = new ArrayList<>();
     private final ArrayList<Match> matches = new ArrayList<>();
 
+    /**
+     * Instantiates a new Club.
+     *
+     * @param name the name
+     */
     public Club(String name) {
         this.name = name;
     }
 
+    /**
+     * Subscribe.
+     *
+     * @param follower the follower
+     * @param type     the type
+     */
     public void subscribe(Follower follower, String type) {
         if (type.equalsIgnoreCase("Club News")) {
             CNFollowers.addFollower(follower);
@@ -23,6 +37,12 @@ public class Club {
             MNFollowers.addFollower(follower);
     }
 
+    /**
+     * Unsubscribe.
+     *
+     * @param follower the follower
+     * @param type     the type
+     */
     public void unsubscribe(Follower follower, String type) {
         if (type.equalsIgnoreCase("Club News")) {
             CNFollowers.removeFollower(follower);
@@ -32,6 +52,11 @@ public class Club {
             MNFollowers.removeFollower(follower);
     }
 
+    /**
+     * Add player.
+     *
+     * @param player the player
+     */
     public void addPlayer(Player player) {
         players.add(player);
         Announcement announcement = new Announcement("The player, " + player.getName() + "has joined " + name,
@@ -40,6 +65,11 @@ public class Club {
         PNFollowers.notifyFollowers("Player News", announcement);
     }
 
+    /**
+     * Add match.
+     *
+     * @param match the match
+     */
     public void addMatch(Match match) {
         matches.add(match);
         Announcement announcement = new Announcement(name + " has a new game now!",
@@ -47,6 +77,9 @@ public class Club {
         MNFollowers.notifyFollowers("Match News", announcement);
     }
 
+    /**
+     * Publish club news.
+     */
     public void publishClubNews() {
         Announcement announcement = new Announcement(name + " has been suspended",  name + " after trying to leave UCL and join the European Super League,\n" +
                 "has been disbanded by the order of FIFA");
