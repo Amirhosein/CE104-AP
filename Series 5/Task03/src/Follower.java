@@ -14,9 +14,15 @@ public class Follower {
     }
 
 
+    /**
+     * Update.
+     *
+     * @param announcementType the announcement type
+     * @param announcement     the announcement
+     */
     public void update(String announcementType, Announcement announcement) {
         System.out.println("User: " + name + "\t\t Type: " +
                 announcementType + "\nTitle: " + announcement.getTitle() + '\n' + announcement.getContent() + "\n---End" +
-                " of announcement---");
+                " of announcement---\n");
     }
 }

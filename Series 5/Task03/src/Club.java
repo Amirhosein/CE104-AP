@@ -34,7 +34,7 @@ public class Club {
 
     public void addPlayer(Player player) {
         players.add(player);
-        Announcement announcement = new Announcement("The player, " + player.getName() + "has joined the club",
+        Announcement announcement = new Announcement("The player, " + player.getName() + "has joined " + name,
                 "Finally the " + player.getAge() + " years old player, " + player.getName() + " with ID: " + player.getID()
                         + " has joined the club");
         PNFollowers.notifyFollowers("Player News", announcement);
@@ -42,13 +42,13 @@ public class Club {
 
     public void addMatch(Match match) {
         matches.add(match);
-        Announcement announcement = new Announcement("The Club has a new game now!",
-                "The club goes against " + match.getOpponentName() + " at the date:" + match.getDate());
+        Announcement announcement = new Announcement(name + " has a new game now!",
+                name + " goes against " + match.getOpponentName() + " at the date:" + match.getDate());
         MNFollowers.notifyFollowers("Match News", announcement);
     }
 
     public void publishClubNews() {
-        Announcement announcement = new Announcement("Club has been suspended", "The club after trying to leave UCL and join the European Super League,\n" +
+        Announcement announcement = new Announcement(name + " has been suspended",  name + " after trying to leave UCL and join the European Super League,\n" +
                 "has been disbanded by the order of FIFA");
         CNFollowers.notifyFollowers("Club News", announcement);
 
