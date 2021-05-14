@@ -1,8 +1,8 @@
 /**
  * The type Follower.
  */
-public class Follower implements Update {
-    private String name;
+public class Follower {
+    private final String name;
 
     /**
      * Instantiates a new Follower.
@@ -13,19 +13,10 @@ public class Follower implements Update {
         this.name = name;
     }
 
-    /**
-     * Gets name.
-     *
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
 
-    @Override
-    public void update(String announcementType, String title, String content) {
+    public void update(String announcementType, Announcement announcement) {
         System.out.println("User: " + name + "\t\t Type: " +
-                announcementType + "\n" + content + "\n---End" +
+                announcementType + "\nTitle: " + announcement.getTitle() + '\n' + announcement.getContent() + "\n---End" +
                 " of announcement---");
     }
 }

@@ -2,8 +2,8 @@
  * The type Announcement.
  */
 public class Announcement {
-    private String title;
-    private String content;
+    private final String title;
+    private final String content;
 
     /**
      * Instantiates a new Announcement.
