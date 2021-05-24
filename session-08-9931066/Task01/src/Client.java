@@ -15,18 +15,14 @@ public class Client {
             InputStream in = client.getInputStream();
             byte[] buffer = new byte[2048];
             while (true) {
-                int read = in.read(buffer);
-                String income = new String(buffer, 0, read);
-                if (income.equals("over"))
-                    break;
                 String msg = input.nextLine();
                 out.write(msg.getBytes());
                 System.out.println("SENT: " + msg);
-                read = in.read(buffer);
-                income = new String(buffer, 0, read);
-                if (income.equals("over"))
-                    break;
+                int read = in.read(buffer);
+                String income = new String(buffer, 0, read);
                 System.out.println("RECV: " + income);
+                if (income.contains("over"))
+                    break;
             }
             System.out.print("All messages sent.\nClosing ... ");
         } catch (IOException ex) {
