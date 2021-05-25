@@ -1,17 +1,17 @@
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
 /**
  * @author Amir Iravanimanesh
  * @date 5/25/2021
  */
-import java.io.*;
-import java.net.*;
-import java.util.*;
 
 // Client class
 class Client {
 
     // driver code
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // establish a connection by providing host and port
         // number
         try (Socket socket = new Socket("localhost", 1234)) {
@@ -39,16 +39,14 @@ class Client {
                 out.flush();
 
                 // displaying server reply
-                System.out.println("Server replied "
+                System.out.println("[SERVER] "
                         + in.readLine());
             }
 
             // closing the scanner object
             sc.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 }
-

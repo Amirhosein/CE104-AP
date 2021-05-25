@@ -4,15 +4,17 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * @author Amir Iravanimanesh
  * @date 5/25/2021
  */
 class Server {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         ServerSocket server = null;
+        int count = 0;
 
         try {
 
@@ -33,25 +35,22 @@ class Server {
                 System.out.println("New client connected"
                         + client.getInetAddress()
                         .getHostAddress());
-
+                count++;
                 // create a new thread object
                 ClientHandler clientSock
-                        = new ClientHandler(client);
+                        = new ClientHandler(client, count);
 
                 // This thread will handle the client
                 // separately
                 new Thread(clientSock).start();
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             if (server != null) {
                 try {
                     server.close();
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -61,15 +60,16 @@ class Server {
     // ClientHandler class
     private static class ClientHandler implements Runnable {
         private final Socket clientSocket;
+        private final ArrayList<String> strings = new ArrayList<>();
+        private final int number;
 
         // Constructor
-        public ClientHandler(Socket socket)
-        {
+        public ClientHandler(Socket socket, int num) {
             this.clientSocket = socket;
+            this.number = num;
         }
 
-        public void run()
-        {
+        public void run() {
             PrintWriter out = null;
             BufferedReader in = null;
             try {
@@ -85,19 +85,18 @@ class Server {
 
                 String line;
                 while ((line = in.readLine()) != null) {
-
+                    strings.add(line);
                     // writing the received message from
                     // client
                     System.out.printf(
-                            " Sent from the client: %s\n",
-                            line);
+                            "[CLIENT%d] %s\n",
+                            number,line);
+                    line = String.join(" ", strings);
                     out.println(line);
                 }
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
-            }
-            finally {
+            } finally {
                 try {
                     if (out != null) {
                         out.close();
@@ -106,8 +105,7 @@ class Server {
                         in.close();
                         clientSocket.close();
                     }
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
