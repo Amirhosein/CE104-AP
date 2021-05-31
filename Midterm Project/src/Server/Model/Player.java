@@ -24,13 +24,14 @@ public class Player {
     private static boolean isDuplicate(String username) {
         for (Player player : players)
             if (player.getUsername().equalsIgnoreCase(username))
-                return false;
-        return true;
+                return true;
+        return false;
     }
 
     public static boolean register(String username) {
-        if (isDuplicate(username))
+        if (isDuplicate(username)){
             return false;
+        }
         Player player = new Player(username);
         players.add(player);
         return true;

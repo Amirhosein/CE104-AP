@@ -82,13 +82,16 @@ public class Connection {
                 in = new BufferedReader(
                         new InputStreamReader(
                                 clientSocket.getInputStream()));
-
                 String line;
                 while ((line = in.readLine()) != null) {
-                    line = in.readLine();
-                    if (Player.register(line))
+                    if (Player.register(line)){
+                        out.println("Registered successfully");
                         username = line;
-                    else out.println("Registration failed");
+                    }
+                    else{
+                        System.out.println("kir");
+                        out.println("Registration failed");
+                    }
                 }
 
 

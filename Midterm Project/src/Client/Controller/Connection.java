@@ -34,6 +34,7 @@ public class Connection {
             while (true){
                 line = TerminalInput.getInput();
                 out.println(line);
+                out.flush();
                 if (in.readLine().equalsIgnoreCase("Registration failed"))
                     Menu.registerError();
                 else{
