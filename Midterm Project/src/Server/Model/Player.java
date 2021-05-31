@@ -11,20 +11,15 @@ public class Player {
     public static ArrayList<Player> players = new ArrayList<>();
 
     private final String username;
-    private final String password;
 
-    public Player(String username, String password) {
+    public Player(String username) {
         this.username = username;
-        this.password = password;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     private boolean isDuplicate(String username) {
         for (Player player : players)
@@ -33,20 +28,12 @@ public class Player {
         return true;
     }
 
-    public boolean register(String username, String password) {
+    public boolean register(String username) {
         if (isDuplicate(username))
             return false;
-        Player player = new Player(username, password);
+        Player player = new Player(username);
         players.add(player);
         return true;
-    }
-
-    public Player login(String username, String password) {
-        Player player = new Player(username, password);
-        for (Player player1 : players)
-            if (player1.equals(player))
-                return player;
-        return null;
     }
 
     @Override
@@ -54,11 +41,11 @@ public class Player {
         if (this == o) return true;
         if (!(o instanceof Player)) return false;
         Player player = (Player) o;
-        return Objects.equals(getUsername(), player.getUsername()) && Objects.equals(getPassword(), player.getPassword());
+        return Objects.equals(getUsername(), player.getUsername());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getPassword());
+        return Objects.hash(getUsername());
     }
 }
