@@ -1,13 +1,13 @@
 package Server.Controller;
 
+import Server.Model.Player;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 
 /**
@@ -16,14 +16,13 @@ import java.util.stream.Collectors;
  */
 public class Connection {
 
-    public static void main(String[] args) {
+    public Connection() {
         ServerSocket server = null;
-        int count = 0;
 
         try {
 
             // server is listening on port 1234
-            server = new ServerSocket(1234);
+            server = new ServerSocket(6060);
             server.setReuseAddress(true);
 
             // running infinite loop for getting
@@ -39,10 +38,9 @@ public class Connection {
                 System.out.println("New client connected"
                         + client.getInetAddress()
                         .getHostAddress());
-                count++;
                 // create a new thread object
                 ClientHandler clientSock
-                        = new ClientHandler(client, count);
+                        = new ClientHandler(client);
 
                 // This thread will handle the client
                 // separately
@@ -64,13 +62,11 @@ public class Connection {
     // ClientHandler class
     private static class ClientHandler implements Runnable {
         private final Socket clientSocket;
-        private final ArrayList<String> strings = new ArrayList<>();
-        private final int number;
+        private String username;
 
         // Constructor
-        public ClientHandler(Socket socket, int num) {
+        public ClientHandler(Socket socket) {
             this.clientSocket = socket;
-            this.number = num;
         }
 
         public void run() {
@@ -89,15 +85,13 @@ public class Connection {
 
                 String line;
                 while ((line = in.readLine()) != null) {
-                    strings.add(line);
-                    // writing the received message from
-                    // client
-                    System.out.printf(
-                            "[CLIENT%d] %s\n",
-                            number,line);
-                    line = String.join(" ", strings);
-                    out.println(line);
+                    line = in.readLine();
+                    if (Player.register(line))
+                        username = line;
+                    else out.println("Registration failed");
                 }
+
+
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {

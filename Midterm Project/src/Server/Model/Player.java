@@ -21,14 +21,14 @@ public class Player {
     }
 
 
-    private boolean isDuplicate(String username) {
+    private static boolean isDuplicate(String username) {
         for (Player player : players)
             if (player.getUsername().equalsIgnoreCase(username))
                 return false;
         return true;
     }
 
-    public boolean register(String username) {
+    public static boolean register(String username) {
         if (isDuplicate(username))
             return false;
         Player player = new Player(username);

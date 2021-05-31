@@ -10,4 +10,12 @@ public class Menu {
                 Please enter host port:""");
     }
 
+    public static void registerError(){
+        System.out.println("Username already exists.");
+    }
+
+    public static void successfulRegister(){
+        System.out.println("Registered Successfully.");
+    }
+
 }

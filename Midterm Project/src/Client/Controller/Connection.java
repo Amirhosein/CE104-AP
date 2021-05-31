@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Scanner;
+
 import Client.View.Menu;
 import Client.View.TerminalInput;
 
@@ -29,21 +29,19 @@ public class Connection {
                     = new BufferedReader(new InputStreamReader(
                     socket.getInputStream()));
 
-            Scanner sc = new Scanner(System.in);
             String line = null;
 
-            while (!"exit".equalsIgnoreCase(line)) {
-
-                line = sc.nextLine();
-
+            while (true){
+                line = TerminalInput.getInput();
                 out.println(line);
-                out.flush();
-
-                System.out.println("[SERVER] "
-                        + in.readLine());
+                if (in.readLine().equalsIgnoreCase("Registration failed"))
+                    Menu.registerError();
+                else{
+                    Menu.successfulRegister();
+                    break;
+                }
             }
 
-            sc.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
