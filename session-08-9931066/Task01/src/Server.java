@@ -22,13 +22,13 @@ public class Server {
                     String input = new String(buffer, 0, read);
                     System.out.println("RECV: " + input);
                     strings.add(input);
-                    String msg = strings.stream().collect(Collectors.joining(" "));
+                    String msg = String.join(" ", strings);
                     if (i == 2)
                         msg = msg.concat(" over");
                     out.write(msg.getBytes());
                     System.out.println("SENT: " + msg);
                 }
-                System.out.print("All messages sent.\nClosing client ... ");
+                System.out.print("All messages received.\nClosing client ... ");
             } catch (IOException ex) {
                 System.err.println(ex);
             }
