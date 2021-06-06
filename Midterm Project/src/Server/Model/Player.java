@@ -28,13 +28,13 @@ public class Player {
         return false;
     }
 
-    public static boolean register(String username) {
+    public static Player register(String username) {
         if (isDuplicate(username)){
-            return false;
+            return null;
         }
         Player player = new Player(username);
         players.add(player);
-        return true;
+        return player;
     }
 
     @Override

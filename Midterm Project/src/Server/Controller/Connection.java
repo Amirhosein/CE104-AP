@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -16,7 +17,8 @@ import java.util.ArrayList;
  * @date 5/31/2021
  */
 public class Connection {
-    private ArrayList<Socket> sockets;
+    public static HashMap<Socket, Player> playerHashMap = new HashMap<>();
+    private ArrayList<Socket> sockets = new ArrayList<>();
 
     public Connection() {
         ServerSocket server = null;
@@ -92,11 +94,14 @@ public class Connection {
                                 clientSocket.getInputStream()));
                 String line;
                 while ((line = in.readLine()) != null) {
-                    if (Player.register(line)){
+                    Player player;
+                    if ((player = Player.register(line)) != null) {
                         out.println("Registered successfully");
                         username = line;
-                    }
-                    else{
+                        Connection.playerHashMap.put(clientSocket, player);
+                        break;
+
+                    } else {
                         out.println("Registration failed");
                     }
                 }

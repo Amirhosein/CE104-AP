@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import Client.Model.Chatroom.ChatClient;
 import Client.View.Menu;
 import Client.View.TerminalInput;
 
@@ -14,6 +15,7 @@ import Client.View.TerminalInput;
  * @date 5/31/2021
  */
 public class Connection {
+    private String username;
 
     public Connection() {
         Menu.mainMenu();
@@ -29,22 +31,22 @@ public class Connection {
                     = new BufferedReader(new InputStreamReader(
                     socket.getInputStream()));
 
-            String line = null;
+            String line;
 
-            while (true){
+            while (true) {
                 line = TerminalInput.getInput();
                 out.println(line);
                 out.flush();
                 if (in.readLine().equalsIgnoreCase("Registration failed"))
                     Menu.registerError();
-                else{
+                else {
                     Menu.successfulRegister();
+                    username = line;
                     break;
                 }
             }
-            while (true){
+            ChatClient chatClient = new ChatClient(socket, username);
 
-            }
 
         } catch (IOException e) {
             e.printStackTrace();
