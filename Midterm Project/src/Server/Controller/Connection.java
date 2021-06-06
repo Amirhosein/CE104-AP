@@ -1,5 +1,6 @@
 package Server.Controller;
 
+import Server.Model.Chatroom.ChatServer;
 import Server.Model.Player;
 
 import java.io.BufferedReader;
@@ -18,7 +19,9 @@ import java.util.HashMap;
  */
 public class Connection {
     public static HashMap<Socket, Player> playerHashMap = new HashMap<>();
-    private ArrayList<Socket> sockets = new ArrayList<>();
+    private final ArrayList<Socket> sockets = new ArrayList<>();
+    public static String status;
+    public static int readycount = 0;
 
     public Connection() {
         ServerSocket server = null;
@@ -42,7 +45,7 @@ public class Connection {
 
                 // Displaying that new client is connected
                 // to server
-                System.out.println("New client connected"
+                System.out.println("New client connected "
                         + client.getInetAddress()
                         .getHostAddress());
                 // create a new thread object
@@ -55,6 +58,14 @@ public class Connection {
                 sockets.add(client);
                 count++;
             }
+            System.out.println(count);
+            while (true)
+                if (readycount == count) {
+                    System.out.println("12333");
+                    broadcast("chatroom");
+                    break;
+                }else System.out.println("KIR");
+            ChatServer chatServer = new ChatServer(sockets);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -99,6 +110,9 @@ public class Connection {
                         out.println("Registered successfully");
                         username = line;
                         Connection.playerHashMap.put(clientSocket, player);
+                        System.out.println(clientSocket + " :" + player.getUsername());
+                        readycount++;
+                        System.out.println(readycount);
                         break;
 
                     } else {
@@ -115,12 +129,19 @@ public class Connection {
                     }
                     if (in != null) {
                         in.close();
-                        clientSocket.close();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+
+    private void broadcast(String string) throws IOException {
+        for (Socket socket : sockets) {
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            out.println(string);
         }
     }
 }

@@ -19,27 +19,23 @@ public class ChatServer {
 
     public ChatServer(ArrayList<Socket> sockets) {
         this.sockets = sockets;
+        execute();
     }
 
     public void execute() {
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
 
-            System.out.println("Chat Server is listening on port " + port);
+        System.out.println("Chat Server is listening on port " + port);
 
-            for (Socket socket : sockets) {
-                UserThread newUser = new UserThread(socket, this);
-                userThreads.add(newUser);
-                newUser.start();
-            }
-            try {
-                Thread.sleep(30000);
-                broadcast("300", null);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException ex) {
-            System.out.println("Error in the server: " + ex.getMessage());
-            ex.printStackTrace();
+        for (Socket socket : sockets) {
+            UserThread newUser = new UserThread(socket, this);
+            userThreads.add(newUser);
+            newUser.start();
+        }
+        try {
+            Thread.sleep(30000);
+            broadcast("300", null);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

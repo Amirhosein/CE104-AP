@@ -45,7 +45,13 @@ public class Connection {
                     break;
                 }
             }
-            ChatClient chatClient = new ChatClient(socket, username);
+            while (true) {
+                    if ((line = in.readLine()) != null && line.equalsIgnoreCase("chatroom")) {
+                        ChatClient chatClient = new ChatClient(socket, username);
+                        break;
+                    }
+
+            }
 
 
         } catch (IOException e) {

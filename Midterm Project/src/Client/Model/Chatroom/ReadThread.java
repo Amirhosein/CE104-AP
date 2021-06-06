@@ -32,7 +32,7 @@ public class ReadThread extends Thread {
         while (true) {
             try {
                 String response = reader.readLine();
-                if (response.equalsIgnoreCase("300"))
+                if (response != null && response.equalsIgnoreCase("300"))
                     return;
                 System.out.println("\n" + response);
 

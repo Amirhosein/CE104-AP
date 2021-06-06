@@ -18,6 +18,7 @@ public class UserThread extends Thread {
     public UserThread(Socket socket, ChatServer server) {
         this.socket = socket;
         this.server = server;
+        System.out.println(socket);
         userName = Connection.playerHashMap.get(socket).getUsername();
         server.addUserName(userName);
     }

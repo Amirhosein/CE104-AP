@@ -15,6 +15,7 @@ public class ChatClient {
     public ChatClient(Socket socket, String userName) {
         this.socket = socket;
         this.userName = userName;
+        System.out.println("fahmidam");
         execute();
     }
 
