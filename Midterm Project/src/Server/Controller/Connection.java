@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 
 /**
@@ -15,9 +16,13 @@ import java.net.Socket;
  * @date 5/31/2021
  */
 public class Connection {
+    private ArrayList<Socket> sockets;
 
     public Connection() {
         ServerSocket server = null;
+        int defCount = 2;
+        int count = 0;
+
 
         try {
 
@@ -27,7 +32,7 @@ public class Connection {
 
             // running infinite loop for getting
             // client request
-            while (true) {
+            while (count < defCount) {
 
                 // socket object to receive incoming client
                 // requests
@@ -45,7 +50,10 @@ public class Connection {
                 // This thread will handle the client
                 // separately
                 new Thread(clientSock).start();
+                sockets.add(client);
+                count++;
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -91,6 +99,9 @@ public class Connection {
                     else{
                         out.println("Registration failed");
                     }
+                }
+                while (true){
+
                 }
 
 

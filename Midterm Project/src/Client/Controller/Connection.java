@@ -42,6 +42,9 @@ public class Connection {
                     break;
                 }
             }
+            while (true){
+
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
