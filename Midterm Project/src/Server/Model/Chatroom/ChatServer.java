@@ -27,14 +27,15 @@ public class ChatServer {
             System.out.println("Chat Server is listening on port " + port);
 
             for (Socket socket : sockets) {
-                UserThread newUser = new UserThread(socket,this);
+                UserThread newUser = new UserThread(socket, this);
                 userThreads.add(newUser);
                 newUser.start();
             }
             try {
                 Thread.sleep(30000);
-            }catch (InterruptedException e) {
-                System.out.println(e);
+                broadcast("300", null);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         } catch (IOException ex) {
             System.out.println("Error in the server: " + ex.getMessage());

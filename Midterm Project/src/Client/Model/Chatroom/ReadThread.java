@@ -32,6 +32,8 @@ public class ReadThread extends Thread {
         while (true) {
             try {
                 String response = reader.readLine();
+                if (response.equalsIgnoreCase("300"))
+                    return;
                 System.out.println("\n" + response);
 
                 // prints the username after displaying the server's message
