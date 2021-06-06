@@ -89,7 +89,6 @@ public class Connection {
                         username = line;
                     }
                     else{
-                        System.out.println("kir");
                         out.println("Registration failed");
                     }
                 }
