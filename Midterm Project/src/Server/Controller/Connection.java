@@ -100,10 +100,6 @@ public class Connection {
                         out.println("Registration failed");
                     }
                 }
-                while (true){
-
-                }
-
 
             } catch (IOException e) {
                 e.printStackTrace();
