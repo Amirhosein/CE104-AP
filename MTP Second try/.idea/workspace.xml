@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 entering night phase">
-      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
+    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 introduction night test.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Client/ChatClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Client/ChatClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Client/ReadThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Client/ReadThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Server/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Server/ChatServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Server/UserThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Server/UserThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ChatClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ReadThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ReadThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ChatServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/UserThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/UserThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +168,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1623048948676</updated>
-      <workItem from="1623048950196" duration="10159000" />
+      <workItem from="1623048950196" duration="13950000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
@@ -203,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623052659790</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="MTP2 introduction night test.">
+      <created>1623076978439</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1623076978439</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +227,8 @@
     <MESSAGE value="MTP2 chatroom done" />
     <MESSAGE value="MTP2 chatroom update" />
     <MESSAGE value="MTP2 entering night phase" />
-    <option name="LAST_COMMIT_MESSAGE" value="MTP2 entering night phase" />
+    <MESSAGE value="MTP2 introduction night." />
+    <MESSAGE value="MTP2 introduction night test." />
+    <option name="LAST_COMMIT_MESSAGE" value="MTP2 introduction night test." />
   </component>
 </project>

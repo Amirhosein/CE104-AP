@@ -58,15 +58,29 @@ public class ChatClient {
         client.execute();
     }
 
-    void nightPhase(){
+    void nightPhase() {
         writeThread.stop();
         System.out.println("""
-                         _.._
-                       .' .-'`
-                      /  /
-        NIGHT PHASE  |  |
-                     \\  \\
-                       '._'-._
-                          ```""");
+                                 _.._
+                               .' .-'`
+                              /  /
+                NIGHT PHASE  |  |
+                              \\ \\
+                               '._'-._
+                                  ```""");
+    }
+
+    void dayPhase() {
+        writeThread.start();
+        System.out.println("""
+                              ;   :   ;
+                           .   \\_,!,_/   ,
+                            `.,'     `.,'
+                             /         \\
+             DAY PHASE  ~ -- :         : -- ~
+                             \\         /
+                            ,'`._   _.'`.
+                           '   / `!` \\   `
+                              ;   :   ;  hjw""");
     }
 }

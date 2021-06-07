@@ -27,29 +27,48 @@ public class ChatServer {
                 newUser.start();
             }
             while (true) {
-                System.out.println(userNames.size());
                 if (userNames.size() == 10)
                     break;
+                else {
+                }
             }
             for (int i = 0; i < 3; i++) {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                sleep(2000);
                 broadcast("Game is about to start ...", null);
             }
+            setRoles();
             broadcast("NIGHT TIME", null);
-            notifyRole("GOD FATHER","***You are the god father, the true leader" +
-                    "\n of mafias.***");
-            notifyRole("DOCTOR LECTRE", "***You are the Doctor lectre the savior of mafias.***");
-            notifyRole("MAFIA","***You are the normal mafia, but it doesnt mean that you are not necessary." +
-                    "***");
+            announeRoles();
+            sleep(5000);
+            broadcast("DAY TIME", null);
 
         } catch (IOException ex) {
             System.out.println("Error in the server: " + ex.getMessage());
             ex.printStackTrace();
         }
+    }
+
+    private void sleep(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void announeRoles() {
+        notifyRole("GOD FATHER", "***You are the god father, the true leader" +
+                "\n of mafias.***");
+        notifyRole("DOCTOR LECTRE", "***You are the Doctor lectre the savior of mafias.***");
+        notifyRole("MAFIA", "***You are the normal mafia, but it doesnt mean that you are not necessary." +
+                "***");
+        notifyRole("DOCTOR", "***You are the doctor of citizens. the hope and savior of them***");
+        notifyRole("DETECTIVE", "***You are the detective.***");
+        notifyRole("DIE HARD", "***You are the Die Hard.***");
+        notifyRole("SNIPER", "***You are the Sniper.***");
+        notifyRole("MAYOR", "***You are the Mayor.***");
+        notifyRole("PSYCHOLOGIST", "***You are the Psychologist.***");
+        notifyRole("CITIZEN", "***You are the normal Citizen.***");
     }
 
     public static void main(String[] args) {
@@ -100,33 +119,13 @@ public class ChatServer {
     private void setRoles() {
         Set<UserThread> userThreads1 = new HashSet<>(userThreads);
         UserThread randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        randomUserThread.setRole("GOD FATHER");
-        userThreads1.remove(randomUserThread);
-        randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        randomUserThread.setRole("MAFIA");
-        userThreads1.remove(randomUserThread);
-        randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        randomUserThread.setRole("DOCTOR LECTRE");
-        userThreads1.remove(randomUserThread);
-        randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        randomUserThread.setRole("CITIZEN");
-        userThreads1.remove(randomUserThread);
-        randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        randomUserThread.setRole("DOCTOR");
-        userThreads1.remove(randomUserThread);
-        randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        randomUserThread.setRole("DETECTIVE");
-        userThreads1.remove(randomUserThread);
-        randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        randomUserThread.setRole("SNIPER");
-        userThreads1.remove(randomUserThread);
-        randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        randomUserThread.setRole("MAYOR");
-        userThreads1.remove(randomUserThread);
-        randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        randomUserThread.setRole("DIE HARD");
-        userThreads1.remove(randomUserThread);
-        randomUserThread = randomThread(userThreads1.size(), userThreads1);
+        for (String s : Arrays.asList("GOD FATHER", "MAFIA", "DOCTOR LECTRE", "CITIZEN", "DOCTOR", "DETECTIVE", "SNIPER", "MAYOR", "DIE HARD")) {
+            assert randomUserThread != null;
+            randomUserThread.setRole(s);
+            userThreads1.remove(randomUserThread);
+            randomUserThread = randomThread(userThreads1.size(), userThreads1);
+        }
+        assert randomUserThread != null;
         randomUserThread.setRole("PSYCHOLOGIST");
         userThreads1.remove(randomUserThread);
 
