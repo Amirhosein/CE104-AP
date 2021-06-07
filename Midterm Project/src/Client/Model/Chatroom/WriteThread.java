@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import Client.Model.Chatroom.ChatClient;
 
 /**
  * @author Amir Iravanimanesh
@@ -32,10 +33,7 @@ public class WriteThread extends Thread {
 
         Console console = System.console();
 
-        String userName = console.readLine("\nEnter your name: ");
-        client.setUserName(userName);
-        writer.println(userName);
-
+        String userName = client.getUserName();
         String text;
 
         do {

@@ -58,10 +58,8 @@ public class Connection {
                 sockets.add(client);
                 count++;
             }
-            System.out.println(count);
             while (true)
                 if (readycount == count) {
-                    System.out.println("12333");
                     broadcast("chatroom");
                     break;
                 }else System.out.println("KIR");
@@ -83,7 +81,6 @@ public class Connection {
     // ClientHandler class
     private static class ClientHandler implements Runnable {
         private final Socket clientSocket;
-        private String username;
 
         // Constructor
         public ClientHandler(Socket socket) {
@@ -108,7 +105,6 @@ public class Connection {
                     Player player;
                     if ((player = Player.register(line)) != null) {
                         out.println("Registered successfully");
-                        username = line;
                         Connection.playerHashMap.put(clientSocket, player);
                         System.out.println(clientSocket + " :" + player.getUsername());
                         readycount++;
@@ -122,17 +118,6 @@ public class Connection {
 
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    if (out != null) {
-                        out.close();
-                    }
-                    if (in != null) {
-                        in.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         }
     }

@@ -1,26 +1,20 @@
-package Server.Model.Chatroom;
-
-import Server.Controller.Connection;
+package Server;
 
 import java.io.*;
 import java.net.Socket;
 
 /**
  * @author Amir Iravanimanesh
- * @date 6/6/2021
+ * @date 6/7/2021
  */
 public class UserThread extends Thread {
-    private final Socket socket;
-    private final ChatServer server;
+    private Socket socket;
+    private ChatServer server;
     private PrintWriter writer;
-    private final String userName;
 
     public UserThread(Socket socket, ChatServer server) {
         this.socket = socket;
         this.server = server;
-        System.out.println(socket);
-        userName = Connection.playerHashMap.get(socket).getUsername();
-        server.addUserName(userName);
     }
 
     public void run() {
@@ -32,6 +26,9 @@ public class UserThread extends Thread {
             writer = new PrintWriter(output, true);
 
             printUsers();
+
+            String userName = reader.readLine();
+            server.addUserName(userName);
 
             String serverMessage = "New user connected: " + userName;
             server.broadcast(serverMessage, this);
