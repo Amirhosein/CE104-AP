@@ -14,6 +14,7 @@ public class ChatClient {
     private String userName;
     private ReadThread readThread;
     private WriteThread writeThread;
+    public  boolean type = true;
 
     public ChatClient(String hostname, int port) {
         this.hostname = hostname;
@@ -59,7 +60,7 @@ public class ChatClient {
     }
 
     void nightPhase() {
-        writeThread.stop();
+        type = false;
         System.out.println("""
                                  _.._
                                .' .-'`
@@ -71,7 +72,7 @@ public class ChatClient {
     }
 
     void dayPhase() {
-        writeThread.start();
+        type = true;
         System.out.println("""
                               ;   :   ;
                            .   \\_,!,_/   ,
@@ -81,6 +82,6 @@ public class ChatClient {
                              \\         /
                             ,'`._   _.'`.
                            '   / `!` \\   `
-                              ;   :   ;  hjw""");
+                              ;   :   ;  """);
     }
 }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Scanner;
 
 /**
  * @author Amir Iravanimanesh
@@ -30,25 +31,37 @@ public class WriteThread extends Thread {
 
     public void run() {
 
-        Console console = System.console();
-
-        String userName = console.readLine("\nEnter your name: ");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\nEnter your name: ");
+        String userName = scanner.nextLine();
         client.setUserName(userName);
         writer.println(userName);
 
         String text;
+        while (true) {
+            sleep(2000);
+            if (client.type) {
+                do {
+                    text = scanner.nextLine();
+                    writer.println(text);
 
-        do {
-            text = console.readLine();
-            writer.println(text);
-
-        } while (!text.equals("bye"));
-
+                } while (!text.equals("bye"));
+                break;
+            }
+        }
         try {
             socket.close();
         } catch (IOException ex) {
 
             System.out.println("Error writing to server: " + ex.getMessage());
+        }
+    }
+
+    private void sleep(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

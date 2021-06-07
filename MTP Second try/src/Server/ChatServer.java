@@ -30,6 +30,7 @@ public class ChatServer {
                 if (userNames.size() == 10)
                     break;
                 else {
+                    sleep(2000);
                 }
             }
             for (int i = 0; i < 3; i++) {

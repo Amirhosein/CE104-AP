@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 introduction night test.">
+    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 introduction night finalize.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Client/ChatClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Client/ChatClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Client/ReadThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Client/ReadThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Client/WriteThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Client/WriteThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Server/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Server/ChatServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ChatClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ReadThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ReadThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/WriteThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/WriteThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ChatServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +45,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.Client (1)">
+  <component name="RunManager" selected="Multirun.Unnamed">
     <configuration name="Client (10)" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
       <module name="MTP Second try" />
@@ -131,7 +134,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="Multirun" singleton="false" separateTabs="false" reuseTabsWithFailures="true" startOneByOne="false" markFailedProcess="true" hideSuccessProcess="false" delayTime="0.1">
+    <configuration name="Unnamed" type="Multirun" separateTabs="false" reuseTabsWithFailures="true" startOneByOne="true" markFailedProcess="true" hideSuccessProcess="false" delayTime="0.2">
       <runConfiguration name="Server" type="Application" />
       <runConfiguration name="Client (1)" type="Application" />
       <runConfiguration name="Client (2)" type="Application" />
@@ -168,7 +171,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1623048948676</updated>
-      <workItem from="1623048950196" duration="13950000" />
+      <workItem from="1623048950196" duration="17787000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
@@ -205,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623076978439</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="MTP2 introduction night finalize.">
+      <created>1623082315052</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1623082315052</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,6 +239,7 @@
     <MESSAGE value="MTP2 entering night phase" />
     <MESSAGE value="MTP2 introduction night." />
     <MESSAGE value="MTP2 introduction night test." />
-    <option name="LAST_COMMIT_MESSAGE" value="MTP2 introduction night test." />
+    <MESSAGE value="MTP2 introduction night finalize." />
+    <option name="LAST_COMMIT_MESSAGE" value="MTP2 introduction night finalize." />
   </component>
 </project>
