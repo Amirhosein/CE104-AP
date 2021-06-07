@@ -39,7 +39,7 @@ public class WriteThread extends Thread {
         String text;
 
         do {
-            text = console.readLine("[" + userName + "]: ");
+            text = console.readLine();
             writer.println(text);
 
         } while (!text.equals("bye"));

@@ -9,15 +9,11 @@ import java.util.*;
  * @date 6/7/2021
  */
 public class ChatServer {
-    private int port;
-    private Set<String> userNames = new HashSet<>();
-    private Set<UserThread> userThreads = new HashSet<>();
-
-    public ChatServer(int port) {
-        this.port = port;
-    }
+    private final List<String> userNames = new ArrayList<>();
+    private final Set<UserThread> userThreads = new HashSet<>();
 
     public void execute() {
+        int port = 6000;
         try (ServerSocket serverSocket = new ServerSocket(port)) {
 
             System.out.println("Chat Server is listening on port " + port);
@@ -39,14 +35,7 @@ public class ChatServer {
     }
 
     public static void main(String[] args) {
-        if (args.length < 1) {
-            System.out.println("Syntax: java ChatServer <port-number>");
-            System.exit(0);
-        }
-
-        int port = Integer.parseInt(args[0]);
-
-        ChatServer server = new ChatServer(port);
+        ChatServer server = new ChatServer();
         server.execute();
     }
 
@@ -79,7 +68,7 @@ public class ChatServer {
         }
     }
 
-    Set<String> getUserNames() {
+    List<String> getUserNames() {
         return this.userNames;
     }
 

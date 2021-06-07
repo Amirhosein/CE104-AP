@@ -2,15 +2,18 @@ package Server;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Amir Iravanimanesh
  * @date 6/7/2021
  */
 public class UserThread extends Thread {
-    private Socket socket;
-    private ChatServer server;
+    private final Socket socket;
+    private final ChatServer server;
     private PrintWriter writer;
+    private String userName;
 
     public UserThread(Socket socket, ChatServer server) {
         this.socket = socket;
@@ -26,10 +29,16 @@ public class UserThread extends Thread {
             writer = new PrintWriter(output, true);
 
             printUsers();
-
-            String userName = reader.readLine();
-            server.addUserName(userName);
-
+            while (true) {
+                userName = reader.readLine();
+                if (isDuplicate(userName))
+                    sendMessage("DUPLICATE-USERNAME");
+                else {
+                    sendMessage("USERNAME-ACCEPTED");
+                    server.addUserName(userName);
+                    break;
+                }
+            }
             String serverMessage = "New user connected: " + userName;
             server.broadcast(serverMessage, this);
 
@@ -38,7 +47,7 @@ public class UserThread extends Thread {
             do {
                 clientMessage = reader.readLine();
                 serverMessage = "[" + userName + "]: " + clientMessage;
-                server.broadcast(serverMessage, this);
+                server.broadcast(serverMessage, null);
 
             } while (!clientMessage.equals("bye"));
 
@@ -70,5 +79,13 @@ public class UserThread extends Thread {
      */
     void sendMessage(String message) {
         writer.println(message);
+    }
+
+    boolean isDuplicate(String userName) {
+        List<String> usernames = server.getUserNames();
+        for (String string : usernames)
+            if (string.equalsIgnoreCase(userName))
+                return true;
+        return false;
     }
 }
