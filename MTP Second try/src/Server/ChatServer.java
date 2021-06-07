@@ -18,15 +18,15 @@ public class ChatServer {
 
             System.out.println("Chat Server is listening on port " + port);
 
-            while (true) {
+            while (userNames.size() < 2) {
                 Socket socket = serverSocket.accept();
                 System.out.println("New user connected");
 
                 UserThread newUser = new UserThread(socket, this);
                 userThreads.add(newUser);
                 newUser.start();
-
             }
+
 
         } catch (IOException ex) {
             System.out.println("Error in the server: " + ex.getMessage());
