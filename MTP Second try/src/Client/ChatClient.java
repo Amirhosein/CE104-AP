@@ -1,7 +1,6 @@
 package Client;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -10,8 +9,8 @@ import java.net.UnknownHostException;
  * @date 6/7/2021
  */
 public class ChatClient {
-    private String hostname;
-    private int port;
+    private final String hostname;
+    private final int port;
     private String userName;
     private ReadThread readThread;
     private WriteThread writeThread;

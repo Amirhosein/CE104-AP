@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 chatroom update">
+    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 entering night phase">
+      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Client/ChatClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Client/ChatClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Client/ReadThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Client/ReadThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Server/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Server/ChatServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Server/UserThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Server/UserThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ChatClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ReadThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ReadThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/UserThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/UserThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +45,86 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Client (1)">
+    <configuration name="Client (10)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client (1)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client (2)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client (3)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client (4)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client (5)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client (6)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client (7)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client (8)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client (9)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Client.ChatClient" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Server.ChatServer" />
+      <module name="MTP Second try" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -55,6 +136,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="Multirun" singleton="false" separateTabs="false" reuseTabsWithFailures="true" startOneByOne="false" markFailedProcess="true" hideSuccessProcess="false" delayTime="0.1">
+      <runConfiguration name="Server" type="Application" />
+      <runConfiguration name="Client (1)" type="Application" />
+      <runConfiguration name="Client (2)" type="Application" />
+      <runConfiguration name="Client (3)" type="Application" />
+      <runConfiguration name="Client (4)" type="Application" />
+      <runConfiguration name="Client (5)" type="Application" />
+      <runConfiguration name="Client (6)" type="Application" />
+      <runConfiguration name="Client (7)" type="Application" />
+      <runConfiguration name="Client (8)" type="Application" />
+      <runConfiguration name="Client (9)" type="Application" />
+      <runConfiguration name="Client (10)" type="Application" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Client (1)" />
+      <item itemvalue="Application.Client (2)" />
+      <item itemvalue="Application.Client (3)" />
+      <item itemvalue="Application.Client (4)" />
+      <item itemvalue="Application.Client (5)" />
+      <item itemvalue="Application.Client (6)" />
+      <item itemvalue="Application.Client (7)" />
+      <item itemvalue="Application.Client (8)" />
+      <item itemvalue="Application.Client (9)" />
+      <item itemvalue="Application.Client (10)" />
+      <item itemvalue="Multirun.Unnamed" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -64,7 +173,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1623048948676</updated>
-      <workItem from="1623048950196" duration="3540000" />
+      <workItem from="1623048950196" duration="10159000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
@@ -87,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623050843358</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="MTP2 entering night phase">
+      <created>1623052659790</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1623052659790</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +224,7 @@
     <MESSAGE value="MTP2 chatroom" />
     <MESSAGE value="MTP2 chatroom done" />
     <MESSAGE value="MTP2 chatroom update" />
-    <option name="LAST_COMMIT_MESSAGE" value="MTP2 chatroom update" />
+    <MESSAGE value="MTP2 entering night phase" />
+    <option name="LAST_COMMIT_MESSAGE" value="MTP2 entering night phase" />
   </component>
 </project>

@@ -14,6 +14,7 @@ public class UserThread extends Thread {
     private final ChatServer server;
     private PrintWriter writer;
     private String userName;
+    private String role;
 
     public UserThread(Socket socket, ChatServer server) {
         this.socket = socket;
@@ -87,5 +88,13 @@ public class UserThread extends Thread {
             if (string.equalsIgnoreCase(userName))
                 return true;
         return false;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
