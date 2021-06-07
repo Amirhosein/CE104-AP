@@ -1,6 +1,7 @@
 package Client;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -12,6 +13,8 @@ public class ChatClient {
     private String hostname;
     private int port;
     private String userName;
+    private ReadThread readThread;
+    private WriteThread writeThread;
 
     public ChatClient(String hostname, int port) {
         this.hostname = hostname;
@@ -24,8 +27,11 @@ public class ChatClient {
 
             System.out.println("Connected to the chat server");
 
-            new ReadThread(socket, this).start();
-            new WriteThread(socket, this).start();
+            readThread = new ReadThread(socket, this);
+            writeThread = new WriteThread(socket, this);
+
+            readThread.start();
+            writeThread.start();
 
         } catch (UnknownHostException ex) {
             System.out.println("Server not found: " + ex.getMessage());
@@ -51,5 +57,17 @@ public class ChatClient {
 
         ChatClient client = new ChatClient(hostname, port);
         client.execute();
+    }
+
+    void nightPhase(){
+        writeThread.stop();
+        System.out.println("""
+                         _.._
+                       .' .-'`
+                      /  /
+        NIGHT PHASE  |  |
+                     \\  \\
+                       '._'-._
+                          ```""");
     }
 }

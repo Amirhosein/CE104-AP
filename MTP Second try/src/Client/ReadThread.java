@@ -33,6 +33,9 @@ public class ReadThread extends Thread {
             try {
                 String response = reader.readLine();
                 System.out.println("\n" + response);
+                if (response.equalsIgnoreCase("NIGHT TIME"))
+                    client.nightPhase();
+
             } catch (IOException ex) {
                 System.out.println("Error reading from server: " + ex.getMessage());
                 ex.printStackTrace();

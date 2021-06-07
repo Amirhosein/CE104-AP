@@ -18,7 +18,7 @@ public class ChatServer {
 
             System.out.println("Chat Server is listening on port " + port);
 
-            while (userNames.size() < 2) {
+            while (userThreads.size() < 2) {
                 Socket socket = serverSocket.accept();
                 System.out.println("New user connected");
 
@@ -26,6 +26,20 @@ public class ChatServer {
                 userThreads.add(newUser);
                 newUser.start();
             }
+            while (true) {
+                System.out.println(userNames.size());
+                if (userNames.size() == 2)
+                    break;
+            }
+            for (int i = 0; i < 3; i++) {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                broadcast("Game is about to start ...", null);
+            }
+            broadcast("NIGHT TIME", null);
 
 
         } catch (IOException ex) {
