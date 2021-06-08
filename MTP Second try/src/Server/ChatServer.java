@@ -39,9 +39,12 @@ public class ChatServer {
             }
             setRoles();
             broadcast("NIGHT TIME", null);
-            announeRoles();
+            announceRoles();
             sleep(5000);
             broadcast("DAY TIME", null);
+            sleep(10000);
+            broadcast("NIGHT TIME", null);
+            sleep(30000);
 
         } catch (IOException ex) {
             System.out.println("Error in the server: " + ex.getMessage());
@@ -57,12 +60,20 @@ public class ChatServer {
         }
     }
 
-    private void announeRoles() {
+    private void announceRoles() {
         notifyRole("GOD FATHER", "***You are the god father, the true leader" +
-                "\n of mafias.***");
-        notifyRole("DOCTOR LECTRE", "***You are the Doctor lectre the savior of mafias.***");
+                "of mafias.***" +
+                "\nNORMAL MAFIA: " +
+                getUsernameByRole("MAFIA") +
+                "\nDOCTOR LECTRE: " + getUsernameByRole("DOCTOR LECTRE")
+        );
+        notifyRole("DOCTOR LECTRE", "***You are the Doctor lectre the savior of mafias.***" +
+                "\nNORMAL MAFIA: " + getUsernameByRole("MAFIA")+
+                "\nGOD FATHER: " + getUsernameByRole("GOD FATHER"));
         notifyRole("MAFIA", "***You are the normal mafia, but it doesnt mean that you are not necessary." +
-                "***");
+                "***" +
+                "\nGODFATHER: " + getUsernameByRole("GOD FATHER")+
+                "\nDOCTOR LECTRE: " + getUsernameByRole("DOCTOR LECTRE"));
         notifyRole("DOCTOR", "***You are the doctor of citizens. the hope and savior of them***");
         notifyRole("DETECTIVE", "***You are the detective.***");
         notifyRole("DIE HARD", "***You are the Die Hard.***");
@@ -150,6 +161,13 @@ public class ChatServer {
             if (userThread.getRole().equalsIgnoreCase(role))
                 userThread.sendMessage(message);
         }
+    }
+
+    String getUsernameByRole(String role) {
+        for (UserThread userThread : userThreads)
+            if (userThread.getRole().equalsIgnoreCase(role))
+                return role;
+        return null;
     }
 
 }

@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Client/WriteThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Client/WriteThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Server/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Server/ChatServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ChatClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ReadThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ReadThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/WriteThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/WriteThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ChatServer.java" afterDir="false" />
     </list>
@@ -123,17 +124,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Unnamed" type="Multirun" separateTabs="false" reuseTabsWithFailures="true" startOneByOne="true" markFailedProcess="true" hideSuccessProcess="false" delayTime="0.2">
       <runConfiguration name="Server" type="Application" />
       <runConfiguration name="Client (1)" type="Application" />
@@ -172,6 +162,7 @@
       <option name="presentableId" value="Default" />
       <updated>1623048948676</updated>
       <workItem from="1623048950196" duration="17787000" />
+      <workItem from="1623168706976" duration="3998000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
@@ -231,6 +222,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="MTP2 chatroom" />

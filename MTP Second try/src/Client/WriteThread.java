@@ -38,17 +38,12 @@ public class WriteThread extends Thread {
         writer.println(userName);
 
         String text;
-        while (true) {
-            sleep(2000);
-            if (client.type) {
-                do {
-                    text = scanner.nextLine();
-                    writer.println(text);
+        do {
+            text = scanner.nextLine();
+            if (ChatClient.type)
+                writer.println(text);
 
-                } while (!text.equals("bye"));
-                break;
-            }
-        }
+        } while (!text.equals("bye"));
         try {
             socket.close();
         } catch (IOException ex) {

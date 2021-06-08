@@ -37,6 +37,7 @@ public class ReadThread extends Thread {
                     continue;
                 }else if (response.equalsIgnoreCase("DAY TIME")){
                     client.dayPhase();
+                    continue;
                 }
                 System.out.println("\n" + response);
 

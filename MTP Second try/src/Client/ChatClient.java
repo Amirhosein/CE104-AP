@@ -14,7 +14,7 @@ public class ChatClient {
     private String userName;
     private ReadThread readThread;
     private WriteThread writeThread;
-    public  boolean type = true;
+    public  static boolean type = true;
 
     public ChatClient(String hostname, int port) {
         this.hostname = hostname;
