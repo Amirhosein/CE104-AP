@@ -15,6 +15,7 @@ public class UserThread extends Thread {
     private PrintWriter writer;
     private String userName;
     private String role;
+    private boolean isAlive = true;
 
     public UserThread(Socket socket, ChatServer server) {
         this.socket = socket;
@@ -96,5 +97,17 @@ public class UserThread extends Thread {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean userIsAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 }

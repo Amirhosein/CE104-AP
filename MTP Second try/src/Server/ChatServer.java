@@ -11,6 +11,7 @@ import java.util.*;
 public class ChatServer {
     private final List<String> userNames = new ArrayList<>();
     private final Set<UserThread> userThreads = new HashSet<>();
+    private boolean isVoting = false;
 
     public void execute() {
         int port = 6000;
@@ -42,9 +43,9 @@ public class ChatServer {
             announceRoles();
             sleep(5000);
             broadcast("DAY TIME", null);
-            sleep(10000);
+            showAliveUsers();
+            sleep(20000);
             broadcast("NIGHT TIME", null);
-            sleep(30000);
 
         } catch (IOException ex) {
             System.out.println("Error in the server: " + ex.getMessage());
@@ -68,11 +69,11 @@ public class ChatServer {
                 "\nDOCTOR LECTRE: " + getUsernameByRole("DOCTOR LECTRE")
         );
         notifyRole("DOCTOR LECTRE", "***You are the Doctor lectre the savior of mafias.***" +
-                "\nNORMAL MAFIA: " + getUsernameByRole("MAFIA")+
+                "\nNORMAL MAFIA: " + getUsernameByRole("MAFIA") +
                 "\nGOD FATHER: " + getUsernameByRole("GOD FATHER"));
         notifyRole("MAFIA", "***You are the normal mafia, but it doesnt mean that you are not necessary." +
                 "***" +
-                "\nGODFATHER: " + getUsernameByRole("GOD FATHER")+
+                "\nGODFATHER: " + getUsernameByRole("GOD FATHER") +
                 "\nDOCTOR LECTRE: " + getUsernameByRole("DOCTOR LECTRE"));
         notifyRole("DOCTOR", "***You are the doctor of citizens. the hope and savior of them***");
         notifyRole("DETECTIVE", "***You are the detective.***");
@@ -169,5 +170,13 @@ public class ChatServer {
                 return role;
         return null;
     }
+
+    void showAliveUsers() {
+        broadcast("ALIVE USERS: ",null);
+        for (UserThread userThread : userThreads)
+            if (userThread.userIsAlive())
+                broadcast("{" + userThread.getUserName()+ "}", null);
+    }
+
 
 }
