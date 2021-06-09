@@ -66,7 +66,7 @@ public class ChatClient {
                                .' .-'`
                               /  /
                 NIGHT PHASE  |  |
-                              \\ \\
+                              \\  \\
                                '._'-._
                                   ```""");
     }
@@ -82,6 +82,6 @@ public class ChatClient {
                              \\         /
                             ,'`._   _.'`.
                            '   / `!` \\   `
-                              ;   :   ;  """);
+                              ;   :   ;""");
     }
 }
