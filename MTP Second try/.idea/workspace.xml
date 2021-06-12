@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 introduction night finalize.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ChatServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/UserThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/UserThread.java" afterDir="false" />
-    </list>
+    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 show alive users." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,7 +153,7 @@
       <updated>1623048948676</updated>
       <workItem from="1623048950196" duration="17787000" />
       <workItem from="1623168706976" duration="4736000" />
-      <workItem from="1623216486758" duration="2268000" />
+      <workItem from="1623216486758" duration="2920000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
@@ -208,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623177671216</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="MTP2 show alive users.">
+      <created>1623252525849</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1623252525849</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +237,7 @@
     <MESSAGE value="MTP2 introduction night." />
     <MESSAGE value="MTP2 introduction night test." />
     <MESSAGE value="MTP2 introduction night finalize." />
-    <option name="LAST_COMMIT_MESSAGE" value="MTP2 introduction night finalize." />
+    <MESSAGE value="MTP2 show alive users." />
+    <option name="LAST_COMMIT_MESSAGE" value="MTP2 show alive users." />
   </component>
 </project>
