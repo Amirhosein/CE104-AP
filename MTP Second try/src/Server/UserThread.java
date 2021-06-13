@@ -1,5 +1,7 @@
 package Server;
 
+import Client.WriteThread;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -49,7 +51,26 @@ public class UserThread extends Thread {
             do {
                 clientMessage = reader.readLine();
                 serverMessage = "[" + userName + "]: " + clientMessage;
-                server.broadcast(serverMessage, null);
+                if (ChatServer.state.equalsIgnoreCase("VOTING")){
+                    boolean correct = false;
+                    for (String user : ChatServer.userNames){
+                        if (clientMessage.equalsIgnoreCase(user)){
+                            checkPreviousVote();
+                            ArrayList<String> current = ChatServer.userAndVotes.get(user);
+                            current.add(userName);
+                            ChatServer.userAndVotes.put(user,current);
+                            correct = true;
+                            break;
+                        }
+                    }
+                    if (!correct){
+                        sendMessage("Invalid username, please try again.");
+                    }
+                }
+
+                else {
+                    server.broadcast(serverMessage, null);
+                }
 
             } while (!clientMessage.equals("bye"));
 
@@ -62,6 +83,12 @@ public class UserThread extends Thread {
         } catch (IOException ex) {
             System.out.println("Error in UserThread: " + ex.getMessage());
             ex.printStackTrace();
+        }
+    }
+
+    private void checkPreviousVote() {
+        for (String string : ChatServer.userNames){
+            ChatServer.userAndVotes.get(string).remove(userName);
         }
     }
 

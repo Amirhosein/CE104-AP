@@ -9,9 +9,10 @@ import java.util.*;
  * @date 6/7/2021
  */
 public class ChatServer {
-    private final List<String> userNames = new ArrayList<>();
+    public static final List<String> userNames = new ArrayList<>();
     private final Set<UserThread> userThreads = new HashSet<>();
-    private boolean isVoting = false;
+    public static HashMap<String, ArrayList<String>> userAndVotes;
+    public static String state = "NORMAL";
 
     public void execute() {
         int port = 6000;
@@ -39,18 +40,26 @@ public class ChatServer {
                 broadcast("Game is about to start ...", null);
             }
             setRoles();
-            broadcast("NIGHT TIME", null);
-            announceRoles();
-            sleep(5000);
-            broadcast("DAY TIME", null);
-            showAliveUsers();
-            sleep(20000);
-            broadcast("NIGHT TIME", null);
-
+            introductionNightPhase();
+            dayPhase();
+            votingPhase();
+            dayPhase();
         } catch (IOException ex) {
             System.out.println("Error in the server: " + ex.getMessage());
             ex.printStackTrace();
         }
+    }
+
+    private void introductionNightPhase() {
+        broadcast("NIGHT TIME", null);
+        announceRoles();
+        sleep(5000);
+    }
+
+    private void dayPhase() {
+        broadcast("DAY TIME", null);
+        showAliveUsers();
+        sleep(20000);
     }
 
     private void sleep(int time) {
@@ -172,10 +181,37 @@ public class ChatServer {
     }
 
     void showAliveUsers() {
-        broadcast("ALIVE USERS: ",null);
+        broadcast("ALIVE USERS: ", null);
         for (UserThread userThread : userThreads)
             if (userThread.userIsAlive())
-                broadcast("{" + userThread.getUserName()+ "}", null);
+                broadcast("{" + userThread.getUserName() + "}", null);
+    }
+
+    void votingPhase() {
+        state = "VOTING";
+        userAndVotes = new HashMap<>();
+        for (String string : userNames) {
+            userAndVotes.put(string, new ArrayList<>());
+        }
+        broadcast("VOTING", null);
+        while (true) {
+            sleep(1500);
+            int sum = 0;
+            for (String user : userNames) {
+                sum += userAndVotes.get(user).size();
+            }
+            if (sum == userNames.size())
+                break;
+        }
+        String result = " ";
+        for (String user : userNames) {
+            result = result.concat("[" + user + "] :");
+            for (String votedBy : userAndVotes.get(user)) {
+                result = result.concat("{" + votedBy + "} | ");
+            }
+            result = result.concat("Count = " + userAndVotes.get(user).size());
+        }
+        broadcast(result, null);
     }
 
 

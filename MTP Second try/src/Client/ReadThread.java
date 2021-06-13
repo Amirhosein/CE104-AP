@@ -38,8 +38,10 @@ public class ReadThread extends Thread {
                 }else if (response.equalsIgnoreCase("DAY TIME")){
                     client.dayPhase();
                     continue;
+                }else if (response.equalsIgnoreCase("VOTING")){
+                    client.votingPhase();
                 }
-                System.out.println("\n" + response);
+                System.out.println("\n" + response.trim());
 
             } catch (IOException ex) {
                 System.out.println("Error reading from server: " + ex.getMessage());

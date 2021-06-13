@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @date 6/7/2021
  */
 public class WriteThread extends Thread {
-    private PrintWriter writer;
+    public static PrintWriter writer;
     private final Socket socket;
     private final ChatClient client;
 
@@ -58,5 +58,9 @@ public class WriteThread extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void sendToServer(String string){
+        writer.println(string);
     }
 }

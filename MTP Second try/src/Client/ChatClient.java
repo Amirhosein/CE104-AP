@@ -3,6 +3,8 @@ package Client;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * @author Amir Iravanimanesh
@@ -14,7 +16,8 @@ public class ChatClient {
     private String userName;
     private ReadThread readThread;
     private WriteThread writeThread;
-    public  static boolean type = true;
+    public static boolean type = true;
+    public ArrayList<String> users = new ArrayList<>();
 
     public ChatClient(String hostname, int port) {
         this.hostname = hostname;
@@ -74,14 +77,18 @@ public class ChatClient {
     void dayPhase() {
         type = true;
         System.out.println("""
-                              ;   :   ;
-                           .   \\_,!,_/   ,
-                            `.,'     `.,'
-                             /         \\
-             DAY PHASE  ~ -- :         : -- ~
-                             \\         /
-                            ,'`._   _.'`.
-                           '   / `!` \\   `
-                              ;   :   ;""");
+                                 ;   :   ;
+                              .   \\_,!,_/   ,
+                               `.,'     `.,'
+                                /         \\
+                DAY PHASE  ~ -- :         : -- ~
+                                \\         /
+                               ,'`._   _.'`.
+                              '   / `!` \\   `
+                                 ;   :   ;""");
+    }
+
+    void votingPhase() {
+        System.out.print("Please choose user to death: ");
     }
 }
