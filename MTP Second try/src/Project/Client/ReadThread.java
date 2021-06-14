@@ -40,12 +40,12 @@ public class ReadThread extends Thread {
                     continue;
                 }else if (response.equalsIgnoreCase("VOTING")){
                     client.votingPhase();
-                }else if (response.equalsIgnoreCase("SPEAK")){
+                }else if (response.contains("SPEAK")){
                     ChatClient.type = true;
                 }else if (response.equalsIgnoreCase("MUTE")){
                     ChatClient.type = false;
                 }
-                System.out.println("\n" + response.trim());
+                System.out.println("\n" + response);
 
             } catch (IOException ex) {
                 System.out.println("Error reading from server: " + ex.getMessage());

@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Scanner;
+
+import Project.Console.ConsoleColors;
 
 /**
  * @author Amir Iravanimanesh
@@ -64,6 +65,7 @@ public class ChatClient {
 
     void nightPhase() {
         type = false;
+        System.out.print(ConsoleColors.WHITE_BOLD);
         System.out.println("""
                                  _.._
                                .' .-'`
@@ -72,10 +74,12 @@ public class ChatClient {
                               \\  \\
                                '._'-._
                                   ```""");
+        System.out.print(ConsoleColors.RESET);
     }
 
     void dayPhase() {
         type = true;
+        System.out.print(ConsoleColors.YELLOW_BRIGHT);
         System.out.println("""
                                  ;   :   ;
                               .   \\_,!,_/   ,
@@ -86,6 +90,7 @@ public class ChatClient {
                                ,'`._   _.'`.
                               '   / `!` \\   `
                                  ;   :   ;""");
+        System.out.print(ConsoleColors.RESET);
     }
 
     void votingPhase() {

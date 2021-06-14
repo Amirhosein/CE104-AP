@@ -1,6 +1,8 @@
 package Project.Server;
 
 
+import Project.Console.ConsoleColors;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -49,7 +51,7 @@ public class UserThread extends Thread {
 
             do {
                 clientMessage = reader.readLine();
-                serverMessage = "[" + userName + "]: " + clientMessage;
+                serverMessage = ConsoleColors.BLUE + "[" + userName + "]: " + clientMessage + ConsoleColors.RESET;
                 if (ChatServer.state.equalsIgnoreCase("VOTING")) {
                     boolean correct = false;
                     for (String user : ChatServer.userNames) {
@@ -73,8 +75,10 @@ public class UserThread extends Thread {
                     boolean correct = false;
                     for (String user : ChatServer.userNames) {
                         if (clientMessage.equalsIgnoreCase(user)) {
-                            server.killUser(user);
-                            server.broadcast(user + " died.", null, null);
+                            ChatServer.toBeSavedCitizen = user;
+                            server.notifyRole("MAFIA", ConsoleColors.RED_BOLD + "CHOSEN CITIZEN: " + user + ConsoleColors.RESET);
+                            server.notifyRole("DOCTOR LECTRE", ConsoleColors.RED_BOLD + "CHOSEN CITIZEN: " + user + ConsoleColors.RESET);
+                            server.notifyRole("GODFATHER", ConsoleColors.RED_BOLD + "CHOSEN CITIZEN: " + user + ConsoleColors.RESET);
                             correct = true;
                             break;
                         }
@@ -82,6 +86,19 @@ public class UserThread extends Thread {
                     if (!correct) {
                         sendMessage("Invalid username, please try again.");
                     } else ChatServer.state = "GODFATHER DONE";
+                } else if (ChatServer.state.equalsIgnoreCase("DOCTOR LECTRE") && role.equalsIgnoreCase("DOCTOR LECTRE")) {
+                    boolean correct = false;
+                    for (String user : ChatServer.userNames) {
+                        if (server.getRoleByUsername(user).equalsIgnoreCase("DOCTOR LECTRE") || server.getRoleByUsername(user).equalsIgnoreCase("GODFATHER")) {
+                            ChatServer.SavedMafia = user;
+                            server.notifyRole("DOCTOR LECTRE",ConsoleColors.GREEN_BOLD + "YOU HAVE COVERED: " + user + ConsoleColors.RESET);
+                            correct = true;
+                            break;
+                        }
+                    }
+                    if (!correct) {
+                        sendMessage("Invalid username, please try again.");
+                    } else ChatServer.state = "DOCTOR LECTRE DONE";
                 } else {
                     server.broadcast(serverMessage, null, null);
                 }

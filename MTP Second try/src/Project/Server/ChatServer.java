@@ -3,6 +3,7 @@ package Project.Server;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+
 import Project.Console.ConsoleColors;
 
 /**
@@ -15,6 +16,8 @@ public class ChatServer {
     public static HashMap<String, ArrayList<String>> userAndVotes;
     public static String state = "NORMAL";
     public static ArrayList<String> deadUsers = new ArrayList<>();
+    public static String toBeSavedCitizen;
+    public static String SavedMafia;
 
     public void execute() {
         int port = 6000;
@@ -61,13 +64,19 @@ public class ChatServer {
     private void nightPhase() {
         broadcast("NIGHT TIME", null, null);
         mafiaNight();
+        lectreNight();
+    }
+
+    private void lectreNight() {
+        state = "DOCTOR LECTRE";
+        notifyRole("DOCTOR LECTRE", "CHOOSE A MAFIA TO HEAL.");
     }
 
     private void mafiaNight() {
         state = "MAFIA";
-        notifyRole("GODFATHER", "SPEAK");
-        notifyRole("MAFIA", "SPEAK");
-        notifyRole("DOCTOR LECTRE", "SPEAK");
+        notifyRole("GODFATHER", "SPEAK: Discuss about who to be killed by GODFATHER");
+        notifyRole("MAFIA", "SPEAK: Discuss about who to be killed by GODFATHER");
+        notifyRole("DOCTOR LECTRE", "SPEAK: Discuss about who to be killed by GODFATHER");
         sleep(10000);
         state = "GODFATHER";
         showAliveUsers("GODFATHER");
@@ -95,22 +104,22 @@ public class ChatServer {
                 "of mafias.***" +
                 "\nNORMAL MAFIA: " +
                 getUsernameByRole("MAFIA") +
-                "\nDOCTOR LECTRE: " + getUsernameByRole("DOCTOR LECTRE" + ConsoleColors.RESET)
-        );
-        notifyRole("DOCTOR LECTRE",  ConsoleColors.YELLOW_BRIGHT + "***You are the Doctor lectre the savior of mafias.***" +
+                "\nDOCTOR LECTRE: " + getUsernameByRole("DOCTOR LECTRE") + ConsoleColors.RESET)
+        ;
+        notifyRole("DOCTOR LECTRE", ConsoleColors.YELLOW_BRIGHT + "***You are the Doctor lectre the savior of mafias.***" +
                 "\nNORMAL MAFIA: " + getUsernameByRole("MAFIA") +
                 "\nGODFATHER: " + getUsernameByRole("GODFATHER"));
-        notifyRole("MAFIA",  ConsoleColors.YELLOW_BRIGHT + "***You are the normal mafia, but it doesnt mean that you are not necessary." +
+        notifyRole("MAFIA", ConsoleColors.YELLOW_BRIGHT + "***You are the normal mafia, but it doesnt mean that you are not necessary." +
                 "***" +
                 "\nGODFATHER: " + getUsernameByRole("GODFATHER") +
                 "\nDOCTOR LECTRE: " + getUsernameByRole("DOCTOR LECTRE") + ConsoleColors.RESET);
-        notifyRole("DOCTOR",  ConsoleColors.YELLOW_BRIGHT + "***You are the doctor of citizens. the hope and savior of them***" + ConsoleColors.RESET);
-        notifyRole("DETECTIVE",  ConsoleColors.YELLOW_BRIGHT + "***You are the detective.***" + ConsoleColors.RESET);
-        notifyRole("DIE HARD",  ConsoleColors.YELLOW_BRIGHT + "***You are the Die Hard.***" + ConsoleColors.RESET);
-        notifyRole("SNIPER",  ConsoleColors.YELLOW_BRIGHT + "***You are the Sniper.***" + ConsoleColors.RESET);
-        notifyRole("MAYOR",  ConsoleColors.YELLOW_BRIGHT + "***You are the Mayor.***" + ConsoleColors.RESET);
-        notifyRole("PSYCHOLOGIST",  ConsoleColors.YELLOW_BRIGHT + "***You are the Psychologist.***" + ConsoleColors.RESET);
-        notifyRole("CITIZEN",  ConsoleColors.YELLOW_BRIGHT + "***You are the normal Citizen.***" + ConsoleColors.RESET);
+        notifyRole("DOCTOR", ConsoleColors.YELLOW_BRIGHT + "***You are the doctor of citizens. the hope and savior of them***" + ConsoleColors.RESET);
+        notifyRole("DETECTIVE", ConsoleColors.YELLOW_BRIGHT + "***You are the detective.***" + ConsoleColors.RESET);
+        notifyRole("DIE HARD", ConsoleColors.YELLOW_BRIGHT + "***You are the Die Hard.***" + ConsoleColors.RESET);
+        notifyRole("SNIPER", ConsoleColors.YELLOW_BRIGHT + "***You are the Sniper.***" + ConsoleColors.RESET);
+        notifyRole("MAYOR", ConsoleColors.YELLOW_BRIGHT + "***You are the Mayor.***" + ConsoleColors.RESET);
+        notifyRole("PSYCHOLOGIST", ConsoleColors.YELLOW_BRIGHT + "***You are the Psychologist.***" + ConsoleColors.RESET);
+        notifyRole("CITIZEN", ConsoleColors.YELLOW_BRIGHT + "***You are the normal Citizen.***" + ConsoleColors.RESET);
     }
 
     public static void main(String[] args) {
@@ -211,19 +220,28 @@ public class ChatServer {
         return null;
     }
 
+    String getRoleByUsername(String username) {
+        for (UserThread userThread : userThreads)
+            if (userThread.getUserName().equalsIgnoreCase(username))
+                return userThread.getRole();
+        return null;
+    }
+
     void showAliveUsers() {
-        String finalString = "Alive Users: ";
+        String finalString = ConsoleColors.GREEN_BOLD + "Alive Users: ";
         for (UserThread userThread : userThreads)
             if (userThread.userIsAlive())
                 finalString = finalString.concat("{" + userThread.getUserName() + "}");
+        finalString = finalString.concat(ConsoleColors.RESET);
         broadcast(finalString, null, null);
     }
 
     void showAliveUsers(String role) {
-        String finalString = "Alive Users: ";
+        String finalString = ConsoleColors.GREEN_BOLD + "Alive Users: ";
         for (UserThread userThread : userThreads)
             if (userThread.userIsAlive())
                 finalString = finalString.concat("{" + userThread.getUserName() + "}");
+        finalString = finalString.concat(ConsoleColors.RESET);
         notifyRole(role, finalString);
     }
 
@@ -269,7 +287,6 @@ public class ChatServer {
         if (count > 1) {
             result = result.concat("No one dies.\n");
         } else {
-            result = result.concat(dead + "died by users vote.\n");
             deadUsers.add(dead);
             killUser(dead);
         }
@@ -280,6 +297,8 @@ public class ChatServer {
         for (UserThread userThread : userThreads)
             if (userThread.getUserName().equalsIgnoreCase(username))
                 userThread.setAlive(false);
+        if (username != null)
+            broadcast(ConsoleColors.RED_BOLD + username + " died." + ConsoleColors.RESET, null, null);
     }
 
 
