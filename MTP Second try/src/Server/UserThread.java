@@ -70,7 +70,18 @@ public class UserThread extends Thread {
                     server.notifyRole("DOCTOR LECTRE", serverMessage);
                     server.notifyRole("GODFATHER", serverMessage);
                 } else if (ChatServer.state.equalsIgnoreCase("GODFATHER") && role.equalsIgnoreCase("GODFATHER")) {
-                    server.showAliveUsers("GODFATHER");
+                    boolean correct = false;
+                    for (String user : ChatServer.userNames) {
+                        if (clientMessage.equalsIgnoreCase(user)) {
+                            server.killUser(user);
+                            server.broadcast(user + " died.", null, null);
+                            correct = true;
+                            break;
+                        }
+                    }
+                    if (!correct) {
+                        sendMessage("Invalid username, please try again.");
+                    } else ChatServer.state = "GODFATHER DONE";
                 } else {
                     server.broadcast(serverMessage, null, null);
                 }

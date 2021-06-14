@@ -44,7 +44,7 @@ public class ChatServer {
             introductionNightPhase();
             dayPhase();
             votingPhase();
-            dayPhase();
+            nightPhase();
         } catch (IOException ex) {
             System.out.println("Error in the server: " + ex.getMessage());
             ex.printStackTrace();
@@ -59,7 +59,7 @@ public class ChatServer {
 
     private void nightPhase() {
         broadcast("NIGHT TIME", null, null);
-
+        mafiaNight();
     }
 
     private void mafiaNight() {
@@ -70,8 +70,9 @@ public class ChatServer {
         sleep(10000);
         state = "GODFATHER";
         showAliveUsers("GODFATHER");
-
-
+        do {
+            sleep(500);
+        } while (!state.equalsIgnoreCase("GODFATHER DONE"));
     }
 
     private void dayPhase() {
@@ -269,8 +270,15 @@ public class ChatServer {
         } else {
             result = result.concat(dead + "died by users vote.\n");
             deadUsers.add(dead);
+            killUser(dead);
         }
         broadcast(result, null, null);
+    }
+
+    public void killUser(String username) {
+        for (UserThread userThread : userThreads)
+            if (userThread.getUserName().equalsIgnoreCase(username))
+                userThread.setAlive(false);
     }
 
 
