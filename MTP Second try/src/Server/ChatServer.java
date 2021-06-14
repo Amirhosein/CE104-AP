@@ -13,6 +13,7 @@ public class ChatServer {
     private final Set<UserThread> userThreads = new HashSet<>();
     public static HashMap<String, ArrayList<String>> userAndVotes;
     public static String state = "NORMAL";
+    public static ArrayList<String> deadUsers = new ArrayList<>();
 
     public void execute() {
         int port = 6000;
@@ -37,7 +38,7 @@ public class ChatServer {
             }
             for (int i = 0; i < 3; i++) {
                 sleep(2000);
-                broadcast("Game is about to start ...", null);
+                broadcast("Game is about to start ...", null, null);
             }
             setRoles();
             introductionNightPhase();
@@ -51,13 +52,13 @@ public class ChatServer {
     }
 
     private void introductionNightPhase() {
-        broadcast("NIGHT TIME", null);
+        broadcast("NIGHT TIME", null, null);
         announceRoles();
         sleep(5000);
     }
 
     private void dayPhase() {
-        broadcast("DAY TIME", null);
+        broadcast("DAY TIME", null, null);
         showAliveUsers();
         sleep(20000);
     }
@@ -101,9 +102,20 @@ public class ChatServer {
     /**
      * Delivers a message from one user to others (broadcasting)
      */
-    void broadcast(String message, UserThread excludeUser) {
+    void broadcast(String message, UserThread userThread, ArrayList<String> dead) {
         for (UserThread aUser : userThreads) {
-            if (aUser != excludeUser) {
+            boolean check = true;
+            if (dead != null)
+                for (String string : dead) {
+                    if (aUser.getUserName().equalsIgnoreCase(string)) {
+                        check = false;
+                        break;
+                    }
+                }
+            if (aUser == userThread) {
+                check = false;
+            }
+            if (check) {
                 aUser.sendMessage(message);
             }
         }
@@ -128,14 +140,14 @@ public class ChatServer {
     }
 
     List<String> getUserNames() {
-        return this.userNames;
+        return userNames;
     }
 
     /**
      * Returns true if there are other users connected (not count the currently connected user)
      */
     boolean hasUsers() {
-        return !this.userNames.isEmpty();
+        return !userNames.isEmpty();
     }
 
     private void setRoles() {
@@ -176,15 +188,16 @@ public class ChatServer {
     String getUsernameByRole(String role) {
         for (UserThread userThread : userThreads)
             if (userThread.getRole().equalsIgnoreCase(role))
-                return role;
+                return userThread.getUserName();
         return null;
     }
 
     void showAliveUsers() {
-        broadcast("ALIVE USERS: ", null);
+        String finalString = "Alive Users: ";
         for (UserThread userThread : userThreads)
             if (userThread.userIsAlive())
-                broadcast("{" + userThread.getUserName() + "}", null);
+                finalString = finalString.concat("{" + userThread.getUserName() + "}");
+        broadcast(finalString, null, null);
     }
 
     void votingPhase() {
@@ -193,7 +206,8 @@ public class ChatServer {
         for (String string : userNames) {
             userAndVotes.put(string, new ArrayList<>());
         }
-        broadcast("VOTING", null);
+        userAndVotes.put("NONE", new ArrayList<>());
+        broadcast("VOTING", null, null);
         while (true) {
             sleep(1500);
             int sum = 0;
@@ -209,9 +223,29 @@ public class ChatServer {
             for (String votedBy : userAndVotes.get(user)) {
                 result = result.concat("{" + votedBy + "} | ");
             }
-            result = result.concat("Count = " + userAndVotes.get(user).size());
+            result = result.concat("Count = " + userAndVotes.get(user).size() + "\n");
         }
-        broadcast(result, null);
+        int max = 0;
+        String dead = "";
+        for (String string : userNames) {
+            if (userAndVotes.get(string).size() >= max) {
+                max = userAndVotes.get(string).size();
+                dead = string;
+            }
+        }
+        int count = 0;
+        for (String string : userNames) {
+            if (userAndVotes.get(string).size() == max) {
+                count++;
+            }
+        }
+        if (count > 1) {
+            result = result.concat("No one dies.\n");
+        } else {
+            result = result.concat(dead + "died by users vote.\n");
+            deadUsers.add(dead);
+        }
+        broadcast(result, null, null);
     }
 
 

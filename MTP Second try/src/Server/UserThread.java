@@ -1,6 +1,5 @@
 package Server;
 
-import Client.WriteThread;
 
 import java.io.*;
 import java.net.Socket;
@@ -44,7 +43,7 @@ public class UserThread extends Thread {
                 }
             }
             String serverMessage = "New user connected: " + userName;
-            server.broadcast(serverMessage, this);
+            server.broadcast(serverMessage, this, null);
 
             String clientMessage;
 
@@ -69,7 +68,7 @@ public class UserThread extends Thread {
                 }
 
                 else {
-                    server.broadcast(serverMessage, null);
+                    server.broadcast(serverMessage, null, null);
                 }
 
             } while (!clientMessage.equals("bye"));
@@ -78,7 +77,7 @@ public class UserThread extends Thread {
             socket.close();
 
             serverMessage = userName + " has quitted.";
-            server.broadcast(serverMessage, this);
+            server.broadcast(serverMessage, this, null);
 
         } catch (IOException ex) {
             System.out.println("Error in UserThread: " + ex.getMessage());

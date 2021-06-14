@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 show alive users.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ChatClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ReadThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ReadThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/WriteThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/WriteThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ChatServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/UserThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/UserThread.java" afterDir="false" />
     </list>
@@ -163,6 +160,8 @@
       <workItem from="1623216486758" duration="2920000" />
       <workItem from="1623478951426" duration="1228000" />
       <workItem from="1623568931878" duration="8253000" />
+      <workItem from="1623652095021" duration="387000" />
+      <workItem from="1623652501606" duration="7824000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
