@@ -89,8 +89,8 @@ public class UserThread extends Thread {
                 } else if (ChatServer.state.equalsIgnoreCase("DOCTOR LECTRE") && role.equalsIgnoreCase("DOCTOR LECTRE")) {
                     boolean correct = false;
                     for (String user : ChatServer.userNames) {
-                        if (server.getRoleByUsername(user).equalsIgnoreCase("DOCTOR LECTRE") || server.getRoleByUsername(user).equalsIgnoreCase("GODFATHER")) {
-                            ChatServer.SavedMafia = user;
+                        if (server.getRoleByUsername(clientMessage).equalsIgnoreCase("MAFIA") || server.getRoleByUsername(clientMessage).equalsIgnoreCase("GODFATHER")) {
+                            ChatServer.SavedMafia = clientMessage;
                             server.notifyRole("DOCTOR LECTRE",ConsoleColors.GREEN_BOLD + "YOU HAVE COVERED: " + user + ConsoleColors.RESET);
                             correct = true;
                             break;
