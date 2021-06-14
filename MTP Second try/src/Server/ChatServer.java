@@ -57,6 +57,23 @@ public class ChatServer {
         sleep(5000);
     }
 
+    private void nightPhase() {
+        broadcast("NIGHT TIME", null, null);
+
+    }
+
+    private void mafiaNight() {
+        state = "MAFIA";
+        notifyRole("GODFATHER", "SPEAK");
+        notifyRole("MAFIA", "SPEAK");
+        notifyRole("DOCTOR LECTRE", "SPEAK");
+        sleep(10000);
+        state = "GODFATHER";
+        showAliveUsers("GODFATHER");
+
+
+    }
+
     private void dayPhase() {
         broadcast("DAY TIME", null, null);
         showAliveUsers();
@@ -72,7 +89,7 @@ public class ChatServer {
     }
 
     private void announceRoles() {
-        notifyRole("GOD FATHER", "***You are the god father, the true leader" +
+        notifyRole("GODFATHER", "***You are the god father, the true leader" +
                 "of mafias.***" +
                 "\nNORMAL MAFIA: " +
                 getUsernameByRole("MAFIA") +
@@ -80,10 +97,10 @@ public class ChatServer {
         );
         notifyRole("DOCTOR LECTRE", "***You are the Doctor lectre the savior of mafias.***" +
                 "\nNORMAL MAFIA: " + getUsernameByRole("MAFIA") +
-                "\nGOD FATHER: " + getUsernameByRole("GOD FATHER"));
+                "\nGODFATHER: " + getUsernameByRole("GODFATHER"));
         notifyRole("MAFIA", "***You are the normal mafia, but it doesnt mean that you are not necessary." +
                 "***" +
-                "\nGODFATHER: " + getUsernameByRole("GOD FATHER") +
+                "\nGODFATHER: " + getUsernameByRole("GODFATHER") +
                 "\nDOCTOR LECTRE: " + getUsernameByRole("DOCTOR LECTRE"));
         notifyRole("DOCTOR", "***You are the doctor of citizens. the hope and savior of them***");
         notifyRole("DETECTIVE", "***You are the detective.***");
@@ -153,7 +170,7 @@ public class ChatServer {
     private void setRoles() {
         Set<UserThread> userThreads1 = new HashSet<>(userThreads);
         UserThread randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        for (String s : Arrays.asList("GOD FATHER", "MAFIA", "DOCTOR LECTRE", "CITIZEN", "DOCTOR", "DETECTIVE", "SNIPER", "MAYOR", "DIE HARD")) {
+        for (String s : Arrays.asList("GODFATHER", "MAFIA", "DOCTOR LECTRE", "CITIZEN", "DOCTOR", "DETECTIVE", "SNIPER", "MAYOR", "DIE HARD")) {
             assert randomUserThread != null;
             randomUserThread.setRole(s);
             userThreads1.remove(randomUserThread);
@@ -198,6 +215,14 @@ public class ChatServer {
             if (userThread.userIsAlive())
                 finalString = finalString.concat("{" + userThread.getUserName() + "}");
         broadcast(finalString, null, null);
+    }
+
+    void showAliveUsers(String role) {
+        String finalString = "Alive Users: ";
+        for (UserThread userThread : userThreads)
+            if (userThread.userIsAlive())
+                finalString = finalString.concat("{" + userThread.getUserName() + "}");
+        notifyRole(role, finalString);
     }
 
     void votingPhase() {

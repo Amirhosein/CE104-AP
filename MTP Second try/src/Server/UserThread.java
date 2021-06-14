@@ -50,24 +50,28 @@ public class UserThread extends Thread {
             do {
                 clientMessage = reader.readLine();
                 serverMessage = "[" + userName + "]: " + clientMessage;
-                if (ChatServer.state.equalsIgnoreCase("VOTING")){
+                if (ChatServer.state.equalsIgnoreCase("VOTING")) {
                     boolean correct = false;
-                    for (String user : ChatServer.userNames){
-                        if (clientMessage.equalsIgnoreCase(user)){
+                    for (String user : ChatServer.userNames) {
+                        if (clientMessage.equalsIgnoreCase(user)) {
                             checkPreviousVote();
                             ArrayList<String> current = ChatServer.userAndVotes.get(user);
                             current.add(userName);
-                            ChatServer.userAndVotes.put(user,current);
+                            ChatServer.userAndVotes.put(user, current);
                             correct = true;
                             break;
                         }
                     }
-                    if (!correct){
+                    if (!correct) {
                         sendMessage("Invalid username, please try again.");
                     }
-                }
-
-                else {
+                } else if (ChatServer.state.equalsIgnoreCase("MAFIA")) {
+                    server.notifyRole("MAFIA", serverMessage);
+                    server.notifyRole("DOCTOR LECTRE", serverMessage);
+                    server.notifyRole("GODFATHER", serverMessage);
+                } else if (ChatServer.state.equalsIgnoreCase("GODFATHER") && role.equalsIgnoreCase("GODFATHER")) {
+                    server.showAliveUsers("GODFATHER");
+                } else {
                     server.broadcast(serverMessage, null, null);
                 }
 
@@ -86,8 +90,9 @@ public class UserThread extends Thread {
     }
 
     private void checkPreviousVote() {
-        for (String string : ChatServer.userNames){
-            ChatServer.userAndVotes.get(string).remove(userName);
+        for (String string : ChatServer.userNames) {
+            if (ChatServer.userAndVotes.get(string).remove(userName))
+                sendMessage("Vote changed.");
         }
     }
 

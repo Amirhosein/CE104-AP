@@ -40,6 +40,10 @@ public class ReadThread extends Thread {
                     continue;
                 }else if (response.equalsIgnoreCase("VOTING")){
                     client.votingPhase();
+                }else if (response.equalsIgnoreCase("SPEAK")){
+                    ChatClient.type = true;
+                }else if (response.equalsIgnoreCase("MUTE")){
+                    ChatClient.type = false;
                 }
                 System.out.println("\n" + response.trim());
 
