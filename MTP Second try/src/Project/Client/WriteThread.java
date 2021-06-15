@@ -8,14 +8,25 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
+ * The type Write thread.
+ *
  * @author Amir Iravanimanesh
- * @date 6/7/2021
+ * @date 6 /7/2021
  */
 public class WriteThread extends Thread {
+    /**
+     * The constant writer.
+     */
     public static PrintWriter writer;
     private final Socket socket;
     private final ChatClient client;
 
+    /**
+     * Instantiates a new Write thread.
+     *
+     * @param socket the socket
+     * @param client the client
+     */
     public WriteThread(Socket socket, ChatClient client) {
         this.socket = socket;
         this.client = client;
@@ -60,7 +71,12 @@ public class WriteThread extends Thread {
         }
     }
 
-    public void sendToServer(String string){
+    /**
+     * Send to server.
+     *
+     * @param string the string
+     */
+    public void sendToServer(String string) {
         writer.println(string);
     }
 }

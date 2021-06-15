@@ -7,25 +7,60 @@ import java.util.*;
 import Project.Console.ConsoleColors;
 
 /**
+ * The type Chat server.
+ *
  * @author Amir Iravanimanesh
- * @date 6/7/2021
+ * @date 6 /7/2021
  */
 public class ChatServer {
+    /**
+     * The constant userNames.
+     */
     public static final List<String> userNames = new ArrayList<>();
     private final Set<UserThread> userThreads = new HashSet<>();
+    /**
+     * The User and votes.
+     */
     public static HashMap<String, ArrayList<String>> userAndVotes;
+    /**
+     * The constant state.
+     */
     public static String state = "NORMAL";
+    /**
+     * The constant deadUsers.
+     */
     public static ArrayList<String> deadUsers = new ArrayList<>();
+    /**
+     * The constant toBeSavedCitizen.
+     */
     public static String toBeSavedCitizen;
+    /**
+     * The constant savedMafia.
+     */
     public static String savedMafia;
+    /**
+     * The constant toBeMuted.
+     */
     public static String toBeMuted;
+    /**
+     * The constant chosenBySniper.
+     */
     public static String chosenBySniper;
+    /**
+     * The constant dieHardAbility.
+     */
     public static boolean dieHardAbility;
+    /**
+     * The constant mayorDecision.
+     */
     public static boolean mayorDecision = false;
     private final Night night = new Night(this);
     private int dieHardLife = 1;
     private ArrayList<String> roles = new ArrayList<>();
 
+    /**
+     * Execute.
+     */
     public void execute() {
         int port = 6000;
         int number;
@@ -41,7 +76,7 @@ public class ChatServer {
             roles.add("SNIPER");
             roles.add("MAYOR");
             roles.add("DIE HARD");
-        } else if (number == 9){
+        } else if (number == 9) {
             roles.add("GODFATHER");
             roles.add("MAFIA");
             roles.add("DOCTOR LECTRE");
@@ -50,7 +85,7 @@ public class ChatServer {
             roles.add("DETECTIVE");
             roles.add("SNIPER");
             roles.add("DIE HARD");
-        } else if (number == 8){
+        } else if (number == 8) {
             roles.add("GODFATHER");
             roles.add("MAFIA");
             roles.add("DOCTOR LECTRE");
@@ -59,7 +94,7 @@ public class ChatServer {
             roles.add("DETECTIVE");
             roles.add("MAYOR");
             roles.add("DIE HARD");
-        } else if (number == 7){
+        } else if (number == 7) {
             roles.add("GODFATHER");
             roles.add("MAFIA");
             roles.add("CITIZEN");
@@ -68,7 +103,7 @@ public class ChatServer {
             roles.add("SNIPER");
             roles.add("MAYOR");
             roles.add("DIE HARD");
-        } else if (number == 6){
+        } else if (number == 6) {
             roles.add("GODFATHER");
             roles.add("MAFIA");
             roles.add("DOCTOR LECTRE");
@@ -110,7 +145,7 @@ public class ChatServer {
                 votingPhase();
                 if (!checkCondition().equalsIgnoreCase("NO"))
                     break;
-//                nightPhase();
+                nightPhase();
                 reset();
             }
 
@@ -212,6 +247,11 @@ public class ChatServer {
         sleep(20000);
     }
 
+    /**
+     * Sleep.
+     *
+     * @param time the time
+     */
     void sleep(int time) {
         try {
             Thread.sleep(time);
@@ -244,6 +284,11 @@ public class ChatServer {
         notifyRole("CITIZEN", ConsoleColors.YELLOW_BRIGHT + "***You are the normal Citizen.***" + ConsoleColors.RESET);
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         ChatServer server = new ChatServer();
         server.execute();
@@ -251,6 +296,10 @@ public class ChatServer {
 
     /**
      * Delivers a message from one user to others (broadcasting)
+     *
+     * @param message    the message
+     * @param userThread the user thread
+     * @param dead       the dead
      */
     void broadcast(String message, UserThread userThread, ArrayList<String> dead) {
         for (UserThread aUser : userThreads) {
@@ -273,6 +322,8 @@ public class ChatServer {
 
     /**
      * Stores username of the newly connected client.
+     *
+     * @param userName the user name
      */
     void addUserName(String userName) {
         userNames.add(userName);
@@ -280,6 +331,9 @@ public class ChatServer {
 
     /**
      * When a client is disconneted, removes the associated username and UserThread
+     *
+     * @param userName the user name
+     * @param aUser    the a user
      */
     void removeUser(String userName, UserThread aUser) {
         boolean removed = userNames.remove(userName);
@@ -289,12 +343,19 @@ public class ChatServer {
         }
     }
 
+    /**
+     * Gets user names.
+     *
+     * @return the user names
+     */
     List<String> getUserNames() {
         return userNames;
     }
 
     /**
      * Returns true if there are other users connected (not count the currently connected user)
+     *
+     * @return the boolean
      */
     boolean hasUsers() {
         return !userNames.isEmpty();
@@ -330,6 +391,12 @@ public class ChatServer {
         return null;
     }
 
+    /**
+     * Notify role.
+     *
+     * @param role    the role
+     * @param message the message
+     */
     void notifyRole(String role, String message) {
         for (UserThread userThread : userThreads) {
             if (userThread.getRole().equalsIgnoreCase(role))
@@ -337,6 +404,12 @@ public class ChatServer {
         }
     }
 
+    /**
+     * Gets username by role.
+     *
+     * @param role the role
+     * @return the username by role
+     */
     String getUsernameByRole(String role) {
         for (UserThread userThread : userThreads)
             if (userThread.getRole().equalsIgnoreCase(role))
@@ -344,6 +417,12 @@ public class ChatServer {
         return null;
     }
 
+    /**
+     * Gets role by username.
+     *
+     * @param username the username
+     * @return the role by username
+     */
     String getRoleByUsername(String username) {
         for (UserThread userThread : userThreads)
             if (userThread.getUserName().equalsIgnoreCase(username))
@@ -351,6 +430,9 @@ public class ChatServer {
         return null;
     }
 
+    /**
+     * Show alive users.
+     */
     void showAliveUsers() {
         String finalString = ConsoleColors.GREEN_BOLD + "Alive Users: ";
         for (UserThread userThread : userThreads)
@@ -360,6 +442,11 @@ public class ChatServer {
         broadcast(finalString, null, null);
     }
 
+    /**
+     * Show alive users.
+     *
+     * @param role the role
+     */
     void showAliveUsers(String role) {
         String finalString = ConsoleColors.GREEN_BOLD + "Alive Users: ";
         for (UserThread userThread : userThreads)
@@ -369,6 +456,9 @@ public class ChatServer {
         notifyRole(role, finalString);
     }
 
+    /**
+     * Voting phase.
+     */
     void votingPhase() {
         state = "VOTING";
         userAndVotes = new HashMap<>();
@@ -425,6 +515,11 @@ public class ChatServer {
         broadcast(result, null, null);
     }
 
+    /**
+     * Kill user.
+     *
+     * @param username the username
+     */
     public void killUser(String username) {
         for (UserThread userThread : userThreads)
             if (userThread.getUserName().equalsIgnoreCase(username)) {
@@ -435,6 +530,12 @@ public class ChatServer {
             broadcast(ConsoleColors.RED_BOLD + username + " died." + ConsoleColors.RESET, null, null);
     }
 
+    /**
+     * Role is alive boolean.
+     *
+     * @param role the role
+     * @return the boolean
+     */
     boolean roleIsAlive(String role) {
         for (UserThread userThread : userThreads) {
             if (userThread.getRole().equalsIgnoreCase(role) && userThread.userIsAlive())

@@ -1,12 +1,23 @@
 package Project.Server;
 
+/**
+ * The type Night.
+ */
 public class Night {
     private final ChatServer chatServer;
 
+    /**
+     * Instantiates a new Night.
+     *
+     * @param chatServer the chat server
+     */
     public Night(ChatServer chatServer) {
         this.chatServer = chatServer;
     }
 
+    /**
+     * Die hard night.
+     */
     void dieHardNight() {
         if (!chatServer.roleIsAlive("DIE HARD"))
             return;
@@ -17,6 +28,9 @@ public class Night {
         } while (!ChatServer.state.equalsIgnoreCase("DIE HARD DONE"));
     }
 
+    /**
+     * Psychologist night.
+     */
     void psychologistNight() {
         if (!chatServer.roleIsAlive("PSYCHOLOGIST"))
             return;
@@ -27,6 +41,9 @@ public class Night {
         } while (!ChatServer.state.equalsIgnoreCase("PSYCHOLOGIST DONE"));
     }
 
+    /**
+     * Sniper night.
+     */
     void sniperNight() {
         if (!chatServer.roleIsAlive("SNIPER"))
             return;
@@ -37,6 +54,9 @@ public class Night {
         } while (!ChatServer.state.equalsIgnoreCase("SNIPER DONE"));
     }
 
+    /**
+     * Detective night.
+     */
     void detectiveNight() {
         if (!chatServer.roleIsAlive("DETECTIVE"))
             return;
@@ -47,6 +67,9 @@ public class Night {
         } while (!ChatServer.state.equalsIgnoreCase("DETECTIVE DONE"));
     }
 
+    /**
+     * Lectre night.
+     */
     void lectreNight() {
         if (!chatServer.roleIsAlive("DOCTOR LECTRE"))
             return;
@@ -57,6 +80,9 @@ public class Night {
         } while (!ChatServer.state.equalsIgnoreCase("DOCTOR LECTRE DONE"));
     }
 
+    /**
+     * Doctor night.
+     */
     void doctorNight() {
         if (!chatServer.roleIsAlive("DOCTOR"))
             return;
@@ -67,6 +93,9 @@ public class Night {
         } while (!ChatServer.state.equalsIgnoreCase("DOCTOR DONE"));
     }
 
+    /**
+     * Mafia night.
+     */
     void mafiaNight() {
         ChatServer.state = "MAFIA";
         chatServer.notifyRole("GODFATHER", "SPEAK: Discuss about who to be killed by GODFATHER");

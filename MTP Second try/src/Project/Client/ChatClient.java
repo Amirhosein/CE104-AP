@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import Project.Console.ConsoleColors;
 
 /**
+ * The type Chat client.
+ *
  * @author Amir Iravanimanesh
- * @date 6/7/2021
+ * @date 6 /7/2021
  */
 public class ChatClient {
     private final String hostname;
@@ -17,14 +19,29 @@ public class ChatClient {
     private String userName;
     private ReadThread readThread;
     private WriteThread writeThread;
+    /**
+     * The constant type.
+     */
     public static boolean type = true;
+    /**
+     * The Users.
+     */
     public ArrayList<String> users = new ArrayList<>();
 
+    /**
+     * Instantiates a new Chat client.
+     *
+     * @param hostname the hostname
+     * @param port     the port
+     */
     public ChatClient(String hostname, int port) {
         this.hostname = hostname;
         this.port = port;
     }
 
+    /**
+     * Execute.
+     */
     public void execute() {
         try {
             Socket socket = new Socket(hostname, port);
@@ -45,15 +62,30 @@ public class ChatClient {
 
     }
 
+    /**
+     * Sets user name.
+     *
+     * @param userName the user name
+     */
     void setUserName(String userName) {
         this.userName = userName;
     }
 
+    /**
+     * Gets user name.
+     *
+     * @return the user name
+     */
     String getUserName() {
         return this.userName;
     }
 
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
         String hostname = "localhost";
@@ -63,6 +95,9 @@ public class ChatClient {
         client.execute();
     }
 
+    /**
+     * Night phase.
+     */
     void nightPhase() {
         type = false;
         System.out.print(ConsoleColors.WHITE_BOLD);
@@ -77,6 +112,9 @@ public class ChatClient {
         System.out.print(ConsoleColors.RESET);
     }
 
+    /**
+     * Day phase.
+     */
     void dayPhase() {
         type = true;
         System.out.print(ConsoleColors.YELLOW_BRIGHT);
@@ -93,6 +131,9 @@ public class ChatClient {
         System.out.print(ConsoleColors.RESET);
     }
 
+    /**
+     * Voting phase.
+     */
     void votingPhase() {
         System.out.print("Please choose user to death: ");
     }

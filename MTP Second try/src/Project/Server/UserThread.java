@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * The type User thread.
+ *
  * @author Amir Iravanimanesh
- * @date 6/7/2021
+ * @date 6 /7/2021
  */
 public class UserThread extends Thread {
     private final Socket socket;
@@ -21,6 +23,12 @@ public class UserThread extends Thread {
     private boolean isAlive = true;
     private int noneCount = 0;
 
+    /**
+     * Instantiates a new User thread.
+     *
+     * @param socket the socket
+     * @param server the server
+     */
     public UserThread(Socket socket, ChatServer server) {
         this.socket = socket;
         this.server = server;
@@ -222,11 +230,19 @@ public class UserThread extends Thread {
 
     /**
      * Sends a message to the client.
+     *
+     * @param message the message
      */
     void sendMessage(String message) {
         writer.println(message);
     }
 
+    /**
+     * Is duplicate boolean.
+     *
+     * @param userName the user name
+     * @return the boolean
+     */
     boolean isDuplicate(String userName) {
         List<String> usernames = server.getUserNames();
         for (String string : usernames)
@@ -235,22 +251,47 @@ public class UserThread extends Thread {
         return false;
     }
 
+    /**
+     * Gets role.
+     *
+     * @return the role
+     */
     public String getRole() {
         return role;
     }
 
+    /**
+     * Sets role.
+     *
+     * @param role the role
+     */
     public void setRole(String role) {
         this.role = role;
     }
 
+    /**
+     * User is alive boolean.
+     *
+     * @return the boolean
+     */
     public boolean userIsAlive() {
         return isAlive;
     }
 
+    /**
+     * Sets alive.
+     *
+     * @param alive the alive
+     */
     public void setAlive(boolean alive) {
         isAlive = alive;
     }
 
+    /**
+     * Gets user name.
+     *
+     * @return the user name
+     */
     public String getUserName() {
         return userName;
     }
