@@ -18,6 +18,7 @@ public class ChatServer {
     public static ArrayList<String> deadUsers = new ArrayList<>();
     public static String toBeSavedCitizen;
     public static String SavedMafia;
+    public static String toBeMuted;
 
     public void execute() {
         int port = 6000;
@@ -67,6 +68,15 @@ public class ChatServer {
         lectreNight();
         doctorNight();
         detectiveNight();
+        sniperNight();
+    }
+
+    private void psychologistNight() {
+        state = "PSYCHOLOGIST";
+        notifyRole("PSYCHOLOGIST", "DO WANT TO USE YOUR ABILITY?(Y/N)");
+        do {
+            sleep(500);
+        } while (!state.equalsIgnoreCase("PSYCHOLOGIST DONE"));
     }
 
     private void sniperNight() {

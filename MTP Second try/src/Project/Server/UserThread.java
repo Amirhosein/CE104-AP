@@ -149,6 +149,23 @@ public class UserThread extends Thread {
                     if (!correct) {
                         sendMessage("Invalid username, please try again.");
                     } else ChatServer.state = "SNIPER DONE";
+                } else if (ChatServer.state.equalsIgnoreCase("PSYCHOLOGIST") && role.equalsIgnoreCase("PSYCHOLOGIST")) {
+                    if (clientMessage.equalsIgnoreCase("y")) {
+                        ChatServer.state = "PSYCHOLOGIST ABILITY";
+                    } else ChatServer.state = "PSYCHOLOGIST DONE";
+
+                } else if (ChatServer.state.equalsIgnoreCase("PSYCHOLOGIST") && role.equalsIgnoreCase("PSYCHOLOGIST ABILITY")) {
+                    boolean correct = false;
+                    for (String user : ChatServer.userNames) {
+                        if (clientMessage.equalsIgnoreCase(user)) {
+                            ChatServer.toBeMuted = user;
+                            correct = true;
+                            break;
+                        }
+                    }
+                    if (!correct) {
+                        sendMessage("Invalid username, please try again.");
+                    } else ChatServer.state = "SNIPER DONE";
                 } else {
                     server.broadcast(serverMessage, null, null);
                 }
