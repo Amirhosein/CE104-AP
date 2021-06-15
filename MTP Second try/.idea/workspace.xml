@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 done, from now -&gt; fixing bugs.">
-      <change afterPath="$PROJECT_DIR$/src/Project/Server/Night.java" afterDir="false" />
+    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 various bug fixes + little refactor.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Client/ReadThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Client/ReadThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/ChatServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/UserThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/UserThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Project/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Server/ChatServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Project/Server/UserThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Server/UserThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +176,7 @@
       <workItem from="1623568931878" duration="8253000" />
       <workItem from="1623652095021" duration="387000" />
       <workItem from="1623652501606" duration="21312000" />
-      <workItem from="1623735314195" duration="22268000" />
+      <workItem from="1623735314195" duration="24042000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
@@ -349,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623768129779</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="MTP2 various bug fixes + little refactor.">
+      <created>1623772807508</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1623772807508</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,6 +393,7 @@
     <MESSAGE value="MTP2 Die hard night final." />
     <MESSAGE value="MTP2 Mayor vote done." />
     <MESSAGE value="MTP2 done, from now -&gt; fixing bugs." />
-    <option name="LAST_COMMIT_MESSAGE" value="MTP2 done, from now -&gt; fixing bugs." />
+    <MESSAGE value="MTP2 various bug fixes + little refactor." />
+    <option name="LAST_COMMIT_MESSAGE" value="MTP2 various bug fixes + little refactor." />
   </component>
 </project>

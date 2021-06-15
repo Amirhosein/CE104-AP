@@ -55,6 +55,8 @@ public class ChatServer {
             while (checkCondition().equalsIgnoreCase("NO")) {
                 dayPhase();
                 votingPhase();
+                if (!checkCondition().equalsIgnoreCase("NO"))
+                    break;
                 nightPhase();
                 reset();
             }
@@ -68,15 +70,13 @@ public class ChatServer {
     private String checkCondition() {
         int mafiaCount = 0;
         for (UserThread userThread : userThreads) {
-            if ((userThread.getRole().equalsIgnoreCase("MAFIA") && userThread.userIsAlive()) || (userThread.getRole().equalsIgnoreCase("DOCTOR LECTRE") && userThread.userIsAlive())
-                    || (userThread.getRole().equalsIgnoreCase("GODFATHER") && userThread.userIsAlive())) {
+            if (userThread.userIsAlive() && (userThread.getRole().equalsIgnoreCase("MAFIA") || userThread.getRole().equalsIgnoreCase("DOCTOR LECTRE") || userThread.getRole().equalsIgnoreCase("GODFATHER"))) {
                 mafiaCount++;
             }
         }
         int citizenCount = 0;
         for (UserThread userThread : userThreads) {
-            if (((!userThread.getRole().equalsIgnoreCase("MAFIA") && userThread.userIsAlive()) || (!userThread.getRole().equalsIgnoreCase("DOCTOR LECTRE") && userThread.userIsAlive())
-                    || (!userThread.getRole().equalsIgnoreCase("GODFATHER") && userThread.userIsAlive()))) {
+            if ((userThread.userIsAlive() && !(userThread.getRole().equalsIgnoreCase("MAFIA") || userThread.getRole().equalsIgnoreCase("DOCTOR LECTRE") || userThread.getRole().equalsIgnoreCase("GODFATHER")))) {
                 citizenCount++;
             }
         }
@@ -125,30 +125,6 @@ public class ChatServer {
         }
     }
 
-    private void dieHardNight() {
-        night.dieHardNight();
-    }
-
-    private void psychologistNight() {
-        night.psychologistNight();
-    }
-
-    private void sniperNight() {
-        night.sniperNight();
-    }
-
-    private void detectiveNight() {
-        night.detectiveNight();
-    }
-
-    private void lectreNight() {
-        night.lectreNight();
-    }
-
-    private void doctorNight() {
-        night.doctorNight();
-    }
-
     private void mayorVote() {
         if (!roleIsAlive("MAYOR"))
             return;
@@ -160,9 +136,6 @@ public class ChatServer {
         broadcast("MUTE", null, null);
     }
 
-    private void mafiaNight() {
-        night.mafiaNight();
-    }
 
     private void dieHard() {
         if (dieHardAbility) {
