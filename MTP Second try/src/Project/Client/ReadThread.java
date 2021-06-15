@@ -39,6 +39,7 @@ public class ReadThread extends Thread {
                     client.dayPhase();
                     continue;
                 }else if (response.equalsIgnoreCase("VOTING")){
+                    ChatClient.type = true;
                     client.votingPhase();
                 }else if (response.contains("SPEAK")){
                     ChatClient.type = true;

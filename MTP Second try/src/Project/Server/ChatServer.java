@@ -21,7 +21,7 @@ public class ChatServer {
     public static String toBeMuted;
     public static String chosenBySniper;
     public static boolean dieHardAbility;
-    public static boolean mayorDecision;
+    public static boolean mayorDecision = false;
 
     public void execute() {
         int port = 6000;
@@ -50,7 +50,7 @@ public class ChatServer {
             }
             setRoles();
             introductionNightPhase();
-            while (!checkCondition().equalsIgnoreCase("NO")) {
+            while (checkCondition().equalsIgnoreCase("NO")) {
                 dayPhase();
                 votingPhase();
                 nightPhase();
@@ -81,7 +81,7 @@ public class ChatServer {
         if (mafiaCount >= citizenCount) {
             broadcast("MAFIA WINS", null, null);
             return "MAFIA WINS";
-        } else if (mafiaCount == 0) {
+        } else if (mafiaCount == 0 || !roleIsAlive("GODFATHER")) {
             broadcast("CITIZEN WINS", null, null);
             return "CITIZEN WINS";
         } else return "NO";
@@ -123,59 +123,74 @@ public class ChatServer {
     }
 
     private void dieHardNight() {
+        if (!roleIsAlive("DIE HARD"))
+            return;
         state = "DIE HARD";
-        notifyRole("DIE HARD", "DO YOU WANT TO USE YOUR ABILITY?(Y/N)");
+        notifyRole("DIE HARD", "SPEAK: DO YOU WANT TO USE YOUR ABILITY?(Y/N)");
         do {
             sleep(500);
         } while (!state.equalsIgnoreCase("DIE HARD DONE"));
     }
 
     private void psychologistNight() {
+        if (!roleIsAlive("PSYCHOLOGIST"))
+            return;
         state = "PSYCHOLOGIST";
-        notifyRole("PSYCHOLOGIST", "DO WANT TO USE YOUR ABILITY?(Y/N)");
+        notifyRole("PSYCHOLOGIST", "SPEAK: DO WANT TO USE YOUR ABILITY?(Y/N)");
         do {
             sleep(500);
         } while (!state.equalsIgnoreCase("PSYCHOLOGIST DONE"));
     }
 
     private void sniperNight() {
+        if (!roleIsAlive("SNIPER"))
+            return;
         state = "SNIPER";
-        notifyRole("SNIPER", "DO YOU WANT TO TRY YOUR LUCK?(Y/N)");
+        notifyRole("SNIPER", "SPEAK: DO YOU WANT TO TRY YOUR LUCK?(Y/N)");
         do {
             sleep(500);
         } while (!state.equalsIgnoreCase("SNIPER DONE"));
     }
 
     private void detectiveNight() {
+        if (!roleIsAlive("DETECTIVE"))
+            return;
         state = "DETECTIVE";
-        notifyRole("DETECTIVE", "CHOOSE A USER TO BE INQUIRED.");
+        notifyRole("DETECTIVE", "SPEAK: CHOOSE A USER TO BE INQUIRED.");
         do {
             sleep(500);
         } while (!state.equalsIgnoreCase("DETECTIVE DONE"));
     }
 
     private void lectreNight() {
+        if (!roleIsAlive("DOCTOR LECTRE"))
+            return;
         state = "DOCTOR LECTRE";
-        notifyRole("DOCTOR LECTRE", "CHOOSE A MAFIA TO HEAL.");
+        notifyRole("DOCTOR LECTRE", "SPEAK: CHOOSE A MAFIA TO HEAL.");
         do {
             sleep(500);
         } while (!state.equalsIgnoreCase("DOCTOR LECTRE DONE"));
     }
 
     private void doctorNight() {
+        if (!roleIsAlive("DOCTOR"))
+            return;
         state = "DOCTOR";
-        notifyRole("DOCTOR", "CHOOSE A USER TO HEAL:");
+        notifyRole("DOCTOR", "SPEAK: CHOOSE A USER TO HEAL:");
         do {
             sleep(500);
         } while (!state.equalsIgnoreCase("DOCTOR DONE"));
     }
 
     private void mayorVote() {
+        if (!roleIsAlive("MAYOR"))
+            return;
         state = "MAYOR";
-        notifyRole("MAYOR", "DO YOU WANT TO CANCEL VOTING?(Y/N)");
+        notifyRole("MAYOR", "SPEAK: DO YOU WANT TO CANCEL VOTING?(Y/N)");
         do {
             sleep(500);
         } while (!state.equalsIgnoreCase("MAYOR DONE"));
+        broadcast("MUTE", null, null);
     }
 
     private void mafiaNight() {
@@ -294,11 +309,13 @@ public class ChatServer {
         for (String s : Arrays.asList("GODFATHER", "MAFIA", "DOCTOR LECTRE", "CITIZEN", "DOCTOR", "DETECTIVE", "SNIPER", "MAYOR", "DIE HARD")) {
             assert randomUserThread != null;
             randomUserThread.setRole(s);
+            System.out.println(randomUserThread.getUserName() + ": " + s);
             userThreads1.remove(randomUserThread);
             randomUserThread = randomThread(userThreads1.size(), userThreads1);
         }
         assert randomUserThread != null;
         randomUserThread.setRole("PSYCHOLOGIST");
+        System.out.println(randomUserThread.getUserName() + ": " + "PSYCHOLOGIST");
         userThreads1.remove(randomUserThread);
 
 
@@ -396,8 +413,9 @@ public class ChatServer {
         }
         broadcast(result, null, null);
         mayorVote();
-        if (count > 1 || !mayorDecision) {
+        if (count > 1 || mayorDecision) {
             result = result.concat("No one dies.\n");
+            mayorDecision = false;
         } else {
             killUser(dead);
         }
@@ -412,6 +430,14 @@ public class ChatServer {
             }
         if (username != null)
             broadcast(ConsoleColors.RED_BOLD + username + " died." + ConsoleColors.RESET, null, null);
+    }
+
+    private boolean roleIsAlive(String role){
+        for (UserThread userThread : userThreads){
+            if (userThread.getRole().equalsIgnoreCase(role) && userThread.userIsAlive())
+                return true;
+        }
+        return false;
     }
 
 

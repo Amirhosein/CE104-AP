@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 Die hard night final.">
+    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 Mayor vote done.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/Client/ReadThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Client/ReadThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Project/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Server/ChatServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Project/Server/UserThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Server/UserThread.java" afterDir="false" />
     </list>
@@ -162,7 +163,7 @@
       <workItem from="1623568931878" duration="8253000" />
       <workItem from="1623652095021" duration="387000" />
       <workItem from="1623652501606" duration="21312000" />
-      <workItem from="1623735314195" duration="12378000" />
+      <workItem from="1623735314195" duration="17858000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
@@ -318,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623749355293</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="MTP2 Mayor vote done.">
+      <created>1623762468153</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1623762468153</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,6 +364,7 @@
     <MESSAGE value="MTP2 Sniper night final." />
     <MESSAGE value="MTP2 Psychologist night final." />
     <MESSAGE value="MTP2 Die hard night final." />
-    <option name="LAST_COMMIT_MESSAGE" value="MTP2 Die hard night final." />
+    <MESSAGE value="MTP2 Mayor vote done." />
+    <option name="LAST_COMMIT_MESSAGE" value="MTP2 Mayor vote done." />
   </component>
 </project>
