@@ -113,6 +113,21 @@ public class UserThread extends Thread {
                     if (!correct) {
                         sendMessage("Invalid username, please try again.");
                     } else ChatServer.state = "DOCTOR DONE";
+                } else if (ChatServer.state.equalsIgnoreCase("DETECTIVE") && role.equalsIgnoreCase("DETECTIVE")) {
+                    boolean correct = false;
+                    for (String user : ChatServer.userNames) {
+                        if (clientMessage.equalsIgnoreCase(user)) {
+                            if (server.getRoleByUsername(user).equalsIgnoreCase("DOCTOR LECTRE") || server.getRoleByUsername(user).equalsIgnoreCase("MAFIA"))
+                                server.notifyRole("DETECTIVE", ConsoleColors.GREEN_BOLD + "YES!!!" + ConsoleColors.RESET);
+                            else
+                                server.notifyRole("DETECTIVE", ConsoleColors.RED_BOLD + "NO!!!" + ConsoleColors.RESET);
+                            correct = true;
+                            break;
+                        }
+                    }
+                    if (!correct) {
+                        sendMessage("Invalid username, please try again.");
+                    } else ChatServer.state = "DOCTOR DONE";
                 } else {
                     server.broadcast(serverMessage, null, null);
                 }

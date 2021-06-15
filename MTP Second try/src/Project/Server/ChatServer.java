@@ -65,6 +65,16 @@ public class ChatServer {
         broadcast("NIGHT TIME", null, null);
         mafiaNight();
         lectreNight();
+        doctorNight();
+        detectiveNight();
+    }
+
+    private void detectiveNight(){
+        state = "DETECTIVE";
+        notifyRole("DETECTIVE","CHOOSE A USER TO BE INQUIRED.");
+        do {
+            sleep(500);
+        }while (!state.equalsIgnoreCase("DETECTIVE DONE"));
     }
 
     private void lectreNight() {
