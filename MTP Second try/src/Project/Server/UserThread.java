@@ -90,7 +90,7 @@ public class UserThread extends Thread {
                     boolean correct = false;
                     for (String user : ChatServer.userNames) {
                         if (server.getRoleByUsername(clientMessage).equalsIgnoreCase("MAFIA") || server.getRoleByUsername(clientMessage).equalsIgnoreCase("GODFATHER")) {
-                            ChatServer.SavedMafia = clientMessage;
+                            ChatServer.savedMafia = clientMessage;
                             server.notifyRole("DOCTOR LECTRE", ConsoleColors.GREEN_BOLD + "YOU HAVE COVERED: " + user + ConsoleColors.RESET);
                             correct = true;
                             break;
@@ -127,7 +127,7 @@ public class UserThread extends Thread {
                     }
                     if (!correct) {
                         sendMessage("Invalid username, please try again.");
-                    } else ChatServer.state = "DOCTOR DONE";
+                    } else ChatServer.state = "DETECTIVE DONE";
                 } else if (ChatServer.state.equalsIgnoreCase("SNIPER") && role.equalsIgnoreCase("SNIPER")) {
                     if (clientMessage.equalsIgnoreCase("y")) {
                         ChatServer.state = "SNIPER SHOT";
@@ -138,10 +138,9 @@ public class UserThread extends Thread {
                     for (String user : ChatServer.userNames) {
                         if (clientMessage.equalsIgnoreCase(user)) {
                             if (server.getRoleByUsername(user).equalsIgnoreCase("DOCTOR LECTRE") || server.getRoleByUsername(user).equalsIgnoreCase("MAFIA")
-                                    || server.getRoleByUsername(user).equalsIgnoreCase("GODFATHER"))
-                                server.notifyRole("DETECTIVE", ConsoleColors.GREEN_BOLD + "CONGRATULATION!! YOU KILLED A MAFIA!" + ConsoleColors.RESET);
-                            else
-                                server.notifyRole("DETECTIVE", ConsoleColors.RED_BOLD + "AH! UNFORTUNATELY YOU WILL RETIRE." + ConsoleColors.RESET);
+                                    || server.getRoleByUsername(user).equalsIgnoreCase("GODFATHER")) {
+                                ChatServer.chosenBySniper = user;
+                            }else ChatServer.chosenBySniper = "WRONG CHOOSE";
                             correct = true;
                             break;
                         }
@@ -165,12 +164,17 @@ public class UserThread extends Thread {
                     }
                     if (!correct) {
                         sendMessage("Invalid username, please try again.");
-                    } else ChatServer.state = "SNIPER DONE";
+                    } else ChatServer.state = "PSYCHOLOGIST DONE";
                 } else if (ChatServer.state.equalsIgnoreCase("DIE HARD") && role.equalsIgnoreCase("DIE HARD")) {
                     if (clientMessage.equalsIgnoreCase("y")) {
                         ChatServer.dieHardAbility = true;
                     }
                     ChatServer.state = "DIE HARD DONE";
+                } else if (ChatServer.state.equalsIgnoreCase("MAYOR") && role.equalsIgnoreCase("MAYOR")) {
+                    if (clientMessage.equalsIgnoreCase("y")) {
+                        ChatServer.mayorDecision = true;
+                    }
+                    ChatServer.state = "MAYOR DONE";
                 } else {
                     server.broadcast(serverMessage, null, null);
                 }

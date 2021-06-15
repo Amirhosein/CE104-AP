@@ -17,9 +17,11 @@ public class ChatServer {
     public static String state = "NORMAL";
     public static ArrayList<String> deadUsers = new ArrayList<>();
     public static String toBeSavedCitizen;
-    public static String SavedMafia;
+    public static String savedMafia;
     public static String toBeMuted;
+    public static String chosenBySniper;
     public static boolean dieHardAbility;
+    public static boolean mayorDecision;
 
     public void execute() {
         int port = 6000;
@@ -48,13 +50,49 @@ public class ChatServer {
             }
             setRoles();
             introductionNightPhase();
-            dayPhase();
-            votingPhase();
-            nightPhase();
+            while (!checkCondition().equalsIgnoreCase("NO")) {
+                dayPhase();
+                votingPhase();
+                nightPhase();
+                reset();
+            }
+
         } catch (IOException ex) {
             System.out.println("Error in the server: " + ex.getMessage());
             ex.printStackTrace();
         }
+    }
+
+    private String checkCondition() {
+        int mafiaCount = 0;
+        for (UserThread userThread : userThreads) {
+            if ((userThread.getRole().equalsIgnoreCase("MAFIA") && userThread.userIsAlive()) || (userThread.getRole().equalsIgnoreCase("DOCTOR LECTRE") && userThread.userIsAlive())
+                    || (userThread.getRole().equalsIgnoreCase("GODFATHER") && userThread.userIsAlive())) {
+                mafiaCount++;
+            }
+        }
+        int citizenCount = 0;
+        for (UserThread userThread : userThreads) {
+            if (!((userThread.getRole().equalsIgnoreCase("MAFIA") && userThread.userIsAlive()) || (userThread.getRole().equalsIgnoreCase("DOCTOR LECTRE") && userThread.userIsAlive())
+                    || (userThread.getRole().equalsIgnoreCase("GODFATHER") && userThread.userIsAlive()))) {
+                citizenCount++;
+            }
+        }
+        if (mafiaCount >= citizenCount) {
+            broadcast("MAFIA WINS", null, null);
+            return "MAFIA WINS";
+        } else if (mafiaCount == 0) {
+            broadcast("CITIZEN WINS", null, null);
+            return "CITIZEN WINS";
+        } else return "NO";
+    }
+
+    private void reset() {
+        toBeSavedCitizen = null;
+        savedMafia = null;
+        chosenBySniper = null;
+        dieHardAbility = false;
+        state = "NORMAL";
     }
 
     private void introductionNightPhase() {
@@ -72,11 +110,21 @@ public class ChatServer {
         sniperNight();
         psychologistNight();
         dieHardNight();
+        killUser(toBeSavedCitizen);
+        if (chosenBySniper != null) {
+            if (chosenBySniper.equalsIgnoreCase("WRONG CHOOSE")) {
+                killUser(getUsernameByRole("SNIPER"));
+            } else {
+                if (!savedMafia.equalsIgnoreCase(chosenBySniper)) {
+                    killUser(chosenBySniper);
+                }
+            }
+        }
     }
 
-    private void dieHardNight(){
+    private void dieHardNight() {
         state = "DIE HARD";
-        notifyRole("DIE HARD","DO YOU WANT TO USE YOUR ABILITY?(Y/N)");
+        notifyRole("DIE HARD", "DO YOU WANT TO USE YOUR ABILITY?(Y/N)");
         do {
             sleep(500);
         } while (!state.equalsIgnoreCase("DIE HARD DONE"));
@@ -122,6 +170,14 @@ public class ChatServer {
         } while (!state.equalsIgnoreCase("DOCTOR DONE"));
     }
 
+    private void mayorVote() {
+        state = "MAYOR";
+        notifyRole("MAYOR", "DO YOU WANT TO CANCEL VOTING?(Y/N)");
+        do {
+            sleep(500);
+        } while (!state.equalsIgnoreCase("MAYOR DONE"));
+    }
+
     private void mafiaNight() {
         state = "MAFIA";
         notifyRole("GODFATHER", "SPEAK: Discuss about who to be killed by GODFATHER");
@@ -137,6 +193,10 @@ public class ChatServer {
 
     private void dayPhase() {
         broadcast("DAY TIME", null, null);
+        if (toBeMuted != null) {
+            notifyRole(getRoleByUsername(toBeMuted), "MUTE");
+            toBeMuted = null;
+        }
         showAliveUsers();
         sleep(20000);
     }
@@ -334,7 +394,9 @@ public class ChatServer {
                 count++;
             }
         }
-        if (count > 1) {
+        broadcast(result, null, null);
+        mayorVote();
+        if (count > 1 || !mayorDecision) {
             result = result.concat("No one dies.\n");
         } else {
             killUser(dead);
@@ -344,7 +406,7 @@ public class ChatServer {
 
     public void killUser(String username) {
         for (UserThread userThread : userThreads)
-            if (userThread.getUserName().equalsIgnoreCase(username)){
+            if (userThread.getUserName().equalsIgnoreCase(username)) {
                 userThread.setAlive(false);
                 deadUsers.add(username);
             }
