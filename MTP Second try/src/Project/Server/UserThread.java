@@ -170,7 +170,7 @@ public class UserThread extends Thread {
                     if (clientMessage.equalsIgnoreCase("y")) {
                         ChatServer.dieHardAbility = true;
                     }
-                    ChatServer.state = "PSYCHOLOGIST DONE";
+                    ChatServer.state = "DIE HARD DONE";
                 } else {
                     server.broadcast(serverMessage, null, null);
                 }

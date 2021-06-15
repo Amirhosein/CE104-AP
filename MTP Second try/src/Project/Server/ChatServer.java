@@ -71,6 +71,7 @@ public class ChatServer {
         detectiveNight();
         sniperNight();
         psychologistNight();
+        dieHardNight();
     }
 
     private void dieHardNight(){
