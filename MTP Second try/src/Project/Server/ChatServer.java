@@ -19,6 +19,7 @@ public class ChatServer {
     public static String toBeSavedCitizen;
     public static String SavedMafia;
     public static String toBeMuted;
+    public static boolean dieHardAbility;
 
     public void execute() {
         int port = 6000;
@@ -69,6 +70,15 @@ public class ChatServer {
         doctorNight();
         detectiveNight();
         sniperNight();
+        psychologistNight();
+    }
+
+    private void dieHardNight(){
+        state = "DIE HARD";
+        notifyRole("DIE HARD","DO YOU WANT TO USE YOUR ABILITY?(Y/N)");
+        do {
+            sleep(500);
+        } while (!state.equalsIgnoreCase("DIE HARD DONE"));
     }
 
     private void psychologistNight() {
@@ -326,7 +336,6 @@ public class ChatServer {
         if (count > 1) {
             result = result.concat("No one dies.\n");
         } else {
-            deadUsers.add(dead);
             killUser(dead);
         }
         broadcast(result, null, null);
@@ -334,8 +343,10 @@ public class ChatServer {
 
     public void killUser(String username) {
         for (UserThread userThread : userThreads)
-            if (userThread.getUserName().equalsIgnoreCase(username))
+            if (userThread.getUserName().equalsIgnoreCase(username)){
                 userThread.setAlive(false);
+                deadUsers.add(username);
+            }
         if (username != null)
             broadcast(ConsoleColors.RED_BOLD + username + " died." + ConsoleColors.RESET, null, null);
     }

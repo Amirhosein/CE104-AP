@@ -166,6 +166,11 @@ public class UserThread extends Thread {
                     if (!correct) {
                         sendMessage("Invalid username, please try again.");
                     } else ChatServer.state = "SNIPER DONE";
+                } else if (ChatServer.state.equalsIgnoreCase("DIE HARD") && role.equalsIgnoreCase("DIE HARD")) {
+                    if (clientMessage.equalsIgnoreCase("y")) {
+                        ChatServer.dieHardAbility = true;
+                    }
+                    ChatServer.state = "PSYCHOLOGIST DONE";
                 } else {
                     server.broadcast(serverMessage, null, null);
                 }
