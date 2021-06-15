@@ -65,9 +65,9 @@ public class UserThread extends Thread {
                                         server.killUser(userName);
                                 }
                                 checkPreviousVote();
-                                ArrayList<String> current = ChatServer.userAndVotes.get(user);
+                                ArrayList<String> current = ChatServer.userAndVotes.get(clientMessage);
                                 current.add(userName);
-                                ChatServer.userAndVotes.put(user, current);
+                                ChatServer.userAndVotes.put(clientMessage, current);
                                 correct = true;
                                 break;
                             }

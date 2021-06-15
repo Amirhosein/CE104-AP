@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/ChatServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/UserThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/UserThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Project/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Server/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/Server/UserThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Server/UserThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +177,7 @@
       <workItem from="1623568931878" duration="8253000" />
       <workItem from="1623652095021" duration="387000" />
       <workItem from="1623652501606" duration="21312000" />
-      <workItem from="1623735314195" duration="24042000" />
+      <workItem from="1623735314195" duration="26725000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
@@ -353,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623772807508</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="MTP2 various bug fixes + little refactor.">
+      <created>1623775889690</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1623775889690</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

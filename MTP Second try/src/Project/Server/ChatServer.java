@@ -24,14 +24,67 @@ public class ChatServer {
     public static boolean mayorDecision = false;
     private final Night night = new Night(this);
     private int dieHardLife = 1;
+    private ArrayList<String> roles = new ArrayList<>();
 
     public void execute() {
         int port = 6000;
+        int number;
+        Scanner scanner = new Scanner(System.in);
+        number = scanner.nextInt();
+        if (number == 10) {
+            roles.add("GODFATHER");
+            roles.add("MAFIA");
+            roles.add("DOCTOR LECTRE");
+            roles.add("CITIZEN");
+            roles.add("DOCTOR");
+            roles.add("DETECTIVE");
+            roles.add("SNIPER");
+            roles.add("MAYOR");
+            roles.add("DIE HARD");
+        } else if (number == 9){
+            roles.add("GODFATHER");
+            roles.add("MAFIA");
+            roles.add("DOCTOR LECTRE");
+            roles.add("CITIZEN");
+            roles.add("DOCTOR");
+            roles.add("DETECTIVE");
+            roles.add("SNIPER");
+            roles.add("DIE HARD");
+        } else if (number == 8){
+            roles.add("GODFATHER");
+            roles.add("MAFIA");
+            roles.add("DOCTOR LECTRE");
+            roles.add("CITIZEN");
+            roles.add("DOCTOR");
+            roles.add("DETECTIVE");
+            roles.add("MAYOR");
+            roles.add("DIE HARD");
+        } else if (number == 7){
+            roles.add("GODFATHER");
+            roles.add("MAFIA");
+            roles.add("CITIZEN");
+            roles.add("DOCTOR");
+            roles.add("DETECTIVE");
+            roles.add("SNIPER");
+            roles.add("MAYOR");
+            roles.add("DIE HARD");
+        } else if (number == 6){
+            roles.add("GODFATHER");
+            roles.add("MAFIA");
+            roles.add("DOCTOR LECTRE");
+            roles.add("CITIZEN");
+            roles.add("DOCTOR");
+            roles.add("DETECTIVE");
+            roles.add("SNIPER");
+            roles.add("MAYOR");
+        }
+
+
         try (ServerSocket serverSocket = new ServerSocket(port)) {
 
             System.out.println("Chat Server is listening on port " + port);
 
-            while (userThreads.size() < 10) {
+            while (userThreads.size() < number) {
                 Socket socket = serverSocket.accept();
                 System.out.println("New user connected");
 
@@ -57,7 +110,7 @@ public class ChatServer {
                 votingPhase();
                 if (!checkCondition().equalsIgnoreCase("NO"))
                     break;
-                nightPhase();
+//                nightPhase();
                 reset();
             }
 
@@ -250,7 +303,7 @@ public class ChatServer {
     private void setRoles() {
         Set<UserThread> userThreads1 = new HashSet<>(userThreads);
         UserThread randomUserThread = randomThread(userThreads1.size(), userThreads1);
-        for (String s : Arrays.asList("GODFATHER", "MAFIA", "DOCTOR LECTRE", "CITIZEN", "DOCTOR", "DETECTIVE", "SNIPER", "MAYOR", "DIE HARD")) {
+        for (String s : roles) {
             assert randomUserThread != null;
             randomUserThread.setRole(s);
             System.out.println(randomUserThread.getUserName() + ": " + s);
@@ -330,7 +383,8 @@ public class ChatServer {
             for (String user : userNames) {
                 sum += userAndVotes.get(user).size();
             }
-            if (sum == userNames.size() - deadUsers.size())
+            sum += userAndVotes.get("NONE").size();
+            if (sum >= userNames.size() - deadUsers.size())
                 break;
         }
         String result = " ";
