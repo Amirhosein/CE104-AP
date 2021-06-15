@@ -69,12 +69,20 @@ public class ChatServer {
         detectiveNight();
     }
 
-    private void detectiveNight(){
-        state = "DETECTIVE";
-        notifyRole("DETECTIVE","CHOOSE A USER TO BE INQUIRED.");
+    private void sniperNight() {
+        state = "SNIPER";
+        notifyRole("SNIPER", "DO YOU WANT TO TRY YOUR LUCK?(Y/N)");
         do {
             sleep(500);
-        }while (!state.equalsIgnoreCase("DETECTIVE DONE"));
+        } while (!state.equalsIgnoreCase("SNIPER DONE"));
+    }
+
+    private void detectiveNight() {
+        state = "DETECTIVE";
+        notifyRole("DETECTIVE", "CHOOSE A USER TO BE INQUIRED.");
+        do {
+            sleep(500);
+        } while (!state.equalsIgnoreCase("DETECTIVE DONE"));
     }
 
     private void lectreNight() {
@@ -85,9 +93,9 @@ public class ChatServer {
         } while (!state.equalsIgnoreCase("DOCTOR LECTRE DONE"));
     }
 
-    private void doctorNight(){
+    private void doctorNight() {
         state = "DOCTOR";
-        notifyRole("DOCTOR","CHOOSE A USER TO HEAL:");
+        notifyRole("DOCTOR", "CHOOSE A USER TO HEAL:");
         do {
             sleep(500);
         } while (!state.equalsIgnoreCase("DOCTOR DONE"));
