@@ -91,7 +91,7 @@ public class UserThread extends Thread {
                     for (String user : ChatServer.userNames) {
                         if (server.getRoleByUsername(clientMessage).equalsIgnoreCase("MAFIA") || server.getRoleByUsername(clientMessage).equalsIgnoreCase("GODFATHER")) {
                             ChatServer.SavedMafia = clientMessage;
-                            server.notifyRole("DOCTOR LECTRE",ConsoleColors.GREEN_BOLD + "YOU HAVE COVERED: " + user + ConsoleColors.RESET);
+                            server.notifyRole("DOCTOR LECTRE", ConsoleColors.GREEN_BOLD + "YOU HAVE COVERED: " + user + ConsoleColors.RESET);
                             correct = true;
                             break;
                         }
@@ -99,6 +99,20 @@ public class UserThread extends Thread {
                     if (!correct) {
                         sendMessage("Invalid username, please try again.");
                     } else ChatServer.state = "DOCTOR LECTRE DONE";
+                } else if (ChatServer.state.equalsIgnoreCase("DOCTOR") && role.equalsIgnoreCase("DOCTOR")) {
+                    boolean correct = false;
+                    for (String user : ChatServer.userNames) {
+                        if (clientMessage.equalsIgnoreCase(user)) {
+                            if (ChatServer.toBeSavedCitizen.equalsIgnoreCase(user))
+                                ChatServer.toBeSavedCitizen = null;
+                            server.notifyRole("DOCTOR", ConsoleColors.GREEN_BOLD + "YOU HAVE COVERED: " + user + ConsoleColors.RESET);
+                            correct = true;
+                            break;
+                        }
+                    }
+                    if (!correct) {
+                        sendMessage("Invalid username, please try again.");
+                    } else ChatServer.state = "DOCTOR DONE";
                 } else {
                     server.broadcast(serverMessage, null, null);
                 }

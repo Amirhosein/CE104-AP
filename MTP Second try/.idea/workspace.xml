@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 Doctor Lectre night.">
+    <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 Doctor Lectre night final.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Server/ChatServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Project/Server/UserThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Server/UserThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,17 +118,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Unnamed" type="Multirun" separateTabs="false" reuseTabsWithFailures="true" startOneByOne="true" markFailedProcess="true" hideSuccessProcess="false" delayTime="0.2">
       <runConfiguration name="Server" type="Application" />
       <runConfiguration name="Client (1)" type="Application" />
@@ -170,7 +161,8 @@
       <workItem from="1623478951426" duration="1228000" />
       <workItem from="1623568931878" duration="8253000" />
       <workItem from="1623652095021" duration="387000" />
-      <workItem from="1623652501606" duration="20137000" />
+      <workItem from="1623652501606" duration="21312000" />
+      <workItem from="1623735314195" duration="1972000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
@@ -277,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623712043463</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="MTP2 Doctor Lectre night final.">
+      <created>1623712323018</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1623712323018</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +308,7 @@
     <MESSAGE value="MTP2 updating night mafia phase done + console colors." />
     <MESSAGE value="MTP2 refactoring." />
     <MESSAGE value="MTP2 Doctor Lectre night." />
-    <option name="LAST_COMMIT_MESSAGE" value="MTP2 Doctor Lectre night." />
+    <MESSAGE value="MTP2 Doctor Lectre night final." />
+    <option name="LAST_COMMIT_MESSAGE" value="MTP2 Doctor Lectre night final." />
   </component>
 </project>

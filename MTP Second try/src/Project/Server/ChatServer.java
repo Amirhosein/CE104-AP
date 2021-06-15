@@ -70,6 +70,17 @@ public class ChatServer {
     private void lectreNight() {
         state = "DOCTOR LECTRE";
         notifyRole("DOCTOR LECTRE", "CHOOSE A MAFIA TO HEAL.");
+        do {
+            sleep(500);
+        } while (!state.equalsIgnoreCase("DOCTOR LECTRE DONE"));
+    }
+
+    private void doctorNight(){
+        state = "DOCTOR";
+        notifyRole("DOCTOR","CHOOSE A USER TO HEAL:");
+        do {
+            sleep(500);
+        } while (!state.equalsIgnoreCase("DOCTOR DONE"));
     }
 
     private void mafiaNight() {
