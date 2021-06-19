@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Calc" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3f9b5d50-ddb8-4fa7-8fe5-9cf88bdeda4c" name="Default Changelist" comment="L9-T1 feat: triangle funcs.">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Calc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Calc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Task01/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task01/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Task01/main/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task01/main/MainWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Task01/main/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task01/main/MainWindowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -21,12 +38,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../javafx-sdk-11.0.2/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../javafx-sdk-11.0.2/bin/vcruntime140.dll" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.44262296" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
@@ -57,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1624107487913</updated>
-      <workItem from="1624107489218" duration="6030000" />
+      <workItem from="1624107489218" duration="7153000" />
     </task>
     <task id="LOCAL-00001" summary="L9-T1 feat: power">
       <created>1624110323772</created>
