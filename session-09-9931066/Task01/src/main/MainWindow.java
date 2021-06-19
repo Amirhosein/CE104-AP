@@ -8,6 +8,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * The type Main window.
+ */
 public class MainWindow extends Application {
 
     @Override
@@ -24,6 +27,9 @@ public class MainWindow extends Application {
         stage.show();
     }
 
+    /**
+     * Run.
+     */
     public void run() {
         launch();
     }

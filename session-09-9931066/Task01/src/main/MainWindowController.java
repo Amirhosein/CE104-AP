@@ -7,6 +7,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * The type Main window controller.
+ */
 public class MainWindowController {
     @FXML
     private Pane titlePane;
@@ -20,6 +23,11 @@ public class MainWindowController {
     private String operator = "+";
     private boolean isEnough = false;
 
+    /**
+     * Init.
+     *
+     * @param stage the stage
+     */
     public void init(Stage stage) {
         titlePane.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();
@@ -34,12 +42,22 @@ public class MainWindowController {
         btnMinimize.setOnMouseClicked(mouseEvent -> stage.setIconified(true));
     }
 
+    /**
+     * On number clicked.
+     *
+     * @param event the event
+     */
     @FXML
     void onNumberClicked(MouseEvent event) {
         int value = Integer.parseInt(((Pane) event.getSource()).getId().replace("btn", ""));
         lblResult.setText(Double.parseDouble(lblResult.getText()) == 0 ? String.valueOf((double) value) : String.valueOf(Double.parseDouble(lblResult.getText()) * 10 + value));
     }
 
+    /**
+     * On symbol clicked.
+     *
+     * @param event the event
+     */
     @FXML
     void onSymbolClicked(MouseEvent event) {
         String symbol = ((Pane) event.getSource()).getId().replace("btn", "");
