@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Calc" />
+      <artifact name="Task01:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f9b5d50-ddb8-4fa7-8fe5-9cf88bdeda4c" name="Default Changelist" comment="L9-T1 feat: triangle funcs.">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Calc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Calc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task01/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task01/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task01/main/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task01/main/MainWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task01/main/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task01/main/MainWindowController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,17 +51,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -76,7 +60,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1624107487913</updated>
-      <workItem from="1624107489218" duration="7153000" />
+      <workItem from="1624107489218" duration="7640000" />
+      <workItem from="1624116304393" duration="451000" />
     </task>
     <task id="LOCAL-00001" summary="L9-T1 feat: power">
       <created>1624110323772</created>
@@ -108,6 +93,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="L9-T1 feat: power" />
