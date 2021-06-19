@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="610.0" prefWidth="460.0" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainWindowController">
+<AnchorPane prefHeight="716.0" prefWidth="460.0" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainWindowController">
    <children>
-      <Pane layoutX="6.0" layoutY="37.0" prefHeight="567.0" prefWidth="449.0" styleClass="mainPane">
+      <Pane layoutX="5.0" layoutY="37.0" prefHeight="674.0" prefWidth="450.0" styleClass="mainPane">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="116.0" prefWidth="422.0" styleClass="highlight">
                <children>
@@ -146,7 +146,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="btnEquals" layoutX="229.0" layoutY="455.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
+            <Pane fx:id="btnEquals" layoutX="336.0" layoutY="561.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
                <children>
                   <Label layoutX="39.0" layoutY="29.0" text="=" textFill="WHITE">
                      <font>
@@ -158,6 +158,42 @@
             <Pane fx:id="btnDivide" layoutX="337.0" layoutY="455.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
                <children>
                   <Label layoutX="45.0" layoutY="29.0" text="/" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="btnClear1" layoutX="15.0" layoutY="561.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
+               <children>
+                  <Label alignment="CENTER_RIGHT" layoutX="27.0" layoutY="29.0" text="sin" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="btnClear11" layoutX="122.0" layoutY="561.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
+               <children>
+                  <Label layoutX="21.0" layoutY="29.0" text="cos" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="btnClear111" layoutX="228.0" layoutY="561.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
+               <children>
+                  <Label layoutX="24.0" layoutY="29.0" text="tan" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="btnDivide1" layoutX="229.0" layoutY="455.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
+               <children>
+                  <Label layoutX="42.0" layoutY="29.0" text="^" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="36.0" />
                      </font>

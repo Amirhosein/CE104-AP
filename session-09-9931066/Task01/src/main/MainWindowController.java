@@ -8,9 +8,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainWindowController {
-    @FXML private Pane titlePane;
-    @FXML private ImageView btnMinimize, btnClose;
-    @FXML private Label lblResult;
+    @FXML
+    private Pane titlePane;
+    @FXML
+    private ImageView btnMinimize, btnClose;
+    @FXML
+    private Label lblResult;
 
     private double x, y;
     private double num1 = 0;
@@ -22,8 +25,8 @@ public class MainWindowController {
             y = mouseEvent.getSceneY();
         });
         titlePane.setOnMouseDragged(mouseEvent -> {
-            stage.setX(mouseEvent.getScreenX()-x);
-            stage.setY(mouseEvent.getScreenY()-y);
+            stage.setX(mouseEvent.getScreenX() - x);
+            stage.setY(mouseEvent.getScreenY() - y);
         });
 
         btnClose.setOnMouseClicked(mouseEvent -> stage.close());
@@ -32,28 +35,29 @@ public class MainWindowController {
 
     @FXML
     void onNumberClicked(MouseEvent event) {
-        int value = Integer.parseInt(((Pane)event.getSource()).getId().replace("btn",""));
-        lblResult.setText(Double.parseDouble(lblResult.getText())==0?String.valueOf((double)value):String.valueOf(Double.parseDouble(lblResult.getText())*10+value));
+        int value = Integer.parseInt(((Pane) event.getSource()).getId().replace("btn", ""));
+        lblResult.setText(Double.parseDouble(lblResult.getText()) == 0 ? String.valueOf((double) value) : String.valueOf(Double.parseDouble(lblResult.getText()) * 10 + value));
     }
 
     @FXML
     void onSymbolClicked(MouseEvent event) {
-        String symbol = ((Pane)event.getSource()).getId().replace("btn","");
-        if(symbol.equals("Equals")) {
+        String symbol = ((Pane) event.getSource()).getId().replace("btn", "");
+        if (symbol.equals("Equals")) {
             double num2 = Double.parseDouble(lblResult.getText());
             switch (operator) {
-                case "+" -> lblResult.setText((num1+num2) + "");
-                case "-" -> lblResult.setText((num1-num2) + "");
-                case "*" -> lblResult.setText((num1*num2) + "");
-                case "/" -> lblResult.setText((num1/num2) + "");
+                case "+" -> lblResult.setText((num1 + num2) + "");
+                case "-" -> lblResult.setText((num1 - num2) + "");
+                case "*" -> lblResult.setText((num1 * num2) + "");
+                case "^" -> lblResult.setText((num1 / num2) + "");
+                case "sin" -> lblResult.setText((java.lang.Math.pow(num1, num2)) + "");
+                case "cos" -> lblResult.setText((num1 / num2) + "");
+                case "tan" -> lblResult.setText((num1 / num2) + "");
             }
             operator = ".";
-        }
-        else if(symbol.equals("Clear")) {
+        } else if (symbol.equals("Clear")) {
             lblResult.setText(String.valueOf(0.0));
             operator = ".";
-        }
-        else {
+        } else {
             switch (symbol) {
                 case "Plus" -> operator = "+";
                 case "Minus" -> operator = "-";
