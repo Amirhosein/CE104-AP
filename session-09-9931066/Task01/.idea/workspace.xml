@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f9b5d50-ddb8-4fa7-8fe5-9cf88bdeda4c" name="Default Changelist" comment="">
+    <list default="true" id="3f9b5d50-ddb8-4fa7-8fe5-9cf88bdeda4c" name="Default Changelist" comment="L9-T1 feat: power">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Task01/main/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task01/main/MainWindowController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Task01/main/MainWindowInterface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task01/main/MainWindowInterface.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task01/main/MainWindowStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Task01/main/MainWindowStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainWindowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MainWindowInterface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainWindowInterface.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainWindowStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainWindowStyle.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +61,34 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1624107487913</updated>
-      <workItem from="1624107489218" duration="2705000" />
+      <workItem from="1624107489218" duration="4978000" />
     </task>
+    <task id="LOCAL-00001" summary="L9-T1 feat: power">
+      <created>1624110323772</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1624110323772</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="L9-T1 feat: power" />
+    <option name="LAST_COMMIT_MESSAGE" value="L9-T1 feat: power" />
   </component>
 </project>

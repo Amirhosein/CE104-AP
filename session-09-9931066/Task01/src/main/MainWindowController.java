@@ -18,6 +18,7 @@ public class MainWindowController {
     private double x, y;
     private double num1 = 0;
     private String operator = "+";
+    private boolean isEnough = false;
 
     public void init(Stage stage) {
         titlePane.setOnMousePressed(mouseEvent -> {
@@ -43,29 +44,56 @@ public class MainWindowController {
     void onSymbolClicked(MouseEvent event) {
         String symbol = ((Pane) event.getSource()).getId().replace("btn", "");
         if (symbol.equals("Equals")) {
-            double num2 = Double.parseDouble(lblResult.getText());
+            double num2 = 0;
+            if (!isEnough)
+                num2 = Double.parseDouble(lblResult.getText());
             switch (operator) {
                 case "+" -> lblResult.setText((num1 + num2) + "");
                 case "-" -> lblResult.setText((num1 - num2) + "");
                 case "*" -> lblResult.setText((num1 * num2) + "");
-                case "^" -> lblResult.setText((num1 / num2) + "");
-                case "sin" -> lblResult.setText((java.lang.Math.pow(num1, num2)) + "");
-                case "cos" -> lblResult.setText((num1 / num2) + "");
-                case "tan" -> lblResult.setText((num1 / num2) + "");
+                case "/" -> lblResult.setText((num1 / num2) + "");
+                case "^" -> lblResult.setText((java.lang.Math.pow(num1, num2)) + "");
+                case "sin" -> {
+                    lblResult.setText((Math.sin(Math.toRadians(num1))) + "");
+                    isEnough = false;
+                }
+                case "cos" -> {
+                    lblResult.setText((Math.cos(Math.toRadians(num1))) + "");
+                    isEnough = false;
+                }
+                case "tan" -> {
+                    lblResult.setText(Math.tan(Math.toRadians(num1)) + "");
+                    isEnough = false;
+                }
             }
             operator = ".";
         } else if (symbol.equals("Clear")) {
             lblResult.setText(String.valueOf(0.0));
             operator = ".";
+            isEnough = false;
         } else {
             switch (symbol) {
                 case "Plus" -> operator = "+";
                 case "Minus" -> operator = "-";
                 case "Multiply" -> operator = "*";
                 case "Divide" -> operator = "/";
+                case "Power" -> operator = "^";
+                case "Sin" -> {
+                    operator = "sin";
+                    isEnough = true;
+                }
+                case "Cos" -> {
+                    operator = "cos";
+                    isEnough = true;
+                }
+                case "Tan" -> {
+                    operator = "tan";
+                    isEnough = true;
+                }
             }
             num1 = Double.parseDouble(lblResult.getText());
-            lblResult.setText(String.valueOf(0.0));
+            if (!isEnough)
+                lblResult.setText(String.valueOf(0.0));
         }
     }
 }

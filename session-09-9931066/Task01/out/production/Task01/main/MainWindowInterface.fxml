@@ -164,7 +164,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="btnClear1" layoutX="15.0" layoutY="561.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
+            <Pane fx:id="btnSin" layoutX="15.0" layoutY="561.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="27.0" layoutY="29.0" text="sin" textFill="WHITE">
                      <font>
@@ -173,7 +173,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="btnClear11" layoutX="122.0" layoutY="561.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
+            <Pane fx:id="btnCos" layoutX="122.0" layoutY="561.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
                <children>
                   <Label layoutX="21.0" layoutY="29.0" text="cos" textFill="WHITE">
                      <font>
@@ -182,7 +182,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="btnClear111" layoutX="228.0" layoutY="561.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
+            <Pane fx:id="btnTan" layoutX="228.0" layoutY="561.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
                <children>
                   <Label layoutX="24.0" layoutY="29.0" text="tan" textFill="WHITE">
                      <font>
@@ -191,7 +191,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="btnDivide1" layoutX="229.0" layoutY="455.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
+            <Pane fx:id="btnPower" layoutX="229.0" layoutY="455.0" onMouseClicked="#onSymbolClicked" prefHeight="100.0" prefWidth="100.0" styleClass="highlight">
                <children>
                   <Label layoutX="42.0" layoutY="29.0" text="^" textFill="WHITE">
                      <font>
