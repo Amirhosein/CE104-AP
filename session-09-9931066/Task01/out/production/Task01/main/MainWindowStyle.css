@@ -8,6 +8,12 @@
     -fx-background-radius: 15 15 25 25;
 }
 
+
+.result {
+    -fx-background-color: #00000025;
+    -fx-background-radius: 15;
+}
+
 .highlight {
     -fx-background-color: #00000025;
     -fx-background-radius: 15;
