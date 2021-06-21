@@ -128,7 +128,7 @@ public class ChatServer {
                 newUser.start();
             }
             while (true) {
-                if (userNames.size() == 10)
+                if (userNames.size() == number)
                     break;
                 else {
                     sleep(2000);

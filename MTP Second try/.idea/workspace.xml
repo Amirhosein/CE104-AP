@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 ready version for PRESENTATION + javadoc.">
-      <change beforePath="$PROJECT_DIR$/src/Project/Client/WriteThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Client/WriteThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,21 +116,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Unnamed" type="Multirun" separateTabs="false" reuseTabsWithFailures="true" startOneByOne="true" markFailedProcess="true" hideSuccessProcess="false" delayTime="0.2">
-      <runConfiguration name="Server" type="Application" />
       <runConfiguration name="Client (1)" type="Application" />
       <runConfiguration name="Client (2)" type="Application" />
       <runConfiguration name="Client (3)" type="Application" />
@@ -174,6 +160,7 @@
       <workItem from="1623652095021" duration="387000" />
       <workItem from="1623652501606" duration="21312000" />
       <workItem from="1623735314195" duration="27031000" />
+      <workItem from="1624289239871" duration="586000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
