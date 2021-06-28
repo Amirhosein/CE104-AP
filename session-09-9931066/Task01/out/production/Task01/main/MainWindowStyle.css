@@ -1,0 +1,30 @@
+.root {
+    -fx-background-color: #222;
+    -fx-background-radius: 28;
+}
+
+.mainPane {
+    -fx-background-color: linear-gradient(to bottom right, #F6D242, #FF52E5);
+    -fx-background-radius: 15 15 25 25;
+}
+
+
+.result {
+    -fx-background-color: #00000025;
+    -fx-background-radius: 15;
+}
+
+.highlight {
+    -fx-background-color: #00000025;
+    -fx-background-radius: 15;
+}
+
+.highlight:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-background-radius: 15;
+}
+
+.highlight:pressed {
+    -fx-background-color: #000000;
+    -fx-background-radius: 15;
+}

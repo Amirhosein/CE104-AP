@@ -7,6 +7,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
+
 /**
  * The type Main window controller.
  */
@@ -46,20 +52,37 @@ public class MainWindowController {
      * On number clicked.
      *
      * @param event the event
+     * @throws UnsupportedAudioFileException the unsupported audio file exception
+     * @throws IOException                   the io exception
      */
     @FXML
-    void onNumberClicked(MouseEvent event) {
+    void onNumberClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException {
+        soundEffect();
         int value = Integer.parseInt(((Pane) event.getSource()).getId().replace("btn", ""));
         lblResult.setText(Double.parseDouble(lblResult.getText()) == 0 ? String.valueOf((double) value) : String.valueOf(Double.parseDouble(lblResult.getText()) * 10 + value));
+    }
+
+    /**
+     * Sound effect.
+     *
+     * @throws UnsupportedAudioFileException the unsupported audio file exception
+     * @throws IOException                   the io exception
+     */
+    void soundEffect() throws UnsupportedAudioFileException, IOException {
+        SimpleAudioPlayer simpleAudioPlayer = new SimpleAudioPlayer(AudioSystem.getAudioInputStream(Objects.requireNonNull(getClass().getResourceAsStream("../resources/sfx/click.wav"))));
+        simpleAudioPlayer.start();
     }
 
     /**
      * On symbol clicked.
      *
      * @param event the event
+     * @throws UnsupportedAudioFileException the unsupported audio file exception
+     * @throws IOException                   the io exception
      */
     @FXML
-    void onSymbolClicked(MouseEvent event) {
+    void onSymbolClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException {
+        soundEffect();
         String symbol = ((Pane) event.getSource()).getId().replace("btn", "");
         if (symbol.equals("Equals")) {
             double num2 = 0;

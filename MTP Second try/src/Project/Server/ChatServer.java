@@ -92,7 +92,6 @@ public class ChatServer {
             roles.add("CITIZEN");
             roles.add("DOCTOR");
             roles.add("DETECTIVE");
-            roles.add("MAYOR");
             roles.add("DIE HARD");
         } else if (number == 7) {
             roles.add("GODFATHER");
@@ -100,18 +99,13 @@ public class ChatServer {
             roles.add("CITIZEN");
             roles.add("DOCTOR");
             roles.add("DETECTIVE");
-            roles.add("SNIPER");
-            roles.add("MAYOR");
             roles.add("DIE HARD");
         } else if (number == 6) {
             roles.add("GODFATHER");
             roles.add("MAFIA");
-            roles.add("DOCTOR LECTRE");
             roles.add("CITIZEN");
             roles.add("DOCTOR");
             roles.add("DETECTIVE");
-            roles.add("SNIPER");
-            roles.add("MAYOR");
         }
 
 

@@ -212,7 +212,7 @@ public class UserThread extends Thread {
 
     private void checkPreviousVote() {
         for (String string : ChatServer.userNames) {
-            if (ChatServer.userAndVotes.get(string).remove(userName))
+            if (ChatServer.userAndVotes.get(string).remove(userName) || ChatServer.userAndVotes.get("NONE").remove(userName))
                 sendMessage("Vote changed.");
         }
     }

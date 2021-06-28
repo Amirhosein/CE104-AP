@@ -8,6 +8,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.Objects;
+
 /**
  * The type Main window.
  */
@@ -22,7 +24,7 @@ public class MainWindow extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setResizable(false);
         stage.setTitle("Calculator");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("../images/icon.png")));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("../resources/images/icon.png"))));
         ((MainWindowController)loader.getController()).init(stage);
         stage.show();
     }

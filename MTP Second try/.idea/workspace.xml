@@ -3,6 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="44e5e72d-ca02-4ba4-b72a-2878109cc37a" name="Default Changelist" comment="MTP2 ready version for PRESENTATION + javadoc.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Client/ChatClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Client/ChatClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Client/ReadThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Client/ReadThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Client/WriteThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Client/WriteThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/ChatServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/Night.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/Night.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/UserThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTP Second try/Project/Server/UserThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/Server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Server/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/Server/UserThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Server/UserThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +168,10 @@
       <workItem from="1623652095021" duration="387000" />
       <workItem from="1623652501606" duration="21312000" />
       <workItem from="1623735314195" duration="27031000" />
-      <workItem from="1624289239871" duration="586000" />
+      <workItem from="1624289239871" duration="2054000" />
+      <workItem from="1624339224211" duration="607000" />
+      <workItem from="1624350357896" duration="46000" />
+      <workItem from="1624350433051" duration="3346000" />
     </task>
     <task id="LOCAL-00001" summary="MTP2 chatroom">
       <created>1623049482858</created>
@@ -365,7 +376,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623779974111</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="MTP2 ready version for PRESENTATION + javadoc.">
+      <created>1624290002884</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1624290002885</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
